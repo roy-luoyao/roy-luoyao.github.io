@@ -8,7 +8,7 @@ interface PostContentProps {
 const PostContent: React.FC<PostContentProps> = ({ content }) => {
   return (
     <div className="post-content">
-      <ReactMarkdown>{content}</ReactMarkdown>
+      <ReactMarkdown>{content.trim()}</ReactMarkdown>
     </div>
   );
 };
