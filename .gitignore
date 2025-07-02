@@ -13,8 +13,6 @@
 /.next/
 /out/
 
-# production
-/ly-blog
 
 # misc
 .DS_Store
