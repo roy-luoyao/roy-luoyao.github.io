@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 
 interface PostContentProps {
   content: string;
@@ -6,10 +7,9 @@ interface PostContentProps {
 
 const PostContent: React.FC<PostContentProps> = ({ content }) => {
   return (
-    <div
-      className="post-content"
-      dangerouslySetInnerHTML={{ __html: content }}
-    />
+    <div className="post-content">
+      <ReactMarkdown>{content}</ReactMarkdown>
+    </div>
   );
 };
 
