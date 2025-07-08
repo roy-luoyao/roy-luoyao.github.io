@@ -1,6 +1,8 @@
 ---
 title: 泛型（Generics）
 date: 2025-07-02
+categories:
+  - iOS
 ---
 
 # 在 Swift 中，什么是泛型（Generics）？

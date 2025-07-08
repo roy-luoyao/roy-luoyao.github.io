@@ -1,6 +1,8 @@
 ---
-title: Open-Public-Internal-File-private-Private权限修饰符详解
+title: Open-Public...权限修饰符详解
 date: 2025-07-08
+categories:
+  - iOS
 ---
 
 # 1. 中文解答

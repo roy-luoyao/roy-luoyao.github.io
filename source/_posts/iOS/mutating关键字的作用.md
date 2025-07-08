@@ -1,6 +1,8 @@
 ---
 title: mutating关键字的作用
 date: 2025-07-08
+categories:
+  - iOS
 ---
 
 # 1. 中文解答
