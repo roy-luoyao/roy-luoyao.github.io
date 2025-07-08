@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Open-Public-Internal-File-private-Private权限修饰符详解 | Roy Luo Yao‘s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1. 中文解答1.1 概念与原理Swift 提供五种访问控制修饰符，用于控制代码中实体（类、结构体、枚举、属性、方法等）的可见性和访问范围：  open  最高级别，仅适用于类和类成员。 允许在模块外被继承和重写。 典型场景：第三方库&#x2F;框架对外暴露可扩展 API。 例：123open class Animal &#123;    open func speak() &#123;&amp;#125">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Open-Public-Internal-File-private-Private权限修饰符详解">
+<meta property="og:url" content="https://roy-luoyao.github.io/2025/07/08/iOS/Open-Public-Internal%E5%85%B3%E9%94%AE%E5%AD%97/index.html">
+<meta property="og:site_name" content="Roy Luo Yao‘s Blog">
+<meta property="og:description" content="1. 中文解答1.1 概念与原理Swift 提供五种访问控制修饰符，用于控制代码中实体（类、结构体、枚举、属性、方法等）的可见性和访问范围：  open  最高级别，仅适用于类和类成员。 允许在模块外被继承和重写。 典型场景：第三方库&#x2F;框架对外暴露可扩展 API。 例：123open class Animal &#123;    open func speak() &#123;&amp;#125">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-07-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-07-08T07:06:35.284Z">
+<meta property="article:author" content="Roy Luo Yao">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Roy Luo Yao‘s Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Roy Luo Yao‘s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">A place to share my thoughts and ideas</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://roy-luoyao.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-iOS/Open-Public-Internal关键字" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/08/iOS/Open-Public-Internal%E5%85%B3%E9%94%AE%E5%AD%97/" class="article-date">
+  <time class="dt-published" datetime="2025-07-07T16:00:00.000Z" itemprop="datePublished">2025-07-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Open-Public-Internal-File-private-Private权限修饰符详解
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-中文解答"><a href="#1-中文解答" class="headerlink" title="1. 中文解答"></a>1. 中文解答</h1><h2 id="1-1-概念与原理"><a href="#1-1-概念与原理" class="headerlink" title="1.1 概念与原理"></a>1.1 概念与原理</h2><p>Swift 提供五种访问控制修饰符，用于控制代码中实体（类、结构体、枚举、属性、方法等）的可见性和访问范围：</p>
+<ol>
+<li><p><strong>open</strong></p>
+<ul>
+<li>最高级别，仅适用于类和类成员。</li>
+<li>允许在模块外被继承和重写。</li>
+<li>典型场景：第三方库&#x2F;框架对外暴露可扩展 API。</li>
+<li>例：<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">func</span> <span class="title function_">speak</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>public</strong></p>
+<ul>
+<li>允许在模块外访问，但不能被继承或重写。</li>
+<li>适合对外暴露 API，但不希望被扩展。</li>
+<li>例：<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Dog</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">func</span> <span class="title function_">bark</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>internal</strong>（默认）</p>
+<ul>
+<li>仅在同一模块内可见，模块外不可访问。</li>
+<li>适合项目内部逻辑，默认不写就是 internal。</li>
+<li>例：<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span> &#123;</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">meow</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>fileprivate</strong></p>
+<ul>
+<li>仅在当前 Swift 文件内可见。</li>
+<li>适合同文件内多个类型协作，隐藏实现细节。</li>
+<li>例：<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fileprivate</span> <span class="keyword">class</span> <span class="title class_">Mouse</span> &#123;&#125;</span><br><span class="line"><span class="keyword">fileprivate</span> <span class="keyword">func</span> <span class="title function_">hide</span>() &#123;&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>private</strong></p>
+<ul>
+<li>仅在当前声明作用域（如类&#x2F;结构体&#x2F;扩展）内可见。</li>
+<li>适合封装最细粒度的实现细节。</li>
+<li>例：<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Lion</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> secret: <span class="type">String</span> <span class="operator">=</span> <span class="string">&quot;Roar&quot;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">func</span> <span class="title function_">sleep</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<h2 id="1-2-为什么要这样设计？"><a href="#1-2-为什么要这样设计？" class="headerlink" title="1.2 为什么要这样设计？"></a>1.2 为什么要这样设计？</h2><ul>
+<li>提高代码安全性，防止外部误用或依赖内部实现。</li>
+<li>明确 API 边界，便于团队协作和模块解耦。</li>
+<li>支持灵活的封装和扩展策略。</li>
+</ul>
+<h2 id="1-3-实际项目代码示例"><a href="#1-3-实际项目代码示例" class="headerlink" title="1.3 实际项目代码示例"></a>1.3 实际项目代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// FrameworkA</span></span><br><span class="line"><span class="keyword">open</span> <span class="keyword">class</span> <span class="title class_">BaseViewController</span>: <span class="title class_ inherited__">UIViewController</span> &#123;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">func</span> <span class="title function_">setupUI</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">APIClient</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">func</span> <span class="title function_">request</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">InternalHelper</span> &#123;</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">doWork</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fileprivate</span> <span class="keyword">class</span> <span class="title class_">FileHelper</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> cache: [<span class="type">String</span>: <span class="keyword">Any</span>] <span class="operator">=</span> [:]</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">func</span> <span class="title function_">clearCache</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-4-用户体验与业务价值"><a href="#1-4-用户体验与业务价值" class="headerlink" title="1.4 用户体验与业务价值"></a>1.4 用户体验与业务价值</h2><ul>
+<li>合理使用访问控制，API 更安全、易用，减少误用和维护成本。</li>
+<li>便于团队分工，隐藏实现细节，提升代码可维护性。</li>
+</ul>
+<h2 id="1-5-问题拆解与调试建议"><a href="#1-5-问题拆解与调试建议" class="headerlink" title="1.5 问题拆解与调试建议"></a>1.5 问题拆解与调试建议</h2><ul>
+<li>如果外部无法访问某成员，优先检查访问修饰符。</li>
+<li>框架开发时，优先用 public，需支持继承&#x2F;重写时用 open。</li>
+<li>内部工具类、辅助方法建议用 internal、fileprivate 或 private。</li>
+</ul>
+<h2 id="1-6-易混淆点与对比"><a href="#1-6-易混淆点与对比" class="headerlink" title="1.6 易混淆点与对比"></a>1.6 易混淆点与对比</h2><ul>
+<li><strong>open vs public</strong>：open 可被继承&#x2F;重写，public 只能访问不能继承。</li>
+<li><strong>fileprivate vs private</strong>：fileprivate 跨类型同文件可见，private 仅限当前作用域。</li>
+<li><strong>internal</strong> 是默认级别，不写就是 internal。</li>
+</ul>
+<hr>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concepts-Principles"><a href="#2-1-Concepts-Principles" class="headerlink" title="2.1 Concepts &amp; Principles"></a>2.1 Concepts &amp; Principles</h2><p>Swift provides five access control levels to manage the visibility and accessibility of entities:</p>
+<ol>
+<li><p><strong>open</strong></p>
+<ul>
+<li>Highest level, only for classes and class members.</li>
+<li>Can be subclassed&#x2F;overridden outside the module.</li>
+<li>Example:<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">func</span> <span class="title function_">speak</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>public</strong></p>
+<ul>
+<li>Accessible outside the module, but cannot be subclassed&#x2F;overridden.</li>
+<li>Example:<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Dog</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">func</span> <span class="title function_">bark</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>internal</strong> (default)</p>
+<ul>
+<li>Accessible only within the same module.</li>
+<li>Example:<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span> &#123;</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">meow</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>fileprivate</strong></p>
+<ul>
+<li>Accessible only within the same Swift file.</li>
+<li>Example:<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fileprivate</span> <span class="keyword">class</span> <span class="title class_">Mouse</span> &#123;&#125;</span><br><span class="line"><span class="keyword">fileprivate</span> <span class="keyword">func</span> <span class="title function_">hide</span>() &#123;&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>private</strong></p>
+<ul>
+<li>Accessible only within the enclosing declaration.</li>
+<li>Example:<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Lion</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> secret: <span class="type">String</span> <span class="operator">=</span> <span class="string">&quot;Roar&quot;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">func</span> <span class="title function_">sleep</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<h2 id="2-2-Why-this-design"><a href="#2-2-Why-this-design" class="headerlink" title="2.2 Why this design?"></a>2.2 Why this design?</h2><ul>
+<li>Improves code safety, prevents misuse, and clarifies API boundaries.</li>
+<li>Facilitates team collaboration and modularization.</li>
+<li>Supports flexible encapsulation and extension strategies.</li>
+</ul>
+<h2 id="2-3-Practical-Example"><a href="#2-3-Practical-Example" class="headerlink" title="2.3 Practical Example"></a>2.3 Practical Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="keyword">class</span> <span class="title class_">BaseViewController</span>: <span class="title class_ inherited__">UIViewController</span> &#123;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">func</span> <span class="title function_">setupUI</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">APIClient</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">func</span> <span class="title function_">request</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">InternalHelper</span> &#123;</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">doWork</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fileprivate</span> <span class="keyword">class</span> <span class="title class_">FileHelper</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> cache: [<span class="type">String</span>: <span class="keyword">Any</span>] <span class="operator">=</span> [:]</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">func</span> <span class="title function_">clearCache</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-User-Experience-Business-Value"><a href="#2-4-User-Experience-Business-Value" class="headerlink" title="2.4 User Experience &amp; Business Value"></a>2.4 User Experience &amp; Business Value</h2><ul>
+<li>Proper access control makes APIs safer and easier to use, reducing maintenance costs.</li>
+<li>Hides implementation details, improving maintainability and team collaboration.</li>
+</ul>
+<h2 id="2-5-Debugging-Troubleshooting"><a href="#2-5-Debugging-Troubleshooting" class="headerlink" title="2.5 Debugging &amp; Troubleshooting"></a>2.5 Debugging &amp; Troubleshooting</h2><ul>
+<li>If a member is inaccessible, check its access modifier first.</li>
+<li>Use public for APIs, open for extensible frameworks, internal&#x2F;fileprivate&#x2F;private for internal logic.</li>
+</ul>
+<h2 id="2-6-Key-Distinctions"><a href="#2-6-Key-Distinctions" class="headerlink" title="2.6 Key Distinctions"></a>2.6 Key Distinctions</h2><ul>
+<li><strong>open vs public</strong>: open allows subclassing&#x2F;overriding, public does not.</li>
+<li><strong>fileprivate vs private</strong>: fileprivate is visible within the same file, private only within the enclosing scope.</li>
+<li><strong>internal</strong> is the default level.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/08/iOS/Open-Public-Internal%E5%85%B3%E9%94%AE%E5%AD%97/" data-id="cmcu74t560003d9k7amap0tmx" data-title="Open-Public-Internal-File-private-Private权限修饰符详解" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/07/08/iOS/closure%E9%97%AD%E5%8C%85block%E7%9A%84%E5%8C%BA%E5%88%AB/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          closure闭包是什么-使用场景-与OC中block的区别
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/07/08/iOS/%E5%AD%98%E5%82%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8C%BA%E5%88%AB/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">存储属性和计算属性的区别</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">七月 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/07/08/Tools/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/08/iOS/classVStruct/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/08/iOS/closure%E9%97%AD%E5%8C%85block%E7%9A%84%E5%8C%BA%E5%88%AB/">closure闭包是什么-使用场景-与OC中block的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/08/iOS/Open-Public-Internal%E5%85%B3%E9%94%AE%E5%AD%97/">Open-Public-Internal-File-private-Private权限修饰符详解</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/08/iOS/%E5%AD%98%E5%82%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8C%BA%E5%88%AB/">存储属性和计算属性的区别</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap"></div>
+  <h3 class="widget-title">Luo Yao的简历</h3>
+  <div class="widget">
+    <a href="/resume.pdf" target="_blank">点击查看Luo Yao的简历</a>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Roy Luo Yao<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
