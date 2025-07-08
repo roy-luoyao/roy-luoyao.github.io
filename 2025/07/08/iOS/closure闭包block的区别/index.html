@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>closure闭包是什么-使用场景-与OC中block的区别 | Roy Luo Yao‘s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1. 中文解答1.1 概念与原理 闭包（Closure）定义  闭包是可以捕获和存储其所在作用域内变量和常量的自包含代码块。 Swift 中的函数本质上也是特殊的闭包。 闭包可作为变量、参数、返回值传递和使用。   闭包的语法  基本语法：123let closure &#x3D; &#123; (参数) -&gt; 返回类型 in    &#x2F;&#x2F; 代码体&#125; 支持类型推断、参数简写、尾随闭包等特性。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="closure闭包是什么-使用场景-与OC中block的区别">
+<meta property="og:url" content="https://roy-luoyao.github.io/2025/07/08/iOS/closure%E9%97%AD%E5%8C%85block%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
+<meta property="og:site_name" content="Roy Luo Yao‘s Blog">
+<meta property="og:description" content="1. 中文解答1.1 概念与原理 闭包（Closure）定义  闭包是可以捕获和存储其所在作用域内变量和常量的自包含代码块。 Swift 中的函数本质上也是特殊的闭包。 闭包可作为变量、参数、返回值传递和使用。   闭包的语法  基本语法：123let closure &#x3D; &#123; (参数) -&gt; 返回类型 in    &#x2F;&#x2F; 代码体&#125; 支持类型推断、参数简写、尾随闭包等特性。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-07-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-07-08T07:06:35.279Z">
+<meta property="article:author" content="Roy Luo Yao">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Roy Luo Yao‘s Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Roy Luo Yao‘s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">A place to share my thoughts and ideas</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://roy-luoyao.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-iOS/closure闭包block的区别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/08/iOS/closure%E9%97%AD%E5%8C%85block%E7%9A%84%E5%8C%BA%E5%88%AB/" class="article-date">
+  <time class="dt-published" datetime="2025-07-07T16:00:00.000Z" itemprop="datePublished">2025-07-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      closure闭包是什么-使用场景-与OC中block的区别
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-中文解答"><a href="#1-中文解答" class="headerlink" title="1. 中文解答"></a>1. 中文解答</h1><h2 id="1-1-概念与原理"><a href="#1-1-概念与原理" class="headerlink" title="1.1 概念与原理"></a>1.1 概念与原理</h2><ol>
+<li><p><strong>闭包（Closure）定义</strong></p>
+<ul>
+<li>闭包是可以捕获和存储其所在作用域内变量和常量的自包含代码块。</li>
+<li>Swift 中的函数本质上也是特殊的闭包。</li>
+<li>闭包可作为变量、参数、返回值传递和使用。</li>
+</ul>
+</li>
+<li><p><strong>闭包的语法</strong></p>
+<ul>
+<li>基本语法：<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> closure <span class="operator">=</span> &#123; (参数) -&gt; 返回类型 <span class="keyword">in</span></span><br><span class="line">    <span class="comment">// 代码体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>支持类型推断、参数简写、尾随闭包等特性。</li>
+</ul>
+</li>
+</ol>
+<h2 id="1-2-为什么要用闭包？"><a href="#1-2-为什么要用闭包？" class="headerlink" title="1.2 为什么要用闭包？"></a>1.2 为什么要用闭包？</h2><ul>
+<li>提升代码复用性和灵活性，支持函数式编程。</li>
+<li>可作为回调、异步处理、事件响应等，简化代码结构。</li>
+<li>捕获上下文变量，便于状态管理和数据流传递。</li>
+</ul>
+<h2 id="1-3-实际项目使用场景"><a href="#1-3-实际项目使用场景" class="headerlink" title="1.3 实际项目使用场景"></a>1.3 实际项目使用场景</h2><ol>
+<li><strong>异步回调</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">fetchData</span>(<span class="params">completion</span>: <span class="keyword">@escaping</span> (<span class="type">Data</span>?) -&gt; <span class="type">Void</span>) &#123;</span><br><span class="line">    <span class="comment">// 网络请求结束后回调</span></span><br><span class="line">    completion(data)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><strong>集合操作</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> numbers <span class="operator">=</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">let</span> squares <span class="operator">=</span> numbers.map &#123; <span class="variable">$0</span> <span class="operator">*</span> <span class="variable">$0</span> &#125; <span class="comment">// 闭包作为参数</span></span><br></pre></td></tr></table></figure></li>
+<li><strong>动画、事件响应</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">UIView</span>.animate(withDuration: <span class="number">0.3</span>) &#123;</span><br><span class="line">    view.alpha <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><strong>自定义排序、过滤</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sorted <span class="operator">=</span> names.sorted &#123; <span class="variable">$0</span>.count <span class="operator">&lt;</span> <span class="variable">$1</span>.count &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="1-4-与-Objective-C-中-Block-的区别"><a href="#1-4-与-Objective-C-中-Block-的区别" class="headerlink" title="1.4 与 Objective-C 中 Block 的区别"></a>1.4 与 Objective-C 中 Block 的区别</h2><ol>
+<li><strong>语法与类型系统</strong><ul>
+<li>Swift 闭包语法更简洁，类型推断更强。</li>
+<li>Block 语法繁琐，需显式声明参数和返回值类型。</li>
+</ul>
+</li>
+<li><strong>内存管理</strong><ul>
+<li>Swift 闭包默认捕获变量为强引用，需用 <code>[weak self]</code>&#x2F;<code>[unowned self]</code> 避免循环引用。</li>
+<li>OC Block 分为全局、栈、堆三种类型，需用 <code>__weak</code>&#x2F;<code>__block</code> 修饰符管理引用。</li>
+</ul>
+</li>
+<li><strong>捕获机制</strong><ul>
+<li>Swift 闭包自动捕获上下文变量。</li>
+<li>OC Block 需用 <code>__block</code> 修饰变量才能在 Block 内修改。</li>
+</ul>
+</li>
+<li><strong>语法特性</strong><ul>
+<li>Swift 支持尾随闭包、参数简写、自动推断。</li>
+<li>OC Block 语法固定，灵活性较低。</li>
+</ul>
+</li>
+</ol>
+<h2 id="1-5-用户体验与业务价值"><a href="#1-5-用户体验与业务价值" class="headerlink" title="1.5 用户体验与业务价值"></a>1.5 用户体验与业务价值</h2><ul>
+<li>闭包让 API 更加简洁、易用，提升开发效率。</li>
+<li>便于实现响应式、链式调用，提升产品交互体验。</li>
+<li>合理管理闭包内存，避免内存泄漏，保障 App 稳定性。</li>
+</ul>
+<h2 id="1-6-问题拆解与调试建议"><a href="#1-6-问题拆解与调试建议" class="headerlink" title="1.6 问题拆解与调试建议"></a>1.6 问题拆解与调试建议</h2><ul>
+<li>遇到内存泄漏，优先排查闭包的循环引用，使用 <code>[weak self]</code> 或 <code>[unowned self]</code>。</li>
+<li>调试异步回调时，关注闭包是否正确捕获和释放上下文。</li>
+<li>对比 Block 和闭包的捕获、释放机制，选择最适合业务场景的实现。</li>
+</ul>
+<h2 id="1-7-易混淆概念区分"><a href="#1-7-易混淆概念区分" class="headerlink" title="1.7 易混淆概念区分"></a>1.7 易混淆概念区分</h2><ul>
+<li><strong>闭包 vs Block</strong>：闭包是 Swift 的一等公民，语法更现代，Block 是 OC 的函数对象实现。</li>
+<li><strong>逃逸闭包（@escaping）</strong>：闭包在函数返回后才被调用，需显式标记。</li>
+<li><strong>自动闭包（@autoclosure）</strong>：延迟求值，常用于断言、短路等场景。</li>
+</ul>
+<hr>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-What-is-a-Closure"><a href="#2-1-What-is-a-Closure" class="headerlink" title="2.1 What is a Closure?"></a>2.1 What is a Closure?</h2><ul>
+<li>A closure is a self-contained block of code that can capture and store references to variables and constants from its surrounding context.</li>
+<li>Functions in Swift are special cases of closures.</li>
+<li>Closures can be assigned to variables, passed as parameters, and returned from functions.</li>
+</ul>
+<h2 id="2-2-Why-use-closures"><a href="#2-2-Why-use-closures" class="headerlink" title="2.2 Why use closures?"></a>2.2 Why use closures?</h2><ul>
+<li>Improve code reusability and flexibility, support functional programming.</li>
+<li>Used for callbacks, async handling, event response, etc.</li>
+<li>Capture context for state management and data flow.</li>
+</ul>
+<h2 id="2-3-Practical-Usage-Scenarios"><a href="#2-3-Practical-Usage-Scenarios" class="headerlink" title="2.3 Practical Usage Scenarios"></a>2.3 Practical Usage Scenarios</h2><ol>
+<li><strong>Async Callbacks</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">fetchData</span>(<span class="params">completion</span>: <span class="keyword">@escaping</span> (<span class="type">Data</span>?) -&gt; <span class="type">Void</span>) &#123;</span><br><span class="line">    completion(data)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><strong>Collection Operations</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> numbers <span class="operator">=</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">let</span> squares <span class="operator">=</span> numbers.map &#123; <span class="variable">$0</span> <span class="operator">*</span> <span class="variable">$0</span> &#125;</span><br></pre></td></tr></table></figure></li>
+<li><strong>Animation&#x2F;Event Handling</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">UIView</span>.animate(withDuration: <span class="number">0.3</span>) &#123;</span><br><span class="line">    view.alpha <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><strong>Custom Sorting&#x2F;Filtering</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sorted <span class="operator">=</span> names.sorted &#123; <span class="variable">$0</span>.count <span class="operator">&lt;</span> <span class="variable">$1</span>.count &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="2-4-Difference-from-Objective-C-Block"><a href="#2-4-Difference-from-Objective-C-Block" class="headerlink" title="2.4 Difference from Objective-C Block"></a>2.4 Difference from Objective-C Block</h2><ol>
+<li><strong>Syntax &amp; Type System</strong><ul>
+<li>Swift closures are more concise, with strong type inference.</li>
+<li>Block syntax is verbose, requires explicit type declaration.</li>
+</ul>
+</li>
+<li><strong>Memory Management</strong><ul>
+<li>Swift closures capture variables strongly by default; use <code>[weak self]</code>&#x2F;<code>[unowned self]</code> to avoid retain cycles.</li>
+<li>OC Blocks have global, stack, and heap types; use <code>__weak</code>&#x2F;<code>__block</code> for reference management.</li>
+</ul>
+</li>
+<li><strong>Capture Mechanism</strong><ul>
+<li>Swift closures automatically capture context variables.</li>
+<li>OC Blocks require <code>__block</code> to modify captured variables.</li>
+</ul>
+</li>
+<li><strong>Syntax Features</strong><ul>
+<li>Swift supports trailing closures, shorthand arguments, and type inference.</li>
+<li>OC Block syntax is fixed and less flexible.</li>
+</ul>
+</li>
+</ol>
+<h2 id="2-5-User-Experience-Business-Value"><a href="#2-5-User-Experience-Business-Value" class="headerlink" title="2.5 User Experience &amp; Business Value"></a>2.5 User Experience &amp; Business Value</h2><ul>
+<li>Closures make APIs cleaner and easier to use, improving development efficiency.</li>
+<li>Enable reactive and chainable calls, enhancing product interactivity.</li>
+<li>Proper memory management avoids leaks and ensures app stability.</li>
+</ul>
+<h2 id="2-6-Debugging-Troubleshooting"><a href="#2-6-Debugging-Troubleshooting" class="headerlink" title="2.6 Debugging &amp; Troubleshooting"></a>2.6 Debugging &amp; Troubleshooting</h2><ul>
+<li>For memory leaks, check for retain cycles in closures and use <code>[weak self]</code> or <code>[unowned self]</code>.</li>
+<li>When debugging async callbacks, ensure closures capture and release context correctly.</li>
+<li>Compare Block and closure capture&#x2F;release mechanisms to choose the best fit for your scenario.</li>
+</ul>
+<h2 id="2-7-Related-Concepts"><a href="#2-7-Related-Concepts" class="headerlink" title="2.7 Related Concepts"></a>2.7 Related Concepts</h2><ul>
+<li><strong>Closure vs Block</strong>: Closures are first-class citizens in Swift, more modern; Blocks are Objective-C’s function object implementation.</li>
+<li><strong>Escaping Closures (@escaping)</strong>: Closure is called after the function returns, must be marked explicitly.</li>
+<li><strong>Autoclosure (@autoclosure)</strong>: Delays evaluation, often used in assertions and short-circuiting.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/08/iOS/closure%E9%97%AD%E5%8C%85block%E7%9A%84%E5%8C%BA%E5%88%AB/" data-id="cmcu74t550002d9k71d7m1wt5" data-title="closure闭包是什么-使用场景-与OC中block的区别" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/07/08/iOS/classVStruct/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/07/08/iOS/Open-Public-Internal%E5%85%B3%E9%94%AE%E5%AD%97/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Open-Public-Internal-File-private-Private权限修饰符详解</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">七月 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/07/08/Tools/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/08/iOS/classVStruct/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/08/iOS/closure%E9%97%AD%E5%8C%85block%E7%9A%84%E5%8C%BA%E5%88%AB/">closure闭包是什么-使用场景-与OC中block的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/08/iOS/Open-Public-Internal%E5%85%B3%E9%94%AE%E5%AD%97/">Open-Public-Internal-File-private-Private权限修饰符详解</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/08/iOS/%E5%AD%98%E5%82%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8C%BA%E5%88%AB/">存储属性和计算属性的区别</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap"></div>
+  <h3 class="widget-title">Luo Yao的简历</h3>
+  <div class="widget">
+    <a href="/resume.pdf" target="_blank">点击查看Luo Yao的简历</a>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Roy Luo Yao<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>mutating关键字的作用 | Roy Luo Yao‘s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1. 中文解答1.1 概念与原理 mutating 关键字 用于 Swift 的 struct（结构体）和 enum（枚举）的方法声明。 表示该方法内部可以修改实例自身的属性或自身（即 self ）。 结构体和枚举是值类型，默认方法不能修改自身属性，除非加 mutating。    1.2 为什么需要 mutating？ Swift 设计为值类型默认不可变，防止无意修改数据，提升安全性。 只有明确">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mutating关键字的作用">
+<meta property="og:url" content="https://roy-luoyao.github.io/2025/07/08/iOS/mutating%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%BD%9C%E7%94%A8/index.html">
+<meta property="og:site_name" content="Roy Luo Yao‘s Blog">
+<meta property="og:description" content="1. 中文解答1.1 概念与原理 mutating 关键字 用于 Swift 的 struct（结构体）和 enum（枚举）的方法声明。 表示该方法内部可以修改实例自身的属性或自身（即 self ）。 结构体和枚举是值类型，默认方法不能修改自身属性，除非加 mutating。    1.2 为什么需要 mutating？ Swift 设计为值类型默认不可变，防止无意修改数据，提升安全性。 只有明确">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-07-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-07-08T07:06:35.281Z">
+<meta property="article:author" content="Roy Luo Yao">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Roy Luo Yao‘s Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Roy Luo Yao‘s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">A place to share my thoughts and ideas</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://roy-luoyao.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-iOS/mutating关键字的作用" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/08/iOS/mutating%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%BD%9C%E7%94%A8/" class="article-date">
+  <time class="dt-published" datetime="2025-07-07T16:00:00.000Z" itemprop="datePublished">2025-07-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      mutating关键字的作用
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-中文解答"><a href="#1-中文解答" class="headerlink" title="1. 中文解答"></a>1. 中文解答</h1><h2 id="1-1-概念与原理"><a href="#1-1-概念与原理" class="headerlink" title="1.1 概念与原理"></a>1.1 概念与原理</h2><ol>
+<li><strong>mutating 关键字</strong><ul>
+<li>用于 Swift 的 struct（结构体）和 enum（枚举）的方法声明。</li>
+<li>表示该方法内部可以修改实例自身的属性或自身（即 self ）。</li>
+<li>结构体和枚举是值类型，默认方法不能修改自身属性，除非加 mutating。</li>
+</ul>
+</li>
+</ol>
+<h2 id="1-2-为什么需要-mutating？"><a href="#1-2-为什么需要-mutating？" class="headerlink" title="1.2 为什么需要 mutating？"></a>1.2 为什么需要 mutating？</h2><ul>
+<li>Swift 设计为值类型默认不可变，防止无意修改数据，提升安全性。</li>
+<li>只有明确声明 mutating，才允许方法内部修改属性或赋值 self。</li>
+</ul>
+<h2 id="1-3-实际项目代码示例"><a href="#1-3-实际项目代码示例" class="headerlink" title="1.3 实际项目代码示例"></a>1.3 实际项目代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Counter</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> value: <span class="type">Int</span> <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">mutating</span> <span class="keyword">func</span> <span class="title function_">increment</span>() &#123;</span><br><span class="line">        value <span class="operator">+=</span> <span class="number">1</span> <span class="comment">// 允许修改属性</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">mutating</span> <span class="keyword">func</span> <span class="title function_">reset</span>() &#123;</span><br><span class="line">        <span class="keyword">self</span> <span class="operator">=</span> <span class="type">Counter</span>() <span class="comment">// 允许重新赋值 self</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c <span class="operator">=</span> <span class="type">Counter</span>()</span><br><span class="line">c.increment() <span class="comment">// value 变为 1</span></span><br><span class="line">c.reset()     <span class="comment">// value 变为 0</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-4-用户体验与业务价值"><a href="#1-4-用户体验与业务价值" class="headerlink" title="1.4 用户体验与业务价值"></a>1.4 用户体验与业务价值</h2><ul>
+<li>明确哪些方法会修改数据，便于团队协作和代码维护。</li>
+<li>避免无意副作用，提升代码健壮性。</li>
+</ul>
+<h2 id="1-5-问题拆解与调试建议"><a href="#1-5-问题拆解与调试建议" class="headerlink" title="1.5 问题拆解与调试建议"></a>1.5 问题拆解与调试建议</h2><ul>
+<li>如果 struct 方法需要修改属性但未加 mutating，编译器会报错。</li>
+<li>调试时优先检查 mutating 关键字是否遗漏。</li>
+</ul>
+<hr>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept"><a href="#2-1-Concept" class="headerlink" title="2.1 Concept"></a>2.1 Concept</h2><ul>
+<li>The <code>mutating</code> keyword in Swift is used in methods of structs and enums.</li>
+<li>It allows the method to modify properties of <code>self</code> or assign a new value to <code>self</code>.</li>
+<li>By default, value types (struct&#x2F;enum) methods cannot modify their own properties unless marked as <code>mutating</code>.</li>
+</ul>
+<h2 id="2-2-Why-is-it-needed"><a href="#2-2-Why-is-it-needed" class="headerlink" title="2.2 Why is it needed?"></a>2.2 Why is it needed?</h2><ul>
+<li>Swift enforces immutability for value types by default for safety.</li>
+<li>Only methods explicitly marked as <code>mutating</code> can change the instance’s state.</li>
+</ul>
+<h2 id="2-3-Practical-Example"><a href="#2-3-Practical-Example" class="headerlink" title="2.3 Practical Example"></a>2.3 Practical Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Counter</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> value: <span class="type">Int</span> <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">mutating</span> <span class="keyword">func</span> <span class="title function_">increment</span>() &#123;</span><br><span class="line">        value <span class="operator">+=</span> <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">mutating</span> <span class="keyword">func</span> <span class="title function_">reset</span>() &#123;</span><br><span class="line">        <span class="keyword">self</span> <span class="operator">=</span> <span class="type">Counter</span>()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c <span class="operator">=</span> <span class="type">Counter</span>()</span><br><span class="line">c.increment() <span class="comment">// value becomes 1</span></span><br><span class="line">c.reset()     <span class="comment">// value becomes 0</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-User-Experience-Business-Value"><a href="#2-4-User-Experience-Business-Value" class="headerlink" title="2.4 User Experience &amp; Business Value"></a>2.4 User Experience &amp; Business Value</h2><ul>
+<li>Makes code intent clear, improves team collaboration and maintainability.</li>
+<li>Prevents unintended side effects, increasing code robustness.</li>
+</ul>
+<h2 id="2-5-Debugging-Troubleshooting"><a href="#2-5-Debugging-Troubleshooting" class="headerlink" title="2.5 Debugging &amp; Troubleshooting"></a>2.5 Debugging &amp; Troubleshooting</h2><ul>
+<li>If you need to modify a property in a struct method but forget <code>mutating</code>, the compiler will throw an error.</li>
+<li>Always check for missing <code>mutating</code> if you see such errors.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/08/iOS/mutating%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%BD%9C%E7%94%A8/" data-id="cmcu74t570005d9k729hocev7" data-title="mutating关键字的作用" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/07/08/iOS/%E5%AD%98%E5%82%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8C%BA%E5%88%AB/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          存储属性和计算属性的区别
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/07/02/iOS/%E6%B3%9B%E5%9E%8BGenerics/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">泛型（Generics）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">七月 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/07/08/Tools/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/08/iOS/classVStruct/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/08/iOS/closure%E9%97%AD%E5%8C%85block%E7%9A%84%E5%8C%BA%E5%88%AB/">closure闭包是什么-使用场景-与OC中block的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/08/iOS/Open-Public-Internal%E5%85%B3%E9%94%AE%E5%AD%97/">Open-Public-Internal-File-private-Private权限修饰符详解</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/08/iOS/%E5%AD%98%E5%82%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8C%BA%E5%88%AB/">存储属性和计算属性的区别</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap"></div>
+  <h3 class="widget-title">Luo Yao的简历</h3>
+  <div class="widget">
+    <a href="/resume.pdf" target="_blank">点击查看Luo Yao的简历</a>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Roy Luo Yao<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
