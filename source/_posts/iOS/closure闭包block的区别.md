@@ -1,6 +1,8 @@
 ---
-title: closure闭包是什么-使用场景-与OC中block的区别
+title: closure闭包与OC中block的区别
 date: 2025-07-08
+categories:
+  - iOS
 ---
 
 # 1. 中文解答

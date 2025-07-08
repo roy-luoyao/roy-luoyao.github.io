@@ -1,4 +1,9 @@
-
+---
+title: struct 与 class
+date: 2025-07-08
+categories:
+  - iOS
+---
 
 ```markdown
 在 Swift 中，类（  class  ）是引用类型，这意味着当你将一个类实例赋值给一个变量时，实际上只是复制了对同一个实例的引用，而不是复制整个对象。 如果用struct 来修饰ListNode 呢
