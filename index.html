@@ -57,6 +57,7 @@
         
           <a class="main-nav-link" href="/archives">Archives</a>
         
+      <button style="margin-left:20px;padding:6px 16px;border-radius:4px;background:#0072c6;color:#fff;border:none;cursor:pointer;font-size:15px;" onclick="window.location.href='ms-outlook://compose?to=yao.luo@hsbc.com&subject=Hello%20from%20Hexo&body=Hi%2C%20this%20is%20a%20test%20email.'">联系我（Outlook）</button>
       </nav>
       <nav id="sub-nav">
         
@@ -220,7 +221,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/08/iOS/Open-Public-Internal%E5%85%B3%E9%94%AE%E5%AD%97/" data-id="cmcu7rr430000z2k750o8bdjn" data-title="Open-Public...权限修饰符详解" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://roy-luoyao.github.io/2025/07/08/iOS/Open-Public-Internal%E5%85%B3%E9%94%AE%E5%AD%97/" data-id="cmcwroh3t0000x4k70zeb56pu" data-title="Open-Public...权限修饰符详解" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -317,7 +318,196 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/08/iOS/classVStruct/" data-id="cmcu7rr450001z2k720h6bnlu" data-title="struct 与 class" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://roy-luoyao.github.io/2025/07/08/iOS/classVStruct/" data-id="cmcwroh3w0001x4k7fy4p3nzk" data-title="struct 与 class" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/mutating关键字的作用" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/08/iOS/mutating%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%BD%9C%E7%94%A8/" class="article-date">
+  <time class="dt-published" datetime="2025-07-07T16:00:00.000Z" itemprop="datePublished">2025-07-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/07/08/iOS/mutating%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%BD%9C%E7%94%A8/">mutating关键字的作用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-中文解答"><a href="#1-中文解答" class="headerlink" title="1. 中文解答"></a>1. 中文解答</h1><h2 id="1-1-概念与原理"><a href="#1-1-概念与原理" class="headerlink" title="1.1 概念与原理"></a>1.1 概念与原理</h2><ol>
+<li><strong>mutating 关键字</strong><ul>
+<li>用于 Swift 的 struct（结构体）和 enum（枚举）的方法声明。</li>
+<li>表示该方法内部可以修改实例自身的属性或自身（即 self ）。</li>
+<li>结构体和枚举是值类型，默认方法不能修改自身属性，除非加 mutating。</li>
+</ul>
+</li>
+</ol>
+<h2 id="1-2-为什么需要-mutating？"><a href="#1-2-为什么需要-mutating？" class="headerlink" title="1.2 为什么需要 mutating？"></a>1.2 为什么需要 mutating？</h2><ul>
+<li>Swift 设计为值类型默认不可变，防止无意修改数据，提升安全性。</li>
+<li>只有明确声明 mutating，才允许方法内部修改属性或赋值 self。</li>
+</ul>
+<h2 id="1-3-实际项目代码示例"><a href="#1-3-实际项目代码示例" class="headerlink" title="1.3 实际项目代码示例"></a>1.3 实际项目代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Counter</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> value: <span class="type">Int</span> <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">mutating</span> <span class="keyword">func</span> <span class="title function_">increment</span>() &#123;</span><br><span class="line">        value <span class="operator">+=</span> <span class="number">1</span> <span class="comment">// 允许修改属性</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">mutating</span> <span class="keyword">func</span> <span class="title function_">reset</span>() &#123;</span><br><span class="line">        <span class="keyword">self</span> <span class="operator">=</span> <span class="type">Counter</span>() <span class="comment">// 允许重新赋值 self</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c <span class="operator">=</span> <span class="type">Counter</span>()</span><br><span class="line">c.increment() <span class="comment">// value 变为 1</span></span><br><span class="line">c.reset()     <span class="comment">// value 变为 0</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-4-用户体验与业务价值"><a href="#1-4-用户体验与业务价值" class="headerlink" title="1.4 用户体验与业务价值"></a>1.4 用户体验与业务价值</h2><ul>
+<li>明确哪些方法会修改数据，便于团队协作和代码维护。</li>
+<li>避免无意副作用，提升代码健壮性。</li>
+</ul>
+<h2 id="1-5-问题拆解与调试建议"><a href="#1-5-问题拆解与调试建议" class="headerlink" title="1.5 问题拆解与调试建议"></a>1.5 问题拆解与调试建议</h2><ul>
+<li>如果 struct 方法需要修改属性但未加 mutating，编译器会报错。</li>
+<li>调试时优先检查 mutating 关键字是否遗漏。</li>
+</ul>
+<hr>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept"><a href="#2-1-Concept" class="headerlink" title="2.1 Concept"></a>2.1 Concept</h2><ul>
+<li>The <code>mutating</code> keyword in Swift is used in methods of structs and enums.</li>
+<li>It allows the method to modify properties of <code>self</code> or assign a new value to <code>self</code>.</li>
+<li>By default, value types (struct&#x2F;enum) methods cannot modify their own properties unless marked as <code>mutating</code>.</li>
+</ul>
+<h2 id="2-2-Why-is-it-needed"><a href="#2-2-Why-is-it-needed" class="headerlink" title="2.2 Why is it needed?"></a>2.2 Why is it needed?</h2><ul>
+<li>Swift enforces immutability for value types by default for safety.</li>
+<li>Only methods explicitly marked as <code>mutating</code> can change the instance’s state.</li>
+</ul>
+<h2 id="2-3-Practical-Example"><a href="#2-3-Practical-Example" class="headerlink" title="2.3 Practical Example"></a>2.3 Practical Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Counter</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> value: <span class="type">Int</span> <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">mutating</span> <span class="keyword">func</span> <span class="title function_">increment</span>() &#123;</span><br><span class="line">        value <span class="operator">+=</span> <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">mutating</span> <span class="keyword">func</span> <span class="title function_">reset</span>() &#123;</span><br><span class="line">        <span class="keyword">self</span> <span class="operator">=</span> <span class="type">Counter</span>()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c <span class="operator">=</span> <span class="type">Counter</span>()</span><br><span class="line">c.increment() <span class="comment">// value becomes 1</span></span><br><span class="line">c.reset()     <span class="comment">// value becomes 0</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-User-Experience-Business-Value"><a href="#2-4-User-Experience-Business-Value" class="headerlink" title="2.4 User Experience &amp; Business Value"></a>2.4 User Experience &amp; Business Value</h2><ul>
+<li>Makes code intent clear, improves team collaboration and maintainability.</li>
+<li>Prevents unintended side effects, increasing code robustness.</li>
+</ul>
+<h2 id="2-5-Debugging-Troubleshooting"><a href="#2-5-Debugging-Troubleshooting" class="headerlink" title="2.5 Debugging &amp; Troubleshooting"></a>2.5 Debugging &amp; Troubleshooting</h2><ul>
+<li>If you need to modify a property in a struct method but forget <code>mutating</code>, the compiler will throw an error.</li>
+<li>Always check for missing <code>mutating</code> if you see such errors.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/08/iOS/mutating%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%BD%9C%E7%94%A8/" data-id="cmcwroh3x0003x4k74u146luj" data-title="mutating关键字的作用" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/存储属性和计算属性的区别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/08/iOS/%E5%AD%98%E5%82%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8C%BA%E5%88%AB/" class="article-date">
+  <time class="dt-published" datetime="2025-07-07T16:00:00.000Z" itemprop="datePublished">2025-07-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/07/08/iOS/%E5%AD%98%E5%82%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8C%BA%E5%88%AB/">存储属性和计算属性的区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-中文解答"><a href="#1-中文解答" class="headerlink" title="1. 中文解答"></a>1. 中文解答</h1><h2 id="1-1-概念与原理"><a href="#1-1-概念与原理" class="headerlink" title="1.1 概念与原理"></a>1.1 概念与原理</h2><ol>
+<li><p><strong>存储属性（Stored Property）</strong></p>
+<ul>
+<li>直接存储在实例内存中的变量或常量，每个实例都有独立的存储空间。</li>
+<li>语法：<code>var</code> 或 <code>let</code> 声明，系统自动分配内存。</li>
+<li>例：<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> name: <span class="type">String</span> <span class="comment">// 存储属性</span></span><br><span class="line">    <span class="keyword">let</span> id: <span class="type">Int</span>      <span class="comment">// 存储属性</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>计算属性（Computed Property）</strong></p>
+<ul>
+<li>不直接存储值，而是通过 getter（和可选的 setter）动态计算。</li>
+<li>每次访问时都会执行代码逻辑，通常依赖其他属性。</li>
+<li>语法：必须有 <code>get</code>，可选 <code>set</code>。</li>
+<li>例：<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Rectangle</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> width: <span class="type">Double</span></span><br><span class="line">    <span class="keyword">var</span> height: <span class="type">Double</span></span><br><span class="line">    <span class="keyword">var</span> area: <span class="type">Double</span> &#123; <span class="comment">// 计算属性</span></span><br><span class="line">        <span class="keyword">get</span> &#123; width <span class="operator">*</span> height &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<h2 id="1-2-为什么要区分？"><a href="#1-2-为什么要区分？" class="headerlink" title="1.2 为什么要区分？"></a>1.2 为什么要区分？</h2><ul>
+<li>存储属性用于保存实际数据，适合需要持久化的状态。</li>
+<li>计算属性用于动态逻辑，节省内存、提升灵活性，避免冗余数据。</li>
+</ul>
+<h2 id="1-3-实际项目代码示例"><a href="#1-3-实际项目代码示例" class="headerlink" title="1.3 实际项目代码示例"></a>1.3 实际项目代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Product</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> price: <span class="type">Double</span>      <span class="comment">// 存储属性</span></span><br><span class="line">    <span class="keyword">var</span> quantity: <span class="type">Int</span>      <span class="comment">// 存储属性</span></span><br><span class="line">    <span class="keyword">var</span> total: <span class="type">Double</span> &#123;    <span class="comment">// 计算属性</span></span><br><span class="line">        <span class="keyword">get</span> &#123; price <span class="operator">*</span> <span class="type">Double</span>(quantity) &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p <span class="operator">=</span> <span class="type">Product</span>(price: <span class="number">10</span>, quantity: <span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(p.total) <span class="comment">// 输出 30</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-4-用户体验与业务价值"><a href="#1-4-用户体验与业务价值" class="headerlink" title="1.4 用户体验与业务价值"></a>1.4 用户体验与业务价值</h2><ul>
+<li>存储属性保证数据一致性和性能，适合频繁读写。</li>
+<li>计算属性让 API 更简洁，自动响应数据变化，减少手动同步和 bug。</li>
+</ul>
+<h2 id="1-5-问题拆解与调试建议"><a href="#1-5-问题拆解与调试建议" class="headerlink" title="1.5 问题拆解与调试建议"></a>1.5 问题拆解与调试建议</h2><ul>
+<li>如果属性只依赖其他属性且无需持久化，优先用计算属性。</li>
+<li>若遇到性能瓶颈，可将频繁访问的计算属性缓存为存储属性。</li>
+<li>调试时关注 getter&#x2F;setter 是否有副作用，避免死循环或性能问题。</li>
+</ul>
+<hr>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concepts"><a href="#2-1-Concepts" class="headerlink" title="2.1 Concepts"></a>2.1 Concepts</h2><ol>
+<li><p><strong>Stored Property</strong></p>
+<ul>
+<li>Stores actual data in memory for each instance.</li>
+<li>Declared with <code>var</code> or <code>let</code>.</li>
+<li>Example:<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> name: <span class="type">String</span> <span class="comment">// stored property</span></span><br><span class="line">    <span class="keyword">let</span> id: <span class="type">Int</span>      <span class="comment">// stored property</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>Computed Property</strong></p>
+<ul>
+<li>Does not store a value; computes it on access via <code>get</code> (and optionally <code>set</code>).</li>
+<li>Example:<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Rectangle</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> width: <span class="type">Double</span></span><br><span class="line">    <span class="keyword">var</span> height: <span class="type">Double</span></span><br><span class="line">    <span class="keyword">var</span> area: <span class="type">Double</span> &#123; <span class="comment">// computed property</span></span><br><span class="line">        <span class="keyword">get</span> &#123; width <span class="operator">*</span> height &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<h2 id="2-2-Why-distinguish"><a href="#2-2-Why-distinguish" class="headerlink" title="2.2 Why distinguish?"></a>2.2 Why distinguish?</h2><ul>
+<li>Stored properties are for persistent state.</li>
+<li>Computed properties provide dynamic logic, reduce redundancy, and improve flexibility.</li>
+</ul>
+<h2 id="2-3-Practical-Example"><a href="#2-3-Practical-Example" class="headerlink" title="2.3 Practical Example"></a>2.3 Practical Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Product</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> price: <span class="type">Double</span>      <span class="comment">// stored property</span></span><br><span class="line">    <span class="keyword">var</span> quantity: <span class="type">Int</span>      <span class="comment">// stored property</span></span><br><span class="line">    <span class="keyword">var</span> total: <span class="type">Double</span> &#123;    <span class="comment">// computed property</span></span><br><span class="line">        <span class="keyword">get</span> &#123; price <span class="operator">*</span> <span class="type">Double</span>(quantity) &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p <span class="operator">=</span> <span class="type">Product</span>(price: <span class="number">10</span>, quantity: <span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(p.total) <span class="comment">// prints 30</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-User-Experience-Business-Value"><a href="#2-4-User-Experience-Business-Value" class="headerlink" title="2.4 User Experience &amp; Business Value"></a>2.4 User Experience &amp; Business Value</h2><ul>
+<li>Stored properties ensure data consistency and performance.</li>
+<li>Computed properties make APIs cleaner and automatically reflect changes, reducing bugs.</li>
+</ul>
+<h2 id="2-5-Debugging-Optimization"><a href="#2-5-Debugging-Optimization" class="headerlink" title="2.5 Debugging &amp; Optimization"></a>2.5 Debugging &amp; Optimization</h2><ul>
+<li>Use computed properties for logic based on other properties.</li>
+<li>Cache computed values as stored properties if performance is critical.</li>
+<li>Watch for side effects in getters&#x2F;setters to avoid infinite loops or performance issues.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/08/iOS/%E5%AD%98%E5%82%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8C%BA%E5%88%AB/" data-id="cmcwroh3x0004x4k72gkfg1di" data-title="存储属性和计算属性的区别" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -476,196 +666,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/08/iOS/closure%E9%97%AD%E5%8C%85block%E7%9A%84%E5%8C%BA%E5%88%AB/" data-id="cmcu7rr470003z2k701rb239d" data-title="closure闭包与OC中block的区别" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-iOS/mutating关键字的作用" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/07/08/iOS/mutating%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%BD%9C%E7%94%A8/" class="article-date">
-  <time class="dt-published" datetime="2025-07-07T16:00:00.000Z" itemprop="datePublished">2025-07-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/07/08/iOS/mutating%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%BD%9C%E7%94%A8/">mutating关键字的作用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="1-中文解答"><a href="#1-中文解答" class="headerlink" title="1. 中文解答"></a>1. 中文解答</h1><h2 id="1-1-概念与原理"><a href="#1-1-概念与原理" class="headerlink" title="1.1 概念与原理"></a>1.1 概念与原理</h2><ol>
-<li><strong>mutating 关键字</strong><ul>
-<li>用于 Swift 的 struct（结构体）和 enum（枚举）的方法声明。</li>
-<li>表示该方法内部可以修改实例自身的属性或自身（即 self ）。</li>
-<li>结构体和枚举是值类型，默认方法不能修改自身属性，除非加 mutating。</li>
-</ul>
-</li>
-</ol>
-<h2 id="1-2-为什么需要-mutating？"><a href="#1-2-为什么需要-mutating？" class="headerlink" title="1.2 为什么需要 mutating？"></a>1.2 为什么需要 mutating？</h2><ul>
-<li>Swift 设计为值类型默认不可变，防止无意修改数据，提升安全性。</li>
-<li>只有明确声明 mutating，才允许方法内部修改属性或赋值 self。</li>
-</ul>
-<h2 id="1-3-实际项目代码示例"><a href="#1-3-实际项目代码示例" class="headerlink" title="1.3 实际项目代码示例"></a>1.3 实际项目代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Counter</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> value: <span class="type">Int</span> <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">mutating</span> <span class="keyword">func</span> <span class="title function_">increment</span>() &#123;</span><br><span class="line">        value <span class="operator">+=</span> <span class="number">1</span> <span class="comment">// 允许修改属性</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">mutating</span> <span class="keyword">func</span> <span class="title function_">reset</span>() &#123;</span><br><span class="line">        <span class="keyword">self</span> <span class="operator">=</span> <span class="type">Counter</span>() <span class="comment">// 允许重新赋值 self</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c <span class="operator">=</span> <span class="type">Counter</span>()</span><br><span class="line">c.increment() <span class="comment">// value 变为 1</span></span><br><span class="line">c.reset()     <span class="comment">// value 变为 0</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="1-4-用户体验与业务价值"><a href="#1-4-用户体验与业务价值" class="headerlink" title="1.4 用户体验与业务价值"></a>1.4 用户体验与业务价值</h2><ul>
-<li>明确哪些方法会修改数据，便于团队协作和代码维护。</li>
-<li>避免无意副作用，提升代码健壮性。</li>
-</ul>
-<h2 id="1-5-问题拆解与调试建议"><a href="#1-5-问题拆解与调试建议" class="headerlink" title="1.5 问题拆解与调试建议"></a>1.5 问题拆解与调试建议</h2><ul>
-<li>如果 struct 方法需要修改属性但未加 mutating，编译器会报错。</li>
-<li>调试时优先检查 mutating 关键字是否遗漏。</li>
-</ul>
-<hr>
-<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept"><a href="#2-1-Concept" class="headerlink" title="2.1 Concept"></a>2.1 Concept</h2><ul>
-<li>The <code>mutating</code> keyword in Swift is used in methods of structs and enums.</li>
-<li>It allows the method to modify properties of <code>self</code> or assign a new value to <code>self</code>.</li>
-<li>By default, value types (struct&#x2F;enum) methods cannot modify their own properties unless marked as <code>mutating</code>.</li>
-</ul>
-<h2 id="2-2-Why-is-it-needed"><a href="#2-2-Why-is-it-needed" class="headerlink" title="2.2 Why is it needed?"></a>2.2 Why is it needed?</h2><ul>
-<li>Swift enforces immutability for value types by default for safety.</li>
-<li>Only methods explicitly marked as <code>mutating</code> can change the instance’s state.</li>
-</ul>
-<h2 id="2-3-Practical-Example"><a href="#2-3-Practical-Example" class="headerlink" title="2.3 Practical Example"></a>2.3 Practical Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Counter</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> value: <span class="type">Int</span> <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">mutating</span> <span class="keyword">func</span> <span class="title function_">increment</span>() &#123;</span><br><span class="line">        value <span class="operator">+=</span> <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">mutating</span> <span class="keyword">func</span> <span class="title function_">reset</span>() &#123;</span><br><span class="line">        <span class="keyword">self</span> <span class="operator">=</span> <span class="type">Counter</span>()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c <span class="operator">=</span> <span class="type">Counter</span>()</span><br><span class="line">c.increment() <span class="comment">// value becomes 1</span></span><br><span class="line">c.reset()     <span class="comment">// value becomes 0</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-4-User-Experience-Business-Value"><a href="#2-4-User-Experience-Business-Value" class="headerlink" title="2.4 User Experience &amp; Business Value"></a>2.4 User Experience &amp; Business Value</h2><ul>
-<li>Makes code intent clear, improves team collaboration and maintainability.</li>
-<li>Prevents unintended side effects, increasing code robustness.</li>
-</ul>
-<h2 id="2-5-Debugging-Troubleshooting"><a href="#2-5-Debugging-Troubleshooting" class="headerlink" title="2.5 Debugging &amp; Troubleshooting"></a>2.5 Debugging &amp; Troubleshooting</h2><ul>
-<li>If you need to modify a property in a struct method but forget <code>mutating</code>, the compiler will throw an error.</li>
-<li>Always check for missing <code>mutating</code> if you see such errors.</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/08/iOS/mutating%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%BD%9C%E7%94%A8/" data-id="cmcu7rr480009z2k7gssl2x4o" data-title="mutating关键字的作用" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-iOS/存储属性和计算属性的区别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/07/08/iOS/%E5%AD%98%E5%82%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8C%BA%E5%88%AB/" class="article-date">
-  <time class="dt-published" datetime="2025-07-07T16:00:00.000Z" itemprop="datePublished">2025-07-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/07/08/iOS/%E5%AD%98%E5%82%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8C%BA%E5%88%AB/">存储属性和计算属性的区别</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="1-中文解答"><a href="#1-中文解答" class="headerlink" title="1. 中文解答"></a>1. 中文解答</h1><h2 id="1-1-概念与原理"><a href="#1-1-概念与原理" class="headerlink" title="1.1 概念与原理"></a>1.1 概念与原理</h2><ol>
-<li><p><strong>存储属性（Stored Property）</strong></p>
-<ul>
-<li>直接存储在实例内存中的变量或常量，每个实例都有独立的存储空间。</li>
-<li>语法：<code>var</code> 或 <code>let</code> 声明，系统自动分配内存。</li>
-<li>例：<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> name: <span class="type">String</span> <span class="comment">// 存储属性</span></span><br><span class="line">    <span class="keyword">let</span> id: <span class="type">Int</span>      <span class="comment">// 存储属性</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><strong>计算属性（Computed Property）</strong></p>
-<ul>
-<li>不直接存储值，而是通过 getter（和可选的 setter）动态计算。</li>
-<li>每次访问时都会执行代码逻辑，通常依赖其他属性。</li>
-<li>语法：必须有 <code>get</code>，可选 <code>set</code>。</li>
-<li>例：<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Rectangle</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> width: <span class="type">Double</span></span><br><span class="line">    <span class="keyword">var</span> height: <span class="type">Double</span></span><br><span class="line">    <span class="keyword">var</span> area: <span class="type">Double</span> &#123; <span class="comment">// 计算属性</span></span><br><span class="line">        <span class="keyword">get</span> &#123; width <span class="operator">*</span> height &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ol>
-<h2 id="1-2-为什么要区分？"><a href="#1-2-为什么要区分？" class="headerlink" title="1.2 为什么要区分？"></a>1.2 为什么要区分？</h2><ul>
-<li>存储属性用于保存实际数据，适合需要持久化的状态。</li>
-<li>计算属性用于动态逻辑，节省内存、提升灵活性，避免冗余数据。</li>
-</ul>
-<h2 id="1-3-实际项目代码示例"><a href="#1-3-实际项目代码示例" class="headerlink" title="1.3 实际项目代码示例"></a>1.3 实际项目代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Product</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> price: <span class="type">Double</span>      <span class="comment">// 存储属性</span></span><br><span class="line">    <span class="keyword">var</span> quantity: <span class="type">Int</span>      <span class="comment">// 存储属性</span></span><br><span class="line">    <span class="keyword">var</span> total: <span class="type">Double</span> &#123;    <span class="comment">// 计算属性</span></span><br><span class="line">        <span class="keyword">get</span> &#123; price <span class="operator">*</span> <span class="type">Double</span>(quantity) &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p <span class="operator">=</span> <span class="type">Product</span>(price: <span class="number">10</span>, quantity: <span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(p.total) <span class="comment">// 输出 30</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="1-4-用户体验与业务价值"><a href="#1-4-用户体验与业务价值" class="headerlink" title="1.4 用户体验与业务价值"></a>1.4 用户体验与业务价值</h2><ul>
-<li>存储属性保证数据一致性和性能，适合频繁读写。</li>
-<li>计算属性让 API 更简洁，自动响应数据变化，减少手动同步和 bug。</li>
-</ul>
-<h2 id="1-5-问题拆解与调试建议"><a href="#1-5-问题拆解与调试建议" class="headerlink" title="1.5 问题拆解与调试建议"></a>1.5 问题拆解与调试建议</h2><ul>
-<li>如果属性只依赖其他属性且无需持久化，优先用计算属性。</li>
-<li>若遇到性能瓶颈，可将频繁访问的计算属性缓存为存储属性。</li>
-<li>调试时关注 getter&#x2F;setter 是否有副作用，避免死循环或性能问题。</li>
-</ul>
-<hr>
-<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concepts"><a href="#2-1-Concepts" class="headerlink" title="2.1 Concepts"></a>2.1 Concepts</h2><ol>
-<li><p><strong>Stored Property</strong></p>
-<ul>
-<li>Stores actual data in memory for each instance.</li>
-<li>Declared with <code>var</code> or <code>let</code>.</li>
-<li>Example:<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> name: <span class="type">String</span> <span class="comment">// stored property</span></span><br><span class="line">    <span class="keyword">let</span> id: <span class="type">Int</span>      <span class="comment">// stored property</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><strong>Computed Property</strong></p>
-<ul>
-<li>Does not store a value; computes it on access via <code>get</code> (and optionally <code>set</code>).</li>
-<li>Example:<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Rectangle</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> width: <span class="type">Double</span></span><br><span class="line">    <span class="keyword">var</span> height: <span class="type">Double</span></span><br><span class="line">    <span class="keyword">var</span> area: <span class="type">Double</span> &#123; <span class="comment">// computed property</span></span><br><span class="line">        <span class="keyword">get</span> &#123; width <span class="operator">*</span> height &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ol>
-<h2 id="2-2-Why-distinguish"><a href="#2-2-Why-distinguish" class="headerlink" title="2.2 Why distinguish?"></a>2.2 Why distinguish?</h2><ul>
-<li>Stored properties are for persistent state.</li>
-<li>Computed properties provide dynamic logic, reduce redundancy, and improve flexibility.</li>
-</ul>
-<h2 id="2-3-Practical-Example"><a href="#2-3-Practical-Example" class="headerlink" title="2.3 Practical Example"></a>2.3 Practical Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Product</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> price: <span class="type">Double</span>      <span class="comment">// stored property</span></span><br><span class="line">    <span class="keyword">var</span> quantity: <span class="type">Int</span>      <span class="comment">// stored property</span></span><br><span class="line">    <span class="keyword">var</span> total: <span class="type">Double</span> &#123;    <span class="comment">// computed property</span></span><br><span class="line">        <span class="keyword">get</span> &#123; price <span class="operator">*</span> <span class="type">Double</span>(quantity) &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p <span class="operator">=</span> <span class="type">Product</span>(price: <span class="number">10</span>, quantity: <span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(p.total) <span class="comment">// prints 30</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-4-User-Experience-Business-Value"><a href="#2-4-User-Experience-Business-Value" class="headerlink" title="2.4 User Experience &amp; Business Value"></a>2.4 User Experience &amp; Business Value</h2><ul>
-<li>Stored properties ensure data consistency and performance.</li>
-<li>Computed properties make APIs cleaner and automatically reflect changes, reducing bugs.</li>
-</ul>
-<h2 id="2-5-Debugging-Optimization"><a href="#2-5-Debugging-Optimization" class="headerlink" title="2.5 Debugging &amp; Optimization"></a>2.5 Debugging &amp; Optimization</h2><ul>
-<li>Use computed properties for logic based on other properties.</li>
-<li>Cache computed values as stored properties if performance is critical.</li>
-<li>Watch for side effects in getters&#x2F;setters to avoid infinite loops or performance issues.</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/08/iOS/%E5%AD%98%E5%82%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8C%BA%E5%88%AB/" data-id="cmcu7rr48000az2k70lrd6q1s" data-title="存储属性和计算属性的区别" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://roy-luoyao.github.io/2025/07/08/iOS/closure%E9%97%AD%E5%8C%85block%E7%9A%84%E5%8C%BA%E5%88%AB/" data-id="cmcwroh3z000cx4k79k9xazac" data-title="closure闭包与OC中block的区别" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -755,7 +756,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/02/iOS/%E6%B3%9B%E5%9E%8BGenerics/" data-id="cmcu7rr49000bz2k7fd0qe5yt" data-title="泛型（Generics）" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://roy-luoyao.github.io/2025/07/02/iOS/%E6%B3%9B%E5%9E%8BGenerics/" data-id="cmcwroh3z000bx4k7g3q89xmg" data-title="泛型（Generics）" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -813,15 +814,15 @@
           </li>
         
           <li>
-            <a href="/2025/07/08/iOS/closure%E9%97%AD%E5%8C%85block%E7%9A%84%E5%8C%BA%E5%88%AB/">closure闭包与OC中block的区别</a>
-          </li>
-        
-          <li>
             <a href="/2025/07/08/iOS/mutating%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%BD%9C%E7%94%A8/">mutating关键字的作用</a>
           </li>
         
           <li>
             <a href="/2025/07/08/iOS/%E5%AD%98%E5%82%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8C%BA%E5%88%AB/">存储属性和计算属性的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/08/iOS/closure%E9%97%AD%E5%8C%85block%E7%9A%84%E5%8C%BA%E5%88%AB/">closure闭包与OC中block的区别</a>
           </li>
         
       </ul>
