@@ -4,13 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>归档 | Roy Luo Yao‘s Blog</title>
+  <title>Roy Luo Yao‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
+  <meta name="description" content="Swift 基础语法 • 权限修饰符1.1.Open、Public、Internal、File-private、Private的区别 1.2.Open与Public的区别 • 错误处理2.1.Error兼容NSError 2.2.throws和rethrows的用法 • 内存管理3.1.strong、weak、unowned的区别 • 其他语法4.1.@objc的用法 4.2.String与NS">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Roy Luo Yao‘s Blog">
-<meta property="og:url" content="https://roy-luoyao.github.io/archives/index.html">
+<meta property="og:url" content="https://roy-luoyao.github.io/iOSQuestions.html">
 <meta property="og:site_name" content="Roy Luo Yao‘s Blog">
+<meta property="og:description" content="Swift 基础语法 • 权限修饰符1.1.Open、Public、Internal、File-private、Private的区别 1.2.Open与Public的区别 • 错误处理2.1.Error兼容NSError 2.2.throws和rethrows的用法 • 内存管理3.1.strong、weak、unowned的区别 • 其他语法4.1.@objc的用法 4.2.String与NS">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-07-17T07:32:19.232Z">
+<meta property="article:modified_time" content="2025-07-17T07:32:19.232Z">
 <meta property="article:author" content="Roy Luo Yao">
 <meta name="twitter:card" content="summary">
   
@@ -74,134 +78,82 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2025" class="archive-year">2025</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/08/iOS/Open-Public-Internal%E5%85%B3%E9%94%AE%E5%AD%97/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-07T16:00:00.000Z" itemprop="datePublished">7月 8</time>
+        <section id="main"><article id="page-" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/iOSQuestions.html" class="article-date">
+  <time class="dt-published" datetime="2025-07-17T07:32:19.232Z" itemprop="datePublished">2025-07-17</time>
 </a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/08/iOS/Open-Public-Internal%E5%85%B3%E9%94%AE%E5%AD%97/">Open-Public...权限修饰符详解</a>
-    </h1>
-  
-
-    </header>
+    
   </div>
-</article>
-  
+  <div class="article-inner">
     
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/08/iOS/classVStruct/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-07T16:00:00.000Z" itemprop="datePublished">7月 8</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/08/iOS/classVStruct/">struct 与 class</a>
-    </h1>
-  
+        <hr>
+<p>Swift 基础语法</p>
+<p>• 权限修饰符<br>1.1.Open、Public、Internal、File-private、Private的区别</p>
+<p>1.2.Open与Public的区别</p>
+<p>• 错误处理<br>2.1.Error兼容NSError</p>
+<p>2.2.throws和rethrows的用法</p>
+<p>• 内存管理<br>3.1.strong、weak、unowned的区别</p>
+<p>• 其他语法<br>4.1.@objc的用法</p>
+<p>4.2.String与NSString的关系与区别</p>
+<p>4.3.获取一个String的长度</p>
+<p>4.4.运算符重载（Operator Overload）</p>
+<p>• 常用方法与类<br>5.1.Swift中的初始化器（构造方法）</p>
+<p>5.2.构造方法</p>
+<p>5.3.Swift自定义构造方法</p>
+<p>• 语法特性<br>6.1.静态派发</p>
+<p>6.2.延迟存储属性（Lazy Stored Property）</p>
+<p>6.3.属性观察器（Property Observer）</p>
+<p>6.4.lazy懒加载</p>
+<p>6.5.获取当前代码的函数名和行号</p>
+<p>6.6.dynamic与静态库（static framework）的区别</p>
+<p>6.7.将协议（protocol）中的部分设计成可选（optional）</p>
+<p>6.8.阻止一个方法、属性或下标被子类改写</p>
+<p>6.9.模式匹配的作用</p>
+<p>6.10.Swift中的KVC和KVO</p>
+<p>6.11.自定义下标</p>
+<p>6.12.数组索引越界与字典下标取值的区别</p>
+<p>6.13.函数参数类型为数字（Int、Float）的表示方法</p>
+<p>6.14.表示多个选项选中的类型（类似UIViewAnimationOptions）</p>
+<p>6.15.Copy-on-write</p>
+<hr>
+<p>Swift 与 OC 对比</p>
+<p>• 语言特性<br>7.1.Swift为什么将String、Array和Dictionary设计成值类型</p>
+<p>7.2.Swift和OC的初始化方法的异同</p>
+<p>7.3.Swift和OC中协议的不同</p>
+<p>7.4.OC和Swift的动态性理解</p>
+<p>7.5.OC和Swift在单例模式创建上的区别</p>
+<p>• 语法与使用<br>8.1.Swift相比OC独有的语法</p>
+<p>8.2.Swift和OC细节使用区别</p>
+<p>8.3.Swift和OC的混编</p>
+<hr>
+<p>Swift 独有特性</p>
+<p>• 集合操作<br>9.1.Set独有的方法</p>
+<p>• 其他<br>10.1.RxSwift</p>
+<p>10.2.SwiftUI</p>
+<hr>
+<p>其他</p>
+<p>• 控制流<br>11.1.guard和defer的用法</p>
+<p>• 静态方法<br>12.1.静态方法关键字static和class的区别</p>
+<hr>
+<p>希望这个整理对你有帮助！</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/08/iOS/closure%E9%97%AD%E5%8C%85block%E7%9A%84%E5%8C%BA%E5%88%AB/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-07T16:00:00.000Z" itemprop="datePublished">7月 8</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/08/iOS/closure%E9%97%AD%E5%8C%85block%E7%9A%84%E5%8C%BA%E5%88%AB/">closure闭包与OC中block的区别</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/08/iOS/mutating%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%BD%9C%E7%94%A8/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-07T16:00:00.000Z" itemprop="datePublished">7月 8</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/iOSQuestions.html" data-id="cmd78fh5h00005ek73tlh3txh" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/08/iOS/mutating%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%BD%9C%E7%94%A8/">mutating关键字的作用</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/08/iOS/%E5%AD%98%E5%82%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8C%BA%E5%88%AB/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-07T16:00:00.000Z" itemprop="datePublished">7月 8</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/08/iOS/%E5%AD%98%E5%82%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8C%BA%E5%88%AB/">存储属性和计算属性的区别</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/02/iOS/%E6%B3%9B%E5%9E%8BGenerics/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-01T16:00:00.000Z" itemprop="datePublished">7月 2</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/02/iOS/%E6%B3%9B%E5%9E%8BGenerics/">泛型（Generics）</a>
-    </h1>
-  
-
-    </header>
+    </footer>
   </div>
+  
+    
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>
