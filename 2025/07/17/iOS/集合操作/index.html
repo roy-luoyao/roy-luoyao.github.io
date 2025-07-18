@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>集合操作（Set/Map/Filter/Reduce） | Roy Luo Yao‘s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1. 中文答案1.1 概念与用法Swift 集合类型（Array&#x2F;Set&#x2F;Dictionary）常用 map&#x2F;filter&#x2F;reduce 等高阶函数，简化数据处理。 1.2 代码示例1234let arr &#x3D; [1,2,3]let r1 &#x3D; arr.map &#123; $0 * 2 &#125; &#x2F;&#x2F; [2,4,6]let r2 &#x3D; arr.filter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="集合操作（Set&#x2F;Map&#x2F;Filter&#x2F;Reduce）">
+<meta property="og:url" content="https://roy-luoyao.github.io/2025/07/17/iOS/%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C/index.html">
+<meta property="og:site_name" content="Roy Luo Yao‘s Blog">
+<meta property="og:description" content="1. 中文答案1.1 概念与用法Swift 集合类型（Array&#x2F;Set&#x2F;Dictionary）常用 map&#x2F;filter&#x2F;reduce 等高阶函数，简化数据处理。 1.2 代码示例1234let arr &#x3D; [1,2,3]let r1 &#x3D; arr.map &#123; $0 * 2 &#125; &#x2F;&#x2F; [2,4,6]let r2 &#x3D; arr.filter">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-07-16T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-07-17T10:11:29.161Z">
+<meta property="article:author" content="Roy Luo Yao">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Roy Luo Yao‘s Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Roy Luo Yao‘s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">A place to share my thoughts and ideas</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      <button style="margin-left:20px;padding:6px 16px;border-radius:4px;background:#0072c6;color:#fff;border:none;cursor:pointer;font-size:15px;" onclick="window.location.href='ms-outlook://compose?to=yao.luo@hsbc.com&subject=Hello%20from%20Hexo&body=Hi%2C%20this%20is%20a%20test%20email.'">联系我（Outlook）</button>
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://roy-luoyao.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-iOS/集合操作" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      集合操作（Set/Map/Filter/Reduce）
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-概念与用法"><a href="#1-1-概念与用法" class="headerlink" title="1.1 概念与用法"></a>1.1 概念与用法</h2><p>Swift 集合类型（Array&#x2F;Set&#x2F;Dictionary）常用 map&#x2F;filter&#x2F;reduce 等高阶函数，简化数据处理。</p>
+<h2 id="1-2-代码示例"><a href="#1-2-代码示例" class="headerlink" title="1.2 代码示例"></a>1.2 代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr <span class="operator">=</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">let</span> r1 <span class="operator">=</span> arr.map &#123; <span class="variable">$0</span> <span class="operator">*</span> <span class="number">2</span> &#125; <span class="comment">// [2,4,6]</span></span><br><span class="line"><span class="keyword">let</span> r2 <span class="operator">=</span> arr.filter &#123; <span class="variable">$0</span> <span class="operator">&gt;</span> <span class="number">1</span> &#125; <span class="comment">// [2,3]</span></span><br><span class="line"><span class="keyword">let</span> r3 <span class="operator">=</span> arr.reduce(<span class="number">0</span>, <span class="operator">+</span>) <span class="comment">// 6</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
+<li>数据清洗、聚合、转换等。</li>
+</ul>
+<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
+<li>map 返回新数组，原数组不变。</li>
+<li>reduce 可自定义初始值和操作。</li>
+</ul>
+<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
+<li>性能影响？链式调用可能产生中间数组，可用 lazy 优化。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept-Usage"><a href="#2-1-Concept-Usage" class="headerlink" title="2.1 Concept &amp; Usage"></a>2.1 Concept &amp; Usage</h2><p>Swift collections (Array&#x2F;Set&#x2F;Dictionary) use map&#x2F;filter&#x2F;reduce for data processing.</p>
+<h2 id="2-2-Code-Example"><a href="#2-2-Code-Example" class="headerlink" title="2.2 Code Example"></a>2.2 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr <span class="operator">=</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">let</span> r1 <span class="operator">=</span> arr.map &#123; <span class="variable">$0</span> <span class="operator">*</span> <span class="number">2</span> &#125; <span class="comment">// [2,4,6]</span></span><br><span class="line"><span class="keyword">let</span> r2 <span class="operator">=</span> arr.filter &#123; <span class="variable">$0</span> <span class="operator">&gt;</span> <span class="number">1</span> &#125; <span class="comment">// [2,3]</span></span><br><span class="line"><span class="keyword">let</span> r3 <span class="operator">=</span> arr.reduce(<span class="number">0</span>, <span class="operator">+</span>) <span class="comment">// 6</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
+<li>Data cleaning, aggregation, transform, etc.</li>
+</ul>
+<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
+<li>map returns new array, original unchanged.</li>
+<li>reduce: custom initial value&#x2F;op.</li>
+</ul>
+<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
+<li>Performance? Chaining may create temp arrays, use lazy for optimization.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C/" data-id="cmd881wdw0037ddk79cgo7wzk" data-title="集合操作（Set/Map/Filter/Reduce）" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/07/17/iOS/%E9%98%BB%E6%AD%A2%E6%96%B9%E6%B3%95%E8%A2%AB%E5%AD%90%E7%B1%BB%E6%94%B9%E5%86%99/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          阻止方法被子类改写
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/07/17/iOS/%E9%9D%99%E6%80%81%E6%B4%BE%E5%8F%91/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">静态派发</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">七月 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/07/18/iOS/%E6%9C%AA%E6%9D%A5%E8%B6%8B%E5%8A%BF%E4%B8%8E%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF%E5%BB%BA%E8%AE%AE/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/17/iOS/CopyOnWrite/">Copy-on-write（COW）</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/17/iOS/Error%E5%85%BC%E5%AE%B9NSError/">Error兼容NSError</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/17/iOS/KVC_KVO/">KVC与KVO</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/17/iOS/OpenPublic%E5%8C%BA%E5%88%AB/">Open与Public的区别</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap"></div>
+  <h3 class="widget-title">Luo Yao的简历</h3>
+  <div class="widget">
+    <a href="/resume.pdf" target="_blank">点击查看Luo Yao的简历</a>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Roy Luo Yao<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

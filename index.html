@@ -76,152 +76,23 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-iOS/Open-Public-Internal关键字" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-iOS/未来趋势与个人成长建议" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2025/07/08/iOS/Open-Public-Internal%E5%85%B3%E9%94%AE%E5%AD%97/" class="article-date">
-  <time class="dt-published" datetime="2025-07-07T16:00:00.000Z" itemprop="datePublished">2025-07-08</time>
+    <a href="/2025/07/18/iOS/%E6%9C%AA%E6%9D%A5%E8%B6%8B%E5%8A%BF%E4%B8%8E%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF%E5%BB%BA%E8%AE%AE/" class="article-date">
+  <time class="dt-published" datetime="2025-07-18T02:48:21.722Z" itemprop="datePublished">2025-07-18</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/07/08/iOS/Open-Public-Internal%E5%85%B3%E9%94%AE%E5%AD%97/">Open-Public...权限修饰符详解</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="1-中文解答"><a href="#1-中文解答" class="headerlink" title="1. 中文解答"></a>1. 中文解答</h1><h2 id="1-1-概念与原理"><a href="#1-1-概念与原理" class="headerlink" title="1.1 概念与原理"></a>1.1 概念与原理</h2><p>Swift 提供五种访问控制修饰符，用于控制代码中实体（类、结构体、枚举、属性、方法等）的可见性和访问范围：</p>
-<ol>
-<li><p><strong>open</strong></p>
-<ul>
-<li>最高级别，仅适用于类和类成员。</li>
-<li>允许在模块外被继承和重写。</li>
-<li>典型场景：第三方库&#x2F;框架对外暴露可扩展 API。</li>
-<li>例：<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">func</span> <span class="title function_">speak</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><strong>public</strong></p>
-<ul>
-<li>允许在模块外访问，但不能被继承或重写。</li>
-<li>适合对外暴露 API，但不希望被扩展。</li>
-<li>例：<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Dog</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">func</span> <span class="title function_">bark</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><strong>internal</strong>（默认）</p>
-<ul>
-<li>仅在同一模块内可见，模块外不可访问。</li>
-<li>适合项目内部逻辑，默认不写就是 internal。</li>
-<li>例：<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span> &#123;</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">meow</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><strong>fileprivate</strong></p>
-<ul>
-<li>仅在当前 Swift 文件内可见。</li>
-<li>适合同文件内多个类型协作，隐藏实现细节。</li>
-<li>例：<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fileprivate</span> <span class="keyword">class</span> <span class="title class_">Mouse</span> &#123;&#125;</span><br><span class="line"><span class="keyword">fileprivate</span> <span class="keyword">func</span> <span class="title function_">hide</span>() &#123;&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><strong>private</strong></p>
-<ul>
-<li>仅在当前声明作用域（如类&#x2F;结构体&#x2F;扩展）内可见。</li>
-<li>适合封装最细粒度的实现细节。</li>
-<li>例：<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Lion</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> secret: <span class="type">String</span> <span class="operator">=</span> <span class="string">&quot;Roar&quot;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">func</span> <span class="title function_">sleep</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ol>
-<h2 id="1-2-为什么要这样设计？"><a href="#1-2-为什么要这样设计？" class="headerlink" title="1.2 为什么要这样设计？"></a>1.2 为什么要这样设计？</h2><ul>
-<li>提高代码安全性，防止外部误用或依赖内部实现。</li>
-<li>明确 API 边界，便于团队协作和模块解耦。</li>
-<li>支持灵活的封装和扩展策略。</li>
-</ul>
-<h2 id="1-3-实际项目代码示例"><a href="#1-3-实际项目代码示例" class="headerlink" title="1.3 实际项目代码示例"></a>1.3 实际项目代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// FrameworkA</span></span><br><span class="line"><span class="keyword">open</span> <span class="keyword">class</span> <span class="title class_">BaseViewController</span>: <span class="title class_ inherited__">UIViewController</span> &#123;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">func</span> <span class="title function_">setupUI</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">APIClient</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">func</span> <span class="title function_">request</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">InternalHelper</span> &#123;</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">doWork</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fileprivate</span> <span class="keyword">class</span> <span class="title class_">FileHelper</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> cache: [<span class="type">String</span>: <span class="keyword">Any</span>] <span class="operator">=</span> [:]</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">func</span> <span class="title function_">clearCache</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="1-4-用户体验与业务价值"><a href="#1-4-用户体验与业务价值" class="headerlink" title="1.4 用户体验与业务价值"></a>1.4 用户体验与业务价值</h2><ul>
-<li>合理使用访问控制，API 更安全、易用，减少误用和维护成本。</li>
-<li>便于团队分工，隐藏实现细节，提升代码可维护性。</li>
-</ul>
-<h2 id="1-5-问题拆解与调试建议"><a href="#1-5-问题拆解与调试建议" class="headerlink" title="1.5 问题拆解与调试建议"></a>1.5 问题拆解与调试建议</h2><ul>
-<li>如果外部无法访问某成员，优先检查访问修饰符。</li>
-<li>框架开发时，优先用 public，需支持继承&#x2F;重写时用 open。</li>
-<li>内部工具类、辅助方法建议用 internal、fileprivate 或 private。</li>
-</ul>
-<h2 id="1-6-易混淆点与对比"><a href="#1-6-易混淆点与对比" class="headerlink" title="1.6 易混淆点与对比"></a>1.6 易混淆点与对比</h2><ul>
-<li><strong>open vs public</strong>：open 可被继承&#x2F;重写，public 只能访问不能继承。</li>
-<li><strong>fileprivate vs private</strong>：fileprivate 跨类型同文件可见，private 仅限当前作用域。</li>
-<li><strong>internal</strong> 是默认级别，不写就是 internal。</li>
-</ul>
-<hr>
-<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concepts-Principles"><a href="#2-1-Concepts-Principles" class="headerlink" title="2.1 Concepts &amp; Principles"></a>2.1 Concepts &amp; Principles</h2><p>Swift provides five access control levels to manage the visibility and accessibility of entities:</p>
-<ol>
-<li><p><strong>open</strong></p>
-<ul>
-<li>Highest level, only for classes and class members.</li>
-<li>Can be subclassed&#x2F;overridden outside the module.</li>
-<li>Example:<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">func</span> <span class="title function_">speak</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><strong>public</strong></p>
-<ul>
-<li>Accessible outside the module, but cannot be subclassed&#x2F;overridden.</li>
-<li>Example:<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Dog</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">func</span> <span class="title function_">bark</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><strong>internal</strong> (default)</p>
-<ul>
-<li>Accessible only within the same module.</li>
-<li>Example:<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span> &#123;</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">meow</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><strong>fileprivate</strong></p>
-<ul>
-<li>Accessible only within the same Swift file.</li>
-<li>Example:<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fileprivate</span> <span class="keyword">class</span> <span class="title class_">Mouse</span> &#123;&#125;</span><br><span class="line"><span class="keyword">fileprivate</span> <span class="keyword">func</span> <span class="title function_">hide</span>() &#123;&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><strong>private</strong></p>
-<ul>
-<li>Accessible only within the enclosing declaration.</li>
-<li>Example:<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Lion</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> secret: <span class="type">String</span> <span class="operator">=</span> <span class="string">&quot;Roar&quot;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">func</span> <span class="title function_">sleep</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ol>
-<h2 id="2-2-Why-this-design"><a href="#2-2-Why-this-design" class="headerlink" title="2.2 Why this design?"></a>2.2 Why this design?</h2><ul>
-<li>Improves code safety, prevents misuse, and clarifies API boundaries.</li>
-<li>Facilitates team collaboration and modularization.</li>
-<li>Supports flexible encapsulation and extension strategies.</li>
-</ul>
-<h2 id="2-3-Practical-Example"><a href="#2-3-Practical-Example" class="headerlink" title="2.3 Practical Example"></a>2.3 Practical Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="keyword">class</span> <span class="title class_">BaseViewController</span>: <span class="title class_ inherited__">UIViewController</span> &#123;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">func</span> <span class="title function_">setupUI</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">APIClient</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">func</span> <span class="title function_">request</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">InternalHelper</span> &#123;</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">doWork</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fileprivate</span> <span class="keyword">class</span> <span class="title class_">FileHelper</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> cache: [<span class="type">String</span>: <span class="keyword">Any</span>] <span class="operator">=</span> [:]</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">func</span> <span class="title function_">clearCache</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-4-User-Experience-Business-Value"><a href="#2-4-User-Experience-Business-Value" class="headerlink" title="2.4 User Experience &amp; Business Value"></a>2.4 User Experience &amp; Business Value</h2><ul>
-<li>Proper access control makes APIs safer and easier to use, reducing maintenance costs.</li>
-<li>Hides implementation details, improving maintainability and team collaboration.</li>
-</ul>
-<h2 id="2-5-Debugging-Troubleshooting"><a href="#2-5-Debugging-Troubleshooting" class="headerlink" title="2.5 Debugging &amp; Troubleshooting"></a>2.5 Debugging &amp; Troubleshooting</h2><ul>
-<li>If a member is inaccessible, check its access modifier first.</li>
-<li>Use public for APIs, open for extensible frameworks, internal&#x2F;fileprivate&#x2F;private for internal logic.</li>
-</ul>
-<h2 id="2-6-Key-Distinctions"><a href="#2-6-Key-Distinctions" class="headerlink" title="2.6 Key Distinctions"></a>2.6 Key Distinctions</h2><ul>
-<li><strong>open vs public</strong>: open allows subclassing&#x2F;overriding, public does not.</li>
-<li><strong>fileprivate vs private</strong>: fileprivate is visible within the same file, private only within the enclosing scope.</li>
-<li><strong>internal</strong> is the default level.</li>
-</ul>
-
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/08/iOS/Open-Public-Internal%E5%85%B3%E9%94%AE%E5%AD%97/" data-id="cmd78g5ey0001chk79eowcy7g" data-title="Open-Public...权限修饰符详解" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://roy-luoyao.github.io/2025/07/18/iOS/%E6%9C%AA%E6%9D%A5%E8%B6%8B%E5%8A%BF%E4%B8%8E%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF%E5%BB%BA%E8%AE%AE/" data-id="cmd881wdu0023ddk7duuf8256" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -233,10 +104,10 @@
 
 
   
-    <article id="post-iOS/closure闭包block的区别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-iOS/CopyOnWrite" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2025/07/08/iOS/closure%E9%97%AD%E5%8C%85block%E7%9A%84%E5%8C%BA%E5%88%AB/" class="article-date">
-  <time class="dt-published" datetime="2025-07-07T16:00:00.000Z" itemprop="datePublished">2025-07-08</time>
+    <a href="/2025/07/17/iOS/CopyOnWrite/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
 </a>
     
   <div class="article-category">
@@ -251,7 +122,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/07/08/iOS/closure%E9%97%AD%E5%8C%85block%E7%9A%84%E5%8C%BA%E5%88%AB/">closure闭包与OC中block的区别</a>
+      <a class="p-name article-title" href="/2025/07/17/iOS/CopyOnWrite/">Copy-on-write（COW）</a>
     </h1>
   
 
@@ -259,128 +130,39 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="1-中文解答"><a href="#1-中文解答" class="headerlink" title="1. 中文解答"></a>1. 中文解答</h1><h2 id="1-1-概念与原理"><a href="#1-1-概念与原理" class="headerlink" title="1.1 概念与原理"></a>1.1 概念与原理</h2><ol>
-<li><p><strong>闭包（Closure）定义</strong></p>
-<ul>
-<li>闭包是可以捕获和存储其所在作用域内变量和常量的自包含代码块。</li>
-<li>Swift 中的函数本质上也是特殊的闭包。</li>
-<li>闭包可作为变量、参数、返回值传递和使用。</li>
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-概念与原理"><a href="#1-1-概念与原理" class="headerlink" title="1.1 概念与原理"></a>1.1 概念与原理</h2><p>Copy-on-write（写时复制，COW）是一种优化技术，多个变量共享同一内存，只有在写操作时才真正复制，Swift 的 Array、Dictionary、String 等都采用 COW。</p>
+<h2 id="1-2-代码示例"><a href="#1-2-代码示例" class="headerlink" title="1.2 代码示例"></a>1.2 代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a <span class="operator">=</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">var</span> b <span class="operator">=</span> a <span class="comment">// 未复制，a/b 共用内存</span></span><br><span class="line">b[<span class="number">0</span>] <span class="operator">=</span> <span class="number">9</span> <span class="comment">// 此时 b 才复制，a 不变</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
+<li>大数据结构传递、缓存、性能优化。</li>
 </ul>
-</li>
-<li><p><strong>闭包的语法</strong></p>
-<ul>
-<li>基本语法：<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> closure <span class="operator">=</span> &#123; (参数) -&gt; 返回类型 <span class="keyword">in</span></span><br><span class="line">    <span class="comment">// 代码体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>支持类型推断、参数简写、尾随闭包等特性。</li>
+<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
+<li>COW 只在值类型（struct）生效。</li>
+<li>只读不会复制，写时才复制。</li>
 </ul>
-</li>
-</ol>
-<h2 id="1-2-为什么要用闭包？"><a href="#1-2-为什么要用闭包？" class="headerlink" title="1.2 为什么要用闭包？"></a>1.2 为什么要用闭包？</h2><ul>
-<li>提升代码复用性和灵活性，支持函数式编程。</li>
-<li>可作为回调、异步处理、事件响应等，简化代码结构。</li>
-<li>捕获上下文变量，便于状态管理和数据流传递。</li>
+<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
+<li>COW 如何实现？引用计数+写时检测。</li>
+<li>如何自定义 struct 支持 COW？用 isKnownUniquelyReferenced。</li>
 </ul>
-<h2 id="1-3-实际项目使用场景"><a href="#1-3-实际项目使用场景" class="headerlink" title="1.3 实际项目使用场景"></a>1.3 实际项目使用场景</h2><ol>
-<li><strong>异步回调</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">fetchData</span>(<span class="params">completion</span>: <span class="keyword">@escaping</span> (<span class="type">Data</span>?) -&gt; <span class="type">Void</span>) &#123;</span><br><span class="line">    <span class="comment">// 网络请求结束后回调</span></span><br><span class="line">    completion(data)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><strong>集合操作</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> numbers <span class="operator">=</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">let</span> squares <span class="operator">=</span> numbers.map &#123; <span class="variable">$0</span> <span class="operator">*</span> <span class="variable">$0</span> &#125; <span class="comment">// 闭包作为参数</span></span><br></pre></td></tr></table></figure></li>
-<li><strong>动画、事件响应</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">UIView</span>.animate(withDuration: <span class="number">0.3</span>) &#123;</span><br><span class="line">    view.alpha <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><strong>自定义排序、过滤</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sorted <span class="operator">=</span> names.sorted &#123; <span class="variable">$0</span>.count <span class="operator">&lt;</span> <span class="variable">$1</span>.count &#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="1-4-与-Objective-C-中-Block-的区别"><a href="#1-4-与-Objective-C-中-Block-的区别" class="headerlink" title="1.4 与 Objective-C 中 Block 的区别"></a>1.4 与 Objective-C 中 Block 的区别</h2><ol>
-<li><strong>语法与类型系统</strong><ul>
-<li>Swift 闭包语法更简洁，类型推断更强。</li>
-<li>Block 语法繁琐，需显式声明参数和返回值类型。</li>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept-Principle"><a href="#2-1-Concept-Principle" class="headerlink" title="2.1 Concept &amp; Principle"></a>2.1 Concept &amp; Principle</h2><p>Copy-on-write (COW) is an optimization: multiple variables share memory, only copy on write. Swift’s Array, Dictionary, String use COW.</p>
+<h2 id="2-2-Code-Example"><a href="#2-2-Code-Example" class="headerlink" title="2.2 Code Example"></a>2.2 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a <span class="operator">=</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">var</span> b <span class="operator">=</span> a <span class="comment">// not copied yet</span></span><br><span class="line">b[<span class="number">0</span>] <span class="operator">=</span> <span class="number">9</span> <span class="comment">// b is copied now, a unchanged</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
+<li>Large data passing, cache, performance.</li>
 </ul>
-</li>
-<li><strong>内存管理</strong><ul>
-<li>Swift 闭包默认捕获变量为强引用，需用 <code>[weak self]</code>&#x2F;<code>[unowned self]</code> 避免循环引用。</li>
-<li>OC Block 分为全局、栈、堆三种类型，需用 <code>__weak</code>&#x2F;<code>__block</code> 修饰符管理引用。</li>
+<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
+<li>COW for value types only.</li>
+<li>No copy on read, only on write.</li>
 </ul>
-</li>
-<li><strong>捕获机制</strong><ul>
-<li>Swift 闭包自动捕获上下文变量。</li>
-<li>OC Block 需用 <code>__block</code> 修饰变量才能在 Block 内修改。</li>
-</ul>
-</li>
-<li><strong>语法特性</strong><ul>
-<li>Swift 支持尾随闭包、参数简写、自动推断。</li>
-<li>OC Block 语法固定，灵活性较低。</li>
-</ul>
-</li>
-</ol>
-<h2 id="1-5-用户体验与业务价值"><a href="#1-5-用户体验与业务价值" class="headerlink" title="1.5 用户体验与业务价值"></a>1.5 用户体验与业务价值</h2><ul>
-<li>闭包让 API 更加简洁、易用，提升开发效率。</li>
-<li>便于实现响应式、链式调用，提升产品交互体验。</li>
-<li>合理管理闭包内存，避免内存泄漏，保障 App 稳定性。</li>
-</ul>
-<h2 id="1-6-问题拆解与调试建议"><a href="#1-6-问题拆解与调试建议" class="headerlink" title="1.6 问题拆解与调试建议"></a>1.6 问题拆解与调试建议</h2><ul>
-<li>遇到内存泄漏，优先排查闭包的循环引用，使用 <code>[weak self]</code> 或 <code>[unowned self]</code>。</li>
-<li>调试异步回调时，关注闭包是否正确捕获和释放上下文。</li>
-<li>对比 Block 和闭包的捕获、释放机制，选择最适合业务场景的实现。</li>
-</ul>
-<h2 id="1-7-易混淆概念区分"><a href="#1-7-易混淆概念区分" class="headerlink" title="1.7 易混淆概念区分"></a>1.7 易混淆概念区分</h2><ul>
-<li><strong>闭包 vs Block</strong>：闭包是 Swift 的一等公民，语法更现代，Block 是 OC 的函数对象实现。</li>
-<li><strong>逃逸闭包（@escaping）</strong>：闭包在函数返回后才被调用，需显式标记。</li>
-<li><strong>自动闭包（@autoclosure）</strong>：延迟求值，常用于断言、短路等场景。</li>
-</ul>
-<hr>
-<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-What-is-a-Closure"><a href="#2-1-What-is-a-Closure" class="headerlink" title="2.1 What is a Closure?"></a>2.1 What is a Closure?</h2><ul>
-<li>A closure is a self-contained block of code that can capture and store references to variables and constants from its surrounding context.</li>
-<li>Functions in Swift are special cases of closures.</li>
-<li>Closures can be assigned to variables, passed as parameters, and returned from functions.</li>
-</ul>
-<h2 id="2-2-Why-use-closures"><a href="#2-2-Why-use-closures" class="headerlink" title="2.2 Why use closures?"></a>2.2 Why use closures?</h2><ul>
-<li>Improve code reusability and flexibility, support functional programming.</li>
-<li>Used for callbacks, async handling, event response, etc.</li>
-<li>Capture context for state management and data flow.</li>
-</ul>
-<h2 id="2-3-Practical-Usage-Scenarios"><a href="#2-3-Practical-Usage-Scenarios" class="headerlink" title="2.3 Practical Usage Scenarios"></a>2.3 Practical Usage Scenarios</h2><ol>
-<li><strong>Async Callbacks</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">fetchData</span>(<span class="params">completion</span>: <span class="keyword">@escaping</span> (<span class="type">Data</span>?) -&gt; <span class="type">Void</span>) &#123;</span><br><span class="line">    completion(data)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><strong>Collection Operations</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> numbers <span class="operator">=</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">let</span> squares <span class="operator">=</span> numbers.map &#123; <span class="variable">$0</span> <span class="operator">*</span> <span class="variable">$0</span> &#125;</span><br></pre></td></tr></table></figure></li>
-<li><strong>Animation&#x2F;Event Handling</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">UIView</span>.animate(withDuration: <span class="number">0.3</span>) &#123;</span><br><span class="line">    view.alpha <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><strong>Custom Sorting&#x2F;Filtering</strong><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sorted <span class="operator">=</span> names.sorted &#123; <span class="variable">$0</span>.count <span class="operator">&lt;</span> <span class="variable">$1</span>.count &#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="2-4-Difference-from-Objective-C-Block"><a href="#2-4-Difference-from-Objective-C-Block" class="headerlink" title="2.4 Difference from Objective-C Block"></a>2.4 Difference from Objective-C Block</h2><ol>
-<li><strong>Syntax &amp; Type System</strong><ul>
-<li>Swift closures are more concise, with strong type inference.</li>
-<li>Block syntax is verbose, requires explicit type declaration.</li>
-</ul>
-</li>
-<li><strong>Memory Management</strong><ul>
-<li>Swift closures capture variables strongly by default; use <code>[weak self]</code>&#x2F;<code>[unowned self]</code> to avoid retain cycles.</li>
-<li>OC Blocks have global, stack, and heap types; use <code>__weak</code>&#x2F;<code>__block</code> for reference management.</li>
-</ul>
-</li>
-<li><strong>Capture Mechanism</strong><ul>
-<li>Swift closures automatically capture context variables.</li>
-<li>OC Blocks require <code>__block</code> to modify captured variables.</li>
-</ul>
-</li>
-<li><strong>Syntax Features</strong><ul>
-<li>Swift supports trailing closures, shorthand arguments, and type inference.</li>
-<li>OC Block syntax is fixed and less flexible.</li>
-</ul>
-</li>
-</ol>
-<h2 id="2-5-User-Experience-Business-Value"><a href="#2-5-User-Experience-Business-Value" class="headerlink" title="2.5 User Experience &amp; Business Value"></a>2.5 User Experience &amp; Business Value</h2><ul>
-<li>Closures make APIs cleaner and easier to use, improving development efficiency.</li>
-<li>Enable reactive and chainable calls, enhancing product interactivity.</li>
-<li>Proper memory management avoids leaks and ensures app stability.</li>
-</ul>
-<h2 id="2-6-Debugging-Troubleshooting"><a href="#2-6-Debugging-Troubleshooting" class="headerlink" title="2.6 Debugging &amp; Troubleshooting"></a>2.6 Debugging &amp; Troubleshooting</h2><ul>
-<li>For memory leaks, check for retain cycles in closures and use <code>[weak self]</code> or <code>[unowned self]</code>.</li>
-<li>When debugging async callbacks, ensure closures capture and release context correctly.</li>
-<li>Compare Block and closure capture&#x2F;release mechanisms to choose the best fit for your scenario.</li>
-</ul>
-<h2 id="2-7-Related-Concepts"><a href="#2-7-Related-Concepts" class="headerlink" title="2.7 Related Concepts"></a>2.7 Related Concepts</h2><ul>
-<li><strong>Closure vs Block</strong>: Closures are first-class citizens in Swift, more modern; Blocks are Objective-C’s function object implementation.</li>
-<li><strong>Escaping Closures (@escaping)</strong>: Closure is called after the function returns, must be marked explicitly.</li>
-<li><strong>Autoclosure (@autoclosure)</strong>: Delays evaluation, often used in assertions and short-circuiting.</li>
+<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
+<li>How COW works? Ref count + write check.</li>
+<li>Custom struct COW? Use isKnownUniquelyReferenced.</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/08/iOS/closure%E9%97%AD%E5%8C%85block%E7%9A%84%E5%8C%BA%E5%88%AB/" data-id="cmd78g5f00003chk7e0coeedo" data-title="closure闭包与OC中block的区别" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/CopyOnWrite/" data-id="cmd881wdk0001ddk74r1lc3gs" data-title="Copy-on-write（COW）" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -392,10 +174,10 @@
 
 
   
-    <article id="post-iOS/classVStruct" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-iOS/Error兼容NSError" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2025/07/08/iOS/classVStruct/" class="article-date">
-  <time class="dt-published" datetime="2025-07-07T16:00:00.000Z" itemprop="datePublished">2025-07-08</time>
+    <a href="/2025/07/17/iOS/Error%E5%85%BC%E5%AE%B9NSError/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
 </a>
     
   <div class="article-category">
@@ -410,7 +192,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/07/08/iOS/classVStruct/">struct 与 class</a>
+      <a class="p-name article-title" href="/2025/07/17/iOS/Error%E5%85%BC%E5%AE%B9NSError/">Error兼容NSError</a>
     </h1>
   
 
@@ -418,150 +200,47 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">在 Swift 中，类（  class  ）是引用类型，这意味着当你将一个类实例赋值给一个变量时，实际上只是复制了对同一个实例的引用，而不是复制整个对象。 如果用struct 来修饰ListNode 呢</span><br><span class="line"><span class="section"># 在 Swift 中使用 `struct` 与 `class` 定义链表节点的区别</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 使用 `class` 定义 `ListNode`</span></span><br><span class="line"></span><br><span class="line"><span class="code">```swift</span></span><br><span class="line"><span class="code">public class ListNode &#123;</span></span><br><span class="line"><span class="code">    public var val: Int</span></span><br><span class="line"><span class="code">    public var next: ListNode?</span></span><br><span class="line"><span class="code">    public init(_ val: Int) &#123; self.val = val; self.next = nil &#125;</span></span><br><span class="line"><span class="code">&#125;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>特点</p>
-<p>• 引用类型：</p>
-<p>• 当你将一个<code>ListNode</code>实例赋值给另一个变量时，实际上只是复制了对同一个实例的引用。</p>
-<p>• 修改一个引用的值会影响所有引用该实例的变量。</p>
-<p>• 链表操作：</p>
-<p>• 在链表操作中，引用类型非常适合，因为链表的节点通常需要通过指针来连接和操作。</p>
-<p>• 例如，<code>curr.next = ListNode(sum % 10)</code>会创建一个新的节点，并将其链接到当前节点的<code>next</code>属性上。</p>
-<p>使用<code>struct</code>定义<code>ListNode</code></p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">struct</span> <span class="title class_">ListNode</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">var</span> val: <span class="type">Int</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">var</span> next: <span class="type">ListNode</span>?</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">init</span>(<span class="keyword">_</span> <span class="params">val</span>: <span class="type">Int</span>) &#123; <span class="keyword">self</span>.val <span class="operator">=</span> val; <span class="keyword">self</span>.next <span class="operator">=</span> <span class="literal">nil</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>特点</p>
-<p>• 值类型：</p>
-<p>• 当你将一个<code>ListNode</code>实例赋值给另一个变量时，实际上会创建一个新的副本。</p>
-<p>• 修改一个副本的值不会影响其他副本。</p>
-<p>• 链表操作：</p>
-<p>• 在链表操作中，值类型可能会导致一些问题，因为每次赋值都会创建一个新的副本。</p>
-<p>• 例如，<code>curr.next = ListNode(sum % 10)</code>会创建一个新的节点，但<code>curr</code>本身是一个值类型，因此<code>curr</code>的修改不会影响原来的链表结构。</p>
-<p>示例对比</p>
-<p>使用<code>class</code>的链表操作</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> node1 <span class="operator">=</span> <span class="type">ListNode</span>(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">var</span> node2 <span class="operator">=</span> <span class="type">ListNode</span>(<span class="number">2</span>)</span><br><span class="line">node1.next <span class="operator">=</span> node2</span><br><span class="line"></span><br><span class="line">node2.val <span class="operator">=</span> <span class="number">3</span></span><br><span class="line"><span class="built_in">print</span>(node1.next<span class="operator">?</span>.val <span class="operator">??</span> <span class="number">0</span>) <span class="comment">// 输出 3</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>• <code>node1.next</code>和<code>node2</code>指向同一个实例，因此修改<code>node2.val</code>会影响<code>node1.next?.val</code>。</p>
-<p>使用<code>struct</code>的链表操作</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> node1 <span class="operator">=</span> <span class="type">ListNode</span>(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">var</span> node2 <span class="operator">=</span> <span class="type">ListNode</span>(<span class="number">2</span>)</span><br><span class="line">node1.next <span class="operator">=</span> node2</span><br><span class="line"></span><br><span class="line">node2.val <span class="operator">=</span> <span class="number">3</span></span><br><span class="line"><span class="built_in">print</span>(node1.next<span class="operator">?</span>.val <span class="operator">??</span> <span class="number">0</span>) <span class="comment">// 输出 2</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>• <code>node1.next</code>和<code>node2</code>是两个独立的副本，因此修改<code>node2.val</code>不会影响<code>node1.next?.val</code>。</p>
-<p>为什么链表通常使用<code>class</code>而不是<code>struct</code>？</p>
-<p>• 链表的特性：</p>
-<p>• 链表是一种动态数据结构，节点之间通过指针连接。</p>
-<p>• 引用类型（<code>class</code>）更适合这种场景，因为引用类型允许节点之间共享相同的实例。</p>
-<p>• 性能和内存管理：</p>
-<p>• 使用<code>class</code>时，节点的连接和操作只需要调整指针，而不需要复制整个对象。</p>
-<p>• 使用<code>struct</code>时，每次赋值都会创建一个新的副本，这可能导致不必要的内存开销和性能问题。</p>
-<p>• 链表操作的复杂性：</p>
-<p>• 在链表操作中，经常需要修改节点的<code>next</code>指针。</p>
-<p>• 使用<code>class</code>时，这些操作是直接的，因为<code>next</code>指针指向的是同一个实例。</p>
-<p>• 使用<code>struct</code>时，每次修改<code>next</code>指针都需要创建新的副本，这会使代码变得复杂且难以维护。</p>
-<p>总结</p>
-<p>• 使用<code>class</code>：</p>
-<p>• 适合链表这种需要通过指针连接和操作的动态数据结构。</p>
-<p>• 引用类型允许节点之间共享相同的实例，操作效率高。</p>
-<p>• 使用<code>struct</code>：</p>
-<p>• 适合值类型，例如简单的数据结构或不可变对象。</p>
-<p>• 在链表操作中，值类型会导致不必要的内存开销和复杂的代码逻辑。</p>
-<p>因此，在实现链表时，推荐使用<code>class</code>而不是<code>struct</code>。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/08/iOS/classVStruct/" data-id="cmd78g5f10006chk7fcep35mo" data-title="struct 与 class" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-iOS/mutating关键字的作用" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/07/08/iOS/mutating%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%BD%9C%E7%94%A8/" class="article-date">
-  <time class="dt-published" datetime="2025-07-07T16:00:00.000Z" itemprop="datePublished">2025-07-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/07/08/iOS/mutating%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%BD%9C%E7%94%A8/">mutating关键字的作用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="1-中文解答"><a href="#1-中文解答" class="headerlink" title="1. 中文解答"></a>1. 中文解答</h1><h2 id="1-1-概念与原理"><a href="#1-1-概念与原理" class="headerlink" title="1.1 概念与原理"></a>1.1 概念与原理</h2><ol>
-<li><strong>mutating 关键字</strong><ul>
-<li>用于 Swift 的 struct（结构体）和 enum（枚举）的方法声明。</li>
-<li>表示该方法内部可以修改实例自身的属性或自身（即 self ）。</li>
-<li>结构体和枚举是值类型，默认方法不能修改自身属性，除非加 mutating。</li>
-</ul>
-</li>
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-Swift-Error-与-NSError-的关系"><a href="#1-1-Swift-Error-与-NSError-的关系" class="headerlink" title="1.1 Swift Error 与 NSError 的关系"></a>1.1 Swift Error 与 NSError 的关系</h2><ol>
+<li>Swift 的 Error 协议用于错误类型，NSError 是 Objective-C 的错误类型。</li>
+<li>Swift 的 Error 可以自动桥接为 NSError，便于与 OC&#x2F;系统 API 兼容。</li>
 </ol>
-<h2 id="1-2-为什么需要-mutating？"><a href="#1-2-为什么需要-mutating？" class="headerlink" title="1.2 为什么需要 mutating？"></a>1.2 为什么需要 mutating？</h2><ul>
-<li>Swift 设计为值类型默认不可变，防止无意修改数据，提升安全性。</li>
-<li>只有明确声明 mutating，才允许方法内部修改属性或赋值 self。</li>
+<h2 id="1-2-为什么要兼容？"><a href="#1-2-为什么要兼容？" class="headerlink" title="1.2 为什么要兼容？"></a>1.2 为什么要兼容？</h2><ul>
+<li>兼容 Apple 各种 API（如 Foundation、网络、文件等），便于混编和第三方库集成。</li>
+<li>保证错误信息的完整性和可追踪性。</li>
 </ul>
-<h2 id="1-3-实际项目代码示例"><a href="#1-3-实际项目代码示例" class="headerlink" title="1.3 实际项目代码示例"></a>1.3 实际项目代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Counter</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> value: <span class="type">Int</span> <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">mutating</span> <span class="keyword">func</span> <span class="title function_">increment</span>() &#123;</span><br><span class="line">        value <span class="operator">+=</span> <span class="number">1</span> <span class="comment">// 允许修改属性</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">mutating</span> <span class="keyword">func</span> <span class="title function_">reset</span>() &#123;</span><br><span class="line">        <span class="keyword">self</span> <span class="operator">=</span> <span class="type">Counter</span>() <span class="comment">// 允许重新赋值 self</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c <span class="operator">=</span> <span class="type">Counter</span>()</span><br><span class="line">c.increment() <span class="comment">// value 变为 1</span></span><br><span class="line">c.reset()     <span class="comment">// value 变为 0</span></span><br></pre></td></tr></table></figure>
+<h2 id="1-3-实际代码示例"><a href="#1-3-实际代码示例" class="headerlink" title="1.3 实际代码示例"></a>1.3 实际代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Swift 自定义 Error</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">MyError</span>: <span class="title class_ inherited__">Error</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> notFound</span><br><span class="line">    <span class="keyword">case</span> invalid</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 转为 NSError</span></span><br><span class="line"><span class="keyword">let</span> error: <span class="type">Error</span> <span class="operator">=</span> <span class="type">MyError</span>.notFound</span><br><span class="line"><span class="keyword">let</span> nsError <span class="operator">=</span> error <span class="keyword">as</span> <span class="type">NSError</span></span><br><span class="line"><span class="built_in">print</span>(nsError.domain) <span class="comment">// 输出 MyError</span></span><br><span class="line"><span class="built_in">print</span>(nsError.code)   <span class="comment">// 输出 0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// OC API 兼容</span></span><br><span class="line"><span class="keyword">func</span> <span class="title function_">legacyAPICall</span>() <span class="keyword">throws</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="type">MyError</span>.invalid</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> legacyAPICall()</span><br><span class="line">&#125; <span class="keyword">catch</span> <span class="keyword">let</span> error <span class="keyword">as</span> <span class="type">NSError</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(error.domain, error.code)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="1-4-用户体验与业务价值"><a href="#1-4-用户体验与业务价值" class="headerlink" title="1.4 用户体验与业务价值"></a>1.4 用户体验与业务价值</h2><ul>
-<li>明确哪些方法会修改数据，便于团队协作和代码维护。</li>
-<li>避免无意副作用，提升代码健壮性。</li>
+<h2 id="1-4-业务-用户价值"><a href="#1-4-业务-用户价值" class="headerlink" title="1.4 业务&#x2F;用户价值"></a>1.4 业务&#x2F;用户价值</h2><ul>
+<li>统一错误处理，提升用户体验。</li>
+<li>便于日志、监控和问题定位。</li>
 </ul>
-<h2 id="1-5-问题拆解与调试建议"><a href="#1-5-问题拆解与调试建议" class="headerlink" title="1.5 问题拆解与调试建议"></a>1.5 问题拆解与调试建议</h2><ul>
-<li>如果 struct 方法需要修改属性但未加 mutating，编译器会报错。</li>
-<li>调试时优先检查 mutating 关键字是否遗漏。</li>
+<h2 id="1-5-易混淆点"><a href="#1-5-易混淆点" class="headerlink" title="1.5 易混淆点"></a>1.5 易混淆点</h2><ul>
+<li>Swift Error 只需遵循 Error 协议即可自动桥接。</li>
+<li>NSError 需要 domain、code、userInfo，Swift Error 会自动生成。</li>
 </ul>
-<hr>
-<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept"><a href="#2-1-Concept" class="headerlink" title="2.1 Concept"></a>2.1 Concept</h2><ul>
-<li>The <code>mutating</code> keyword in Swift is used in methods of structs and enums.</li>
-<li>It allows the method to modify properties of <code>self</code> or assign a new value to <code>self</code>.</li>
-<li>By default, value types (struct&#x2F;enum) methods cannot modify their own properties unless marked as <code>mutating</code>.</li>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Relationship"><a href="#2-1-Relationship" class="headerlink" title="2.1 Relationship"></a>2.1 Relationship</h2><ol>
+<li>Swift Error protocol is for error types; NSError is Objective-C’s error type.</li>
+<li>Swift Error can be automatically bridged to NSError for compatibility.</li>
+</ol>
+<h2 id="2-2-Why-compatible"><a href="#2-2-Why-compatible" class="headerlink" title="2.2 Why compatible?"></a>2.2 Why compatible?</h2><ul>
+<li>For Apple APIs (Foundation, networking, etc.), mixed code, and third-party integration.</li>
+<li>Ensures error info completeness and traceability.</li>
 </ul>
-<h2 id="2-2-Why-is-it-needed"><a href="#2-2-Why-is-it-needed" class="headerlink" title="2.2 Why is it needed?"></a>2.2 Why is it needed?</h2><ul>
-<li>Swift enforces immutability for value types by default for safety.</li>
-<li>Only methods explicitly marked as <code>mutating</code> can change the instance’s state.</li>
-</ul>
-<h2 id="2-3-Practical-Example"><a href="#2-3-Practical-Example" class="headerlink" title="2.3 Practical Example"></a>2.3 Practical Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Counter</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> value: <span class="type">Int</span> <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">mutating</span> <span class="keyword">func</span> <span class="title function_">increment</span>() &#123;</span><br><span class="line">        value <span class="operator">+=</span> <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">mutating</span> <span class="keyword">func</span> <span class="title function_">reset</span>() &#123;</span><br><span class="line">        <span class="keyword">self</span> <span class="operator">=</span> <span class="type">Counter</span>()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c <span class="operator">=</span> <span class="type">Counter</span>()</span><br><span class="line">c.increment() <span class="comment">// value becomes 1</span></span><br><span class="line">c.reset()     <span class="comment">// value becomes 0</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-3-Code-Example"><a href="#2-3-Code-Example" class="headerlink" title="2.3 Code Example"></a>2.3 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">MyError</span>: <span class="title class_ inherited__">Error</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> notFound</span><br><span class="line">    <span class="keyword">case</span> invalid</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> error: <span class="type">Error</span> <span class="operator">=</span> <span class="type">MyError</span>.notFound</span><br><span class="line"><span class="keyword">let</span> nsError <span class="operator">=</span> error <span class="keyword">as</span> <span class="type">NSError</span></span><br><span class="line"><span class="built_in">print</span>(nsError.domain)</span><br><span class="line"><span class="built_in">print</span>(nsError.code)</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="type">MyError</span>.invalid</span><br><span class="line">&#125; <span class="keyword">catch</span> <span class="keyword">let</span> error <span class="keyword">as</span> <span class="type">NSError</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(error.domain, error.code)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-4-User-Experience-Business-Value"><a href="#2-4-User-Experience-Business-Value" class="headerlink" title="2.4 User Experience &amp; Business Value"></a>2.4 User Experience &amp; Business Value</h2><ul>
-<li>Makes code intent clear, improves team collaboration and maintainability.</li>
-<li>Prevents unintended side effects, increasing code robustness.</li>
+<h2 id="2-4-Business-User-Value"><a href="#2-4-Business-User-Value" class="headerlink" title="2.4 Business&#x2F;User Value"></a>2.4 Business&#x2F;User Value</h2><ul>
+<li>Unified error handling, better UX.</li>
+<li>Easier logging, monitoring, and debugging.</li>
 </ul>
-<h2 id="2-5-Debugging-Troubleshooting"><a href="#2-5-Debugging-Troubleshooting" class="headerlink" title="2.5 Debugging &amp; Troubleshooting"></a>2.5 Debugging &amp; Troubleshooting</h2><ul>
-<li>If you need to modify a property in a struct method but forget <code>mutating</code>, the compiler will throw an error.</li>
-<li>Always check for missing <code>mutating</code> if you see such errors.</li>
+<h2 id="2-5-Common-Confusion"><a href="#2-5-Common-Confusion" class="headerlink" title="2.5 Common Confusion"></a>2.5 Common Confusion</h2><ul>
+<li>Swift Error auto-bridges to NSError.</li>
+<li>NSError needs domain&#x2F;code&#x2F;userInfo; Swift Error generates them automatically.</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/08/iOS/mutating%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%BD%9C%E7%94%A8/" data-id="cmd78g5f6001schk7d5pg7ejz" data-title="mutating关键字的作用" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/Error%E5%85%BC%E5%AE%B9NSError/" data-id="cmd881wdl0003ddk76vfkc6vt" data-title="Error兼容NSError" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -573,10 +252,10 @@
 
 
   
-    <article id="post-iOS/存储属性和计算属性的区别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-iOS/KVC_KVO" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2025/07/08/iOS/%E5%AD%98%E5%82%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8C%BA%E5%88%AB/" class="article-date">
-  <time class="dt-published" datetime="2025-07-07T16:00:00.000Z" itemprop="datePublished">2025-07-08</time>
+    <a href="/2025/07/17/iOS/KVC_KVO/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
 </a>
     
   <div class="article-category">
@@ -591,7 +270,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/07/08/iOS/%E5%AD%98%E5%82%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8C%BA%E5%88%AB/">存储属性和计算属性的区别</a>
+      <a class="p-name article-title" href="/2025/07/17/iOS/KVC_KVO/">KVC与KVO</a>
     </h1>
   
 
@@ -599,74 +278,123 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="1-中文解答"><a href="#1-中文解答" class="headerlink" title="1. 中文解答"></a>1. 中文解答</h1><h2 id="1-1-概念与原理"><a href="#1-1-概念与原理" class="headerlink" title="1.1 概念与原理"></a>1.1 概念与原理</h2><ol>
-<li><p><strong>存储属性（Stored Property）</strong></p>
-<ul>
-<li>直接存储在实例内存中的变量或常量，每个实例都有独立的存储空间。</li>
-<li>语法：<code>var</code> 或 <code>let</code> 声明，系统自动分配内存。</li>
-<li>例：<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> name: <span class="type">String</span> <span class="comment">// 存储属性</span></span><br><span class="line">    <span class="keyword">let</span> id: <span class="type">Int</span>      <span class="comment">// 存储属性</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-概念与原理"><a href="#1-1-概念与原理" class="headerlink" title="1.1 概念与原理"></a>1.1 概念与原理</h2><ul>
+<li><strong>KVC（Key-Value Coding）</strong>：通过字符串 key 间接访问对象属性。</li>
+<li><strong>KVO（Key-Value Observing）</strong>：基于 KVC 的观察机制，监听属性变化。</li>
 </ul>
-</li>
-<li><p><strong>计算属性（Computed Property）</strong></p>
-<ul>
-<li>不直接存储值，而是通过 getter（和可选的 setter）动态计算。</li>
-<li>每次访问时都会执行代码逻辑，通常依赖其他属性。</li>
-<li>语法：必须有 <code>get</code>，可选 <code>set</code>。</li>
-<li>例：<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Rectangle</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> width: <span class="type">Double</span></span><br><span class="line">    <span class="keyword">var</span> height: <span class="type">Double</span></span><br><span class="line">    <span class="keyword">var</span> area: <span class="type">Double</span> &#123; <span class="comment">// 计算属性</span></span><br><span class="line">        <span class="keyword">get</span> &#123; width <span class="operator">*</span> height &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<h2 id="1-2-代码示例"><a href="#1-2-代码示例" class="headerlink" title="1.2 代码示例"></a>1.2 代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>: <span class="title class_ inherited__">NSObject</span> &#123;</span><br><span class="line">    <span class="keyword">@objc</span> <span class="keyword">dynamic</span> <span class="keyword">var</span> name <span class="operator">=</span> <span class="string">&quot;&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> p <span class="operator">=</span> <span class="type">Person</span>()</span><br><span class="line">p.setValue(<span class="string">&quot;Tom&quot;</span>, forKey: <span class="string">&quot;name&quot;</span>) <span class="comment">// KVC</span></span><br><span class="line">p.addObserver(<span class="keyword">self</span>, forKeyPath: <span class="string">&quot;name&quot;</span>, options: .new, context: <span class="literal">nil</span>) <span class="comment">// KVO</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
+<li>数据绑定、UI自动刷新、MVVM 等。</li>
 </ul>
-</li>
+<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
+<li>KVO 需继承 NSObject 且属性 dynamic。</li>
+<li>SwiftUI&#x2F;Combine 推荐用新机制。</li>
+</ul>
+<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
+<li>KVO 的原理？运行时动态生成子类，重写 setter。</li>
+<li>KVO 的局限？类型安全差、易遗漏移除。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept-Principle"><a href="#2-1-Concept-Principle" class="headerlink" title="2.1 Concept &amp; Principle"></a>2.1 Concept &amp; Principle</h2><ul>
+<li><strong>KVC</strong>: Access properties via string key.</li>
+<li><strong>KVO</strong>: Observe property changes, based on KVC.</li>
+</ul>
+<h2 id="2-2-Code-Example"><a href="#2-2-Code-Example" class="headerlink" title="2.2 Code Example"></a>2.2 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>: <span class="title class_ inherited__">NSObject</span> &#123;</span><br><span class="line">    <span class="keyword">@objc</span> <span class="keyword">dynamic</span> <span class="keyword">var</span> name <span class="operator">=</span> <span class="string">&quot;&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> p <span class="operator">=</span> <span class="type">Person</span>()</span><br><span class="line">p.setValue(<span class="string">&quot;Tom&quot;</span>, forKey: <span class="string">&quot;name&quot;</span>) <span class="comment">// KVC</span></span><br><span class="line">p.addObserver(<span class="keyword">self</span>, forKeyPath: <span class="string">&quot;name&quot;</span>, options: .new, context: <span class="literal">nil</span>) <span class="comment">// KVO</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
+<li>Data binding, UI auto-refresh, MVVM, etc.</li>
+</ul>
+<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
+<li>KVO: NSObject + dynamic.</li>
+<li>SwiftUI&#x2F;Combine: prefer new mechanisms.</li>
+</ul>
+<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
+<li>KVO principle: runtime subclass, override setter.</li>
+<li>KVO limitations: type safety, removal risk.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/KVC_KVO/" data-id="cmd881wdn0006ddk7hhyp3q94" data-title="KVC与KVO" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/OpenPublic区别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/OpenPublic%E5%8C%BA%E5%88%AB/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/07/17/iOS/OpenPublic%E5%8C%BA%E5%88%AB/">Open与Public的区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-概念与本质区别"><a href="#1-1-概念与本质区别" class="headerlink" title="1.1 概念与本质区别"></a>1.1 概念与本质区别</h2><ol>
+<li><strong>open</strong>：允许模块外继承和重写（子类化&#x2F;override）。</li>
+<li><strong>public</strong>：允许模块外访问，但不允许继承和重写。</li>
 </ol>
 <h2 id="1-2-为什么要区分？"><a href="#1-2-为什么要区分？" class="headerlink" title="1.2 为什么要区分？"></a>1.2 为什么要区分？</h2><ul>
-<li>存储属性用于保存实际数据，适合需要持久化的状态。</li>
-<li>计算属性用于动态逻辑，节省内存、提升灵活性，避免冗余数据。</li>
+<li><strong>安全性</strong>：public 只暴露接口，防止外部随意扩展，保护内部实现。</li>
+<li><strong>灵活性</strong>：open 适合做框架&#x2F;库，允许外部自定义扩展。</li>
 </ul>
-<h2 id="1-3-实际项目代码示例"><a href="#1-3-实际项目代码示例" class="headerlink" title="1.3 实际项目代码示例"></a>1.3 实际项目代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Product</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> price: <span class="type">Double</span>      <span class="comment">// 存储属性</span></span><br><span class="line">    <span class="keyword">var</span> quantity: <span class="type">Int</span>      <span class="comment">// 存储属性</span></span><br><span class="line">    <span class="keyword">var</span> total: <span class="type">Double</span> &#123;    <span class="comment">// 计算属性</span></span><br><span class="line">        <span class="keyword">get</span> &#123; price <span class="operator">*</span> <span class="type">Double</span>(quantity) &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p <span class="operator">=</span> <span class="type">Product</span>(price: <span class="number">10</span>, quantity: <span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(p.total) <span class="comment">// 输出 30</span></span><br></pre></td></tr></table></figure>
+<h2 id="1-3-实际代码示例"><a href="#1-3-实际代码示例" class="headerlink" title="1.3 实际代码示例"></a>1.3 实际代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">func</span> <span class="title function_">speak</span>() &#123; <span class="built_in">print</span>(<span class="string">&quot;Animal&quot;</span>) &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">func</span> <span class="title function_">sayHi</span>() &#123; <span class="built_in">print</span>(<span class="string">&quot;Hi&quot;</span>) &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 其他模块</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span>: <span class="title class_ inherited__">Animal</span> &#123; <span class="comment">// ✅ 允许继承</span></span><br><span class="line">    <span class="keyword">override</span> <span class="keyword">func</span> <span class="title function_">speak</span>() &#123; <span class="built_in">print</span>(<span class="string">&quot;Dog&quot;</span>) &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// class Student: Person &#123;&#125; // ❌ 不允许继承</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="1-4-用户体验与业务价值"><a href="#1-4-用户体验与业务价值" class="headerlink" title="1.4 用户体验与业务价值"></a>1.4 用户体验与业务价值</h2><ul>
-<li>存储属性保证数据一致性和性能，适合频繁读写。</li>
-<li>计算属性让 API 更简洁，自动响应数据变化，减少手动同步和 bug。</li>
+<h2 id="1-4-业务-用户价值"><a href="#1-4-业务-用户价值" class="headerlink" title="1.4 业务&#x2F;用户价值"></a>1.4 业务&#x2F;用户价值</h2><ul>
+<li>open 适合 SDK&#x2F;框架，便于二次开发。</li>
+<li>public 适合只读 API，保证产品稳定。</li>
 </ul>
-<h2 id="1-5-问题拆解与调试建议"><a href="#1-5-问题拆解与调试建议" class="headerlink" title="1.5 问题拆解与调试建议"></a>1.5 问题拆解与调试建议</h2><ul>
-<li>如果属性只依赖其他属性且无需持久化，优先用计算属性。</li>
-<li>若遇到性能瓶颈，可将频繁访问的计算属性缓存为存储属性。</li>
-<li>调试时关注 getter&#x2F;setter 是否有副作用，避免死循环或性能问题。</li>
+<h2 id="1-5-易混淆点"><a href="#1-5-易混淆点" class="headerlink" title="1.5 易混淆点"></a>1.5 易混淆点</h2><ul>
+<li>open &#x3D; public + 允许继承&#x2F;重写。</li>
+<li>public 只能访问，不能扩展。</li>
 </ul>
-<hr>
-<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concepts"><a href="#2-1-Concepts" class="headerlink" title="2.1 Concepts"></a>2.1 Concepts</h2><ol>
-<li><p><strong>Stored Property</strong></p>
-<ul>
-<li>Stores actual data in memory for each instance.</li>
-<li>Declared with <code>var</code> or <code>let</code>.</li>
-<li>Example:<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> name: <span class="type">String</span> <span class="comment">// stored property</span></span><br><span class="line">    <span class="keyword">let</span> id: <span class="type">Int</span>      <span class="comment">// stored property</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><strong>Computed Property</strong></p>
-<ul>
-<li>Does not store a value; computes it on access via <code>get</code> (and optionally <code>set</code>).</li>
-<li>Example:<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Rectangle</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> width: <span class="type">Double</span></span><br><span class="line">    <span class="keyword">var</span> height: <span class="type">Double</span></span><br><span class="line">    <span class="keyword">var</span> area: <span class="type">Double</span> &#123; <span class="comment">// computed property</span></span><br><span class="line">        <span class="keyword">get</span> &#123; width <span class="operator">*</span> height &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept-and-Key-Difference"><a href="#2-1-Concept-and-Key-Difference" class="headerlink" title="2.1 Concept and Key Difference"></a>2.1 Concept and Key Difference</h2><ol>
+<li><strong>open</strong>: Allows subclassing&#x2F;overriding outside the module.</li>
+<li><strong>public</strong>: Allows access but not subclassing&#x2F;overriding outside the module.</li>
 </ol>
 <h2 id="2-2-Why-distinguish"><a href="#2-2-Why-distinguish" class="headerlink" title="2.2 Why distinguish?"></a>2.2 Why distinguish?</h2><ul>
-<li>Stored properties are for persistent state.</li>
-<li>Computed properties provide dynamic logic, reduce redundancy, and improve flexibility.</li>
+<li><strong>Security</strong>: public exposes API but prevents external extension.</li>
+<li><strong>Flexibility</strong>: open is for frameworks, allows external customization.</li>
 </ul>
-<h2 id="2-3-Practical-Example"><a href="#2-3-Practical-Example" class="headerlink" title="2.3 Practical Example"></a>2.3 Practical Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Product</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> price: <span class="type">Double</span>      <span class="comment">// stored property</span></span><br><span class="line">    <span class="keyword">var</span> quantity: <span class="type">Int</span>      <span class="comment">// stored property</span></span><br><span class="line">    <span class="keyword">var</span> total: <span class="type">Double</span> &#123;    <span class="comment">// computed property</span></span><br><span class="line">        <span class="keyword">get</span> &#123; price <span class="operator">*</span> <span class="type">Double</span>(quantity) &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p <span class="operator">=</span> <span class="type">Product</span>(price: <span class="number">10</span>, quantity: <span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(p.total) <span class="comment">// prints 30</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-3-Code-Example"><a href="#2-3-Code-Example" class="headerlink" title="2.3 Code Example"></a>2.3 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">func</span> <span class="title function_">speak</span>() &#123; <span class="built_in">print</span>(<span class="string">&quot;Animal&quot;</span>) &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">func</span> <span class="title function_">sayHi</span>() &#123; <span class="built_in">print</span>(<span class="string">&quot;Hi&quot;</span>) &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Other module</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span>: <span class="title class_ inherited__">Animal</span> &#123; <span class="comment">// ✅ Allowed</span></span><br><span class="line">    <span class="keyword">override</span> <span class="keyword">func</span> <span class="title function_">speak</span>() &#123; <span class="built_in">print</span>(<span class="string">&quot;Dog&quot;</span>) &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// class Student: Person &#123;&#125; // ❌ Not allowed</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="2-4-User-Experience-Business-Value"><a href="#2-4-User-Experience-Business-Value" class="headerlink" title="2.4 User Experience &amp; Business Value"></a>2.4 User Experience &amp; Business Value</h2><ul>
-<li>Stored properties ensure data consistency and performance.</li>
-<li>Computed properties make APIs cleaner and automatically reflect changes, reducing bugs.</li>
+<h2 id="2-4-Business-User-Value"><a href="#2-4-Business-User-Value" class="headerlink" title="2.4 Business&#x2F;User Value"></a>2.4 Business&#x2F;User Value</h2><ul>
+<li>open: for SDK&#x2F;framework, supports extension.</li>
+<li>public: for read-only API, ensures stability.</li>
 </ul>
-<h2 id="2-5-Debugging-Optimization"><a href="#2-5-Debugging-Optimization" class="headerlink" title="2.5 Debugging &amp; Optimization"></a>2.5 Debugging &amp; Optimization</h2><ul>
-<li>Use computed properties for logic based on other properties.</li>
-<li>Cache computed values as stored properties if performance is critical.</li>
-<li>Watch for side effects in getters&#x2F;setters to avoid infinite loops or performance issues.</li>
+<h2 id="2-5-Common-Confusion"><a href="#2-5-Common-Confusion" class="headerlink" title="2.5 Common Confusion"></a>2.5 Common Confusion</h2><ul>
+<li>open &#x3D; public + subclass&#x2F;override allowed.</li>
+<li>public: only access, no extension.</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/08/iOS/%E5%AD%98%E5%82%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8C%BA%E5%88%AB/" data-id="cmd78g5f6001tchk795mqffvz" data-title="存储属性和计算属性的区别" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/OpenPublic%E5%8C%BA%E5%88%AB/" data-id="cmd881wdn0007ddk7foe1amnq" data-title="Open与Public的区别" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -678,10 +406,10 @@
 
 
   
-    <article id="post-iOS/泛型Generics" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-iOS/RxSwift核心原理与应用" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2025/07/02/iOS/%E6%B3%9B%E5%9E%8BGenerics/" class="article-date">
-  <time class="dt-published" datetime="2025-07-01T16:00:00.000Z" itemprop="datePublished">2025-07-02</time>
+    <a href="/2025/07/17/iOS/RxSwift%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
 </a>
     
   <div class="article-category">
@@ -696,7 +424,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/07/02/iOS/%E6%B3%9B%E5%9E%8BGenerics/">泛型（Generics）</a>
+      <a class="p-name article-title" href="/2025/07/17/iOS/RxSwift%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/">RxSwift 核心原理与业务应用</a>
     </h1>
   
 
@@ -704,59 +432,363 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="在-Swift-中，什么是泛型（Generics）？"><a href="#在-Swift-中，什么是泛型（Generics）？" class="headerlink" title="在 Swift 中，什么是泛型（Generics）？"></a>在 Swift 中，什么是泛型（Generics）？</h1><h2 id="1-概念与原理"><a href="#1-概念与原理" class="headerlink" title="1. 概念与原理"></a>1. 概念与原理</h2><p>1.1 定义<br>泛型（Generics）是 Swift 提供的一种强大特性，允许你编写可复用、类型安全的代码。通过泛型，函数、结构体、类和枚举可以适用于任意类型，而无需为每种类型分别实现。</p>
-<p>1.2 为什么需要泛型  </p>
-<ul>
-<li><strong>代码复用</strong>：避免重复实现相似逻辑。</li>
-<li><strong>类型安全</strong>：在编译期检查类型，减少运行时错误。</li>
-<li><strong>灵活性</strong>：支持多种数据类型，提升 API 设计的通用性。</li>
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-概念与核心思想"><a href="#1-1-概念与核心思想" class="headerlink" title="1.1 概念与核心思想"></a>1.1 概念与核心思想</h2><p>RxSwift 是响应式编程框架，核心是 Observable（可观察序列）、Observer（观察者）、操作符链式组合，支持异步事件流处理。</p>
+<h2 id="1-2-代码示例"><a href="#1-2-代码示例" class="headerlink" title="1.2 代码示例"></a>1.2 代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> disposeBag <span class="operator">=</span> <span class="type">DisposeBag</span>()</span><br><span class="line"><span class="type">Observable</span>.of(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">    .map &#123; <span class="variable">$0</span> <span class="operator">*</span> <span class="number">2</span> &#125;</span><br><span class="line">    .subscribe(onNext: &#123; <span class="built_in">print</span>(<span class="variable">$0</span>) &#125;)</span><br><span class="line">    .disposed(by: disposeBag)</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
+<li>UI 绑定、网络请求、表单校验、事件流转等。</li>
 </ul>
-<p>1.3 原理简述<br>Swift 编译器在编译时会根据实际传入的类型生成对应的代码（类型擦除与特化），保证类型安全和高效执行。</p>
-<h2 id="2-语法与实现"><a href="#2-语法与实现" class="headerlink" title="2. 语法与实现"></a>2. 语法与实现</h2><p>2.1 基本语法</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">swapTwoValues</span>&lt;<span class="type">T</span>&gt;(<span class="keyword">_</span> <span class="params">a</span>: <span class="keyword">inout</span> <span class="type">T</span>, <span class="keyword">_</span> <span class="params">b</span>: <span class="keyword">inout</span> <span class="type">T</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> temp <span class="operator">=</span> a</span><br><span class="line">    a <span class="operator">=</span> b</span><br><span class="line">    b <span class="operator">=</span> temp</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>T</code> 是类型占位符，调用时由编译器推断。</li>
+<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
+<li>RxSwift 不是多线程库，但可结合调度器实现线程切换。</li>
+<li>资源释放靠 DisposeBag。</li>
 </ul>
-<p>2.2 泛型类型</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Stack</span>&lt;<span class="type">Element</span>&gt; &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> items <span class="operator">=</span> [<span class="type">Element</span>]()</span><br><span class="line">    <span class="keyword">mutating</span> <span class="keyword">func</span> <span class="title function_">push</span>(<span class="keyword">_</span> <span class="params">item</span>: <span class="type">Element</span>) &#123; items.append(item) &#125;</span><br><span class="line">    <span class="keyword">mutating</span> <span class="keyword">func</span> <span class="title function_">pop</span>() -&gt; <span class="type">Element</span>? &#123; items.popLast() &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>Element</code> 可为任意类型，提升了数据结构的通用性。</li>
+<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
+<li>RxSwift 如何避免回调地狱？链式组合、统一错误处理。</li>
+<li>与 Combine 区别？Combine 是苹果官方，API 更 Swifty。</li>
 </ul>
-<p>2.3 泛型约束</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">findIndex</span>&lt;<span class="type">T</span>: <span class="type">Equatable</span>&gt;(<span class="params">of</span> <span class="params">value</span>: <span class="type">T</span>, <span class="params">in</span> <span class="params">array</span>: [<span class="type">T</span>]) -&gt; <span class="type">Int</span>? &#123;</span><br><span class="line">    <span class="keyword">for</span> (index, item) <span class="keyword">in</span> array.enumerated() &#123;</span><br><span class="line">        <span class="keyword">if</span> item <span class="operator">==</span> value &#123; <span class="keyword">return</span> index &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>通过 <code>T: Equatable</code> 限定泛型类型必须实现等值比较。</li>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept-Core-Idea"><a href="#2-1-Concept-Core-Idea" class="headerlink" title="2.1 Concept &amp; Core Idea"></a>2.1 Concept &amp; Core Idea</h2><p>RxSwift is a reactive framework: Observable, Observer, operator chaining, async event stream.</p>
+<h2 id="2-2-Code-Example"><a href="#2-2-Code-Example" class="headerlink" title="2.2 Code Example"></a>2.2 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> disposeBag <span class="operator">=</span> <span class="type">DisposeBag</span>()</span><br><span class="line"><span class="type">Observable</span>.of(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">    .map &#123; <span class="variable">$0</span> <span class="operator">*</span> <span class="number">2</span> &#125;</span><br><span class="line">    .subscribe(onNext: &#123; <span class="built_in">print</span>(<span class="variable">$0</span>) &#125;)</span><br><span class="line">    .disposed(by: disposeBag)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
+<li>UI binding, network, form validation, event flow, etc.</li>
 </ul>
-<h2 id="3-实际项目中的应用场景"><a href="#3-实际项目中的应用场景" class="headerlink" title="3. 实际项目中的应用场景"></a>3. 实际项目中的应用场景</h2><p>3.1 网络层数据解析</p>
-<ul>
-<li>利用泛型和协议组合，实现通用的网络请求和 JSON 解析，提升代码复用率。<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protocol</span> <span class="title class_">DecodableModel</span>: <span class="title class_ inherited__">Decodable</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">func</span> <span class="title function_">fetchData</span>&lt;<span class="type">T</span>: <span class="type">DecodableModel</span>&gt;(<span class="params">from</span> <span class="params">url</span>: <span class="type">URL</span>, <span class="params">completion</span>: <span class="keyword">@escaping</span> (<span class="type">Result</span>&lt;<span class="type">T</span>, <span class="type">Error</span>&gt;) -&gt; <span class="type">Void</span>) &#123;</span><br><span class="line">    <span class="comment">// 网络请求与解析逻辑</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
+<li>RxSwift is not a threading lib, but supports schedulers.</li>
+<li>DisposeBag for resource release.</li>
 </ul>
-<p>3.2 组件化 UI 设计</p>
-<ul>
-<li>通过泛型自定义通用的 UI 组件（如 TableView、CollectionView 的数据源），提升团队协作效率。</li>
+<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
+<li>How avoids callback hell? Chaining, unified error handling.</li>
+<li>Difference with Combine? Combine is official, more Swifty.</li>
 </ul>
-<h2 id="4-用户体验与业务需求的结合"><a href="#4-用户体验与业务需求的结合" class="headerlink" title="4. 用户体验与业务需求的结合"></a>4. 用户体验与业务需求的结合</h2><ul>
-<li>泛型让 API 更加简洁、易用，减少冗余代码，提升开发效率。</li>
-<li>便于团队维护和扩展，降低后期 bug 率。</li>
-<li>通过类型安全，减少因类型不匹配导致的用户端崩溃。</li>
-</ul>
-<h2 id="5-Debug-与排查能力"><a href="#5-Debug-与排查能力" class="headerlink" title="5. Debug 与排查能力"></a>5. Debug 与排查能力</h2><p>5.1 常见问题</p>
-<ul>
-<li>泛型类型推断失败：需显式指定类型或增加约束。</li>
-<li>复杂嵌套泛型导致编译错误：逐步拆解，简化泛型表达式。</li>
-</ul>
-<p>5.2 排查流程</p>
-<ul>
-<li>检查泛型约束是否合理。</li>
-<li>利用 Xcode 的类型推断提示，定位类型不匹配点。</li>
-<li>通过单元测试覆盖泛型逻辑，及时发现边界问题。</li>
-</ul>
-<h2 id="6-总结"><a href="#6-总结" class="headerlink" title="6. 总结"></a>6. 总结</h2><p>泛型是 Swift 现代化编程的基石，既提升了代码的复用性和安全性，也为团队协作和业务扩展提供了坚实基础。实际开发中，合理运用泛型能极大提升项目的健壮性和用户体验。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/02/iOS/%E6%B3%9B%E5%9E%8BGenerics/" data-id="cmd78g5f6001uchk7bxgs7a5c" data-title="泛型（Generics）" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/RxSwift%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/" data-id="cmd881wdo0009ddk7d1v8dhj9" data-title="RxSwift 核心原理与业务应用" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/String与NSString区别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/String%E4%B8%8ENSString%E5%8C%BA%E5%88%AB/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/07/17/iOS/String%E4%B8%8ENSString%E5%8C%BA%E5%88%AB/">String与NSString的关系与区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-关系与区别"><a href="#1-1-关系与区别" class="headerlink" title="1.1 关系与区别"></a>1.1 关系与区别</h2><ol>
+<li>String 是 Swift 的原生字符串类型，NSString 是 OC 的字符串类。</li>
+<li>String 与 NSString 可以自动桥接，互相转换。</li>
+<li>String 是值类型（struct），NSString 是引用类型（class）。</li>
+</ol>
+<h2 id="1-2-为什么要这样设计？"><a href="#1-2-为什么要这样设计？" class="headerlink" title="1.2 为什么要这样设计？"></a>1.2 为什么要这样设计？</h2><ul>
+<li>String 采用值类型，提升性能和安全性，支持 copy-on-write。</li>
+<li>兼容 OC 生态，便于混编。</li>
+</ul>
+<h2 id="1-3-实际代码示例"><a href="#1-3-实际代码示例" class="headerlink" title="1.3 实际代码示例"></a>1.3 实际代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> swiftStr: <span class="type">String</span> <span class="operator">=</span> <span class="string">&quot;Hello&quot;</span></span><br><span class="line"><span class="keyword">let</span> ocStr: <span class="type">NSString</span> <span class="operator">=</span> swiftStr <span class="keyword">as</span> <span class="type">NSString</span></span><br><span class="line"><span class="keyword">let</span> swiftStr2: <span class="type">String</span> <span class="operator">=</span> ocStr <span class="keyword">as</span> <span class="type">String</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 值类型特性</span></span><br><span class="line"><span class="keyword">var</span> a <span class="operator">=</span> <span class="string">&quot;abc&quot;</span></span><br><span class="line"><span class="keyword">var</span> b <span class="operator">=</span> a</span><br><span class="line">b <span class="operator">+=</span> <span class="string">&quot;d&quot;</span></span><br><span class="line"><span class="built_in">print</span>(a) <span class="comment">// &quot;abc&quot;</span></span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment">// &quot;abcd&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-4-业务-用户价值"><a href="#1-4-业务-用户价值" class="headerlink" title="1.4 业务&#x2F;用户价值"></a>1.4 业务&#x2F;用户价值</h2><ul>
+<li>性能更优，线程安全。</li>
+<li>兼容 OC，便于迁移和集成。</li>
+</ul>
+<h2 id="1-5-易混淆点"><a href="#1-5-易混淆点" class="headerlink" title="1.5 易混淆点"></a>1.5 易混淆点</h2><ul>
+<li>String 是 struct，NSString 是 class。</li>
+<li>String 支持更多 Swift 特性（如泛型、协议扩展等）。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Relationship-and-Difference"><a href="#2-1-Relationship-and-Difference" class="headerlink" title="2.1 Relationship and Difference"></a>2.1 Relationship and Difference</h2><ol>
+<li>String: native Swift string type; NSString: Objective-C class.</li>
+<li>String and NSString are automatically bridged.</li>
+<li>String is a value type (struct), NSString is a reference type (class).</li>
+</ol>
+<h2 id="2-2-Why-this-design"><a href="#2-2-Why-this-design" class="headerlink" title="2.2 Why this design?"></a>2.2 Why this design?</h2><ul>
+<li>String as value type: better performance, safety, COW.</li>
+<li>OC compatibility for mixed code.</li>
+</ul>
+<h2 id="2-3-Code-Example"><a href="#2-3-Code-Example" class="headerlink" title="2.3 Code Example"></a>2.3 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> swiftStr: <span class="type">String</span> <span class="operator">=</span> <span class="string">&quot;Hello&quot;</span></span><br><span class="line"><span class="keyword">let</span> ocStr: <span class="type">NSString</span> <span class="operator">=</span> swiftStr <span class="keyword">as</span> <span class="type">NSString</span></span><br><span class="line"><span class="keyword">let</span> swiftStr2: <span class="type">String</span> <span class="operator">=</span> ocStr <span class="keyword">as</span> <span class="type">String</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a <span class="operator">=</span> <span class="string">&quot;abc&quot;</span></span><br><span class="line"><span class="keyword">var</span> b <span class="operator">=</span> a</span><br><span class="line">b <span class="operator">+=</span> <span class="string">&quot;d&quot;</span></span><br><span class="line"><span class="built_in">print</span>(a) <span class="comment">// &quot;abc&quot;</span></span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment">// &quot;abcd&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-Business-User-Value"><a href="#2-4-Business-User-Value" class="headerlink" title="2.4 Business&#x2F;User Value"></a>2.4 Business&#x2F;User Value</h2><ul>
+<li>Better performance, thread safety.</li>
+<li>OC compatibility, easier migration&#x2F;integration.</li>
+</ul>
+<h2 id="2-5-Common-Confusion"><a href="#2-5-Common-Confusion" class="headerlink" title="2.5 Common Confusion"></a>2.5 Common Confusion</h2><ul>
+<li>String is struct, NSString is class.</li>
+<li>String supports more Swift features (generics, protocol extensions, etc).</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/String%E4%B8%8ENSString%E5%8C%BA%E5%88%AB/" data-id="cmd881wdo000addk757etebve" data-title="String与NSString的关系与区别" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/Swift_OC对比" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/Swift_OC%E5%AF%B9%E6%AF%94/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/07/17/iOS/Swift_OC%E5%AF%B9%E6%AF%94/">Swift与OC对比</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-语法与特性"><a href="#1-1-语法与特性" class="headerlink" title="1.1 语法与特性"></a>1.1 语法与特性</h2><ul>
+<li>Swift：强类型、类型推断、Optionals、值类型、函数式编程。</li>
+<li>OC：动态类型、消息机制、指针、手动内存管理。</li>
+</ul>
+<h2 id="1-2-代码示例"><a href="#1-2-代码示例" class="headerlink" title="1.2 代码示例"></a>1.2 代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr <span class="operator">=</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">// Swift</span></span><br><span class="line"><span class="type">NSArray</span> <span class="operator">*</span>arr <span class="operator">=</span> @[@<span class="number">1</span>,@<span class="number">2</span>,@<span class="number">3</span>]; <span class="comment">// OC</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
+<li>Swift 适合新项目、类型安全要求高。</li>
+<li>OC 适合维护老项目、动态特性需求。</li>
+</ul>
+<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
+<li>Swift 更安全但更严格，OC 灵活但易出错。</li>
+<li>Swift 与 OC 可混编。</li>
+</ul>
+<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
+<li>Swift 性能优化点？ARC、COW、泛型。</li>
+<li>OC 动态特性优势？运行时注入、KVC&#x2F;KVO。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Syntax-Features"><a href="#2-1-Syntax-Features" class="headerlink" title="2.1 Syntax &amp; Features"></a>2.1 Syntax &amp; Features</h2><ul>
+<li>Swift: strong type, inference, optionals, value type, functional.</li>
+<li>OC: dynamic type, messaging, pointer, manual memory.</li>
+</ul>
+<h2 id="2-2-Code-Example"><a href="#2-2-Code-Example" class="headerlink" title="2.2 Code Example"></a>2.2 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr <span class="operator">=</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">// Swift</span></span><br><span class="line"><span class="type">NSArray</span> <span class="operator">*</span>arr <span class="operator">=</span> @[@<span class="number">1</span>,@<span class="number">2</span>,@<span class="number">3</span>]; <span class="comment">// OC</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
+<li>Swift: new project, type safety.</li>
+<li>OC: legacy, dynamic needs.</li>
+</ul>
+<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
+<li>Swift safer but stricter, OC flexible but risky.</li>
+<li>Swift&#x2F;OC can mix.</li>
+</ul>
+<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
+<li>Swift perf: ARC, COW, generics.</li>
+<li>OC dynamic: runtime, KVC&#x2F;KVO.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/Swift_OC%E5%AF%B9%E6%AF%94/" data-id="cmd881wdo000dddk746wv5tsu" data-title="Swift与OC对比" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/Swift初始化器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/Swift%E5%88%9D%E5%A7%8B%E5%8C%96%E5%99%A8/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/07/17/iOS/Swift%E5%88%9D%E5%A7%8B%E5%8C%96%E5%99%A8/">Swift中的初始化器（构造方法）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-Swift-初始化器的类型"><a href="#1-1-Swift-初始化器的类型" class="headerlink" title="1.1 Swift 初始化器的类型"></a>1.1 Swift 初始化器的类型</h2><ol>
+<li><strong>指定初始化器（Designated Initializer）</strong>：负责初始化所有属性，调用父类的指定初始化器。</li>
+<li><strong>便利初始化器（Convenience Initializer）</strong>：必须调用同一个类中的其他初始化器，常用于简化初始化流程。</li>
+<li><strong>可失败初始化器（Failable Initializer）</strong>：<code>init?</code>，初始化可能失败时返回 nil。</li>
+</ol>
+<h2 id="1-2-为什么要这样设计？"><a href="#1-2-为什么要这样设计？" class="headerlink" title="1.2 为什么要这样设计？"></a>1.2 为什么要这样设计？</h2><ul>
+<li>保证对象所有属性都被初始化，提升类型安全。</li>
+<li>便于多构造方式，提升 API 易用性。</li>
+<li>可失败初始化器提升健壮性。</li>
+</ul>
+<h2 id="1-3-实际代码示例"><a href="#1-3-实际代码示例" class="headerlink" title="1.3 实际代码示例"></a>1.3 实际代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> name: <span class="type">String</span></span><br><span class="line">    <span class="keyword">var</span> age: <span class="type">Int</span></span><br><span class="line">    <span class="comment">// 指定初始化器</span></span><br><span class="line">    <span class="keyword">init</span>(<span class="params">name</span>: <span class="type">String</span>, <span class="params">age</span>: <span class="type">Int</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.name <span class="operator">=</span> name</span><br><span class="line">        <span class="keyword">self</span>.age <span class="operator">=</span> age</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 便利初始化器</span></span><br><span class="line">    <span class="keyword">convenience</span> <span class="keyword">init</span>(<span class="params">name</span>: <span class="type">String</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.<span class="keyword">init</span>(name: name, age: <span class="number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 可失败初始化器</span></span><br><span class="line">    <span class="keyword">init?</span>(<span class="params">dict</span>: [<span class="params">String</span>: <span class="keyword">Any</span>]) &#123;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> name <span class="operator">=</span> dict[<span class="string">&quot;name&quot;</span>] <span class="keyword">as?</span> <span class="type">String</span>,</span><br><span class="line">              <span class="keyword">let</span> age <span class="operator">=</span> dict[<span class="string">&quot;age&quot;</span>] <span class="keyword">as?</span> <span class="type">Int</span> <span class="keyword">else</span> &#123; <span class="keyword">return</span> <span class="literal">nil</span> &#125;</span><br><span class="line">        <span class="keyword">self</span>.name <span class="operator">=</span> name</span><br><span class="line">        <span class="keyword">self</span>.age <span class="operator">=</span> age</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-4-业务-用户价值"><a href="#1-4-业务-用户价值" class="headerlink" title="1.4 业务&#x2F;用户价值"></a>1.4 业务&#x2F;用户价值</h2><ul>
+<li>保证数据完整性，提升产品稳定性。</li>
+<li>支持多种初始化方式，提升开发效率。</li>
+</ul>
+<h2 id="1-5-易混淆点"><a href="#1-5-易混淆点" class="headerlink" title="1.5 易混淆点"></a>1.5 易混淆点</h2><ul>
+<li>便利初始化器必须调用本类其他初始化器。</li>
+<li>可失败初始化器返回 nil，需注意解包。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Types-of-Swift-Initializers"><a href="#2-1-Types-of-Swift-Initializers" class="headerlink" title="2.1 Types of Swift Initializers"></a>2.1 Types of Swift Initializers</h2><ol>
+<li><strong>Designated Initializer</strong>: Initializes all properties, calls superclass’s designated initializer.</li>
+<li><strong>Convenience Initializer</strong>: Must call another initializer in the same class, simplifies initialization.</li>
+<li><strong>Failable Initializer</strong>: <code>init?</code>, returns nil if initialization fails.</li>
+</ol>
+<h2 id="2-2-Why-this-design"><a href="#2-2-Why-this-design" class="headerlink" title="2.2 Why this design?"></a>2.2 Why this design?</h2><ul>
+<li>Ensures all properties are initialized, improves type safety.</li>
+<li>Supports multiple construction patterns, better API usability.</li>
+<li>Failable initializers improve robustness.</li>
+</ul>
+<h2 id="2-3-Code-Example"><a href="#2-3-Code-Example" class="headerlink" title="2.3 Code Example"></a>2.3 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> name: <span class="type">String</span></span><br><span class="line">    <span class="keyword">var</span> age: <span class="type">Int</span></span><br><span class="line">    <span class="keyword">init</span>(<span class="params">name</span>: <span class="type">String</span>, <span class="params">age</span>: <span class="type">Int</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.name <span class="operator">=</span> name</span><br><span class="line">        <span class="keyword">self</span>.age <span class="operator">=</span> age</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">convenience</span> <span class="keyword">init</span>(<span class="params">name</span>: <span class="type">String</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.<span class="keyword">init</span>(name: name, age: <span class="number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">init?</span>(<span class="params">dict</span>: [<span class="params">String</span>: <span class="keyword">Any</span>]) &#123;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> name <span class="operator">=</span> dict[<span class="string">&quot;name&quot;</span>] <span class="keyword">as?</span> <span class="type">String</span>,</span><br><span class="line">              <span class="keyword">let</span> age <span class="operator">=</span> dict[<span class="string">&quot;age&quot;</span>] <span class="keyword">as?</span> <span class="type">Int</span> <span class="keyword">else</span> &#123; <span class="keyword">return</span> <span class="literal">nil</span> &#125;</span><br><span class="line">        <span class="keyword">self</span>.name <span class="operator">=</span> name</span><br><span class="line">        <span class="keyword">self</span>.age <span class="operator">=</span> age</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-Business-User-Value"><a href="#2-4-Business-User-Value" class="headerlink" title="2.4 Business&#x2F;User Value"></a>2.4 Business&#x2F;User Value</h2><ul>
+<li>Ensures data integrity, improves stability.</li>
+<li>Supports multiple init patterns, better dev efficiency.</li>
+</ul>
+<h2 id="2-5-Common-Confusion"><a href="#2-5-Common-Confusion" class="headerlink" title="2.5 Common Confusion"></a>2.5 Common Confusion</h2><ul>
+<li>Convenience initializers must call another initializer in the same class.</li>
+<li>Failable initializers return nil, need to unwrap.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/Swift%E5%88%9D%E5%A7%8B%E5%8C%96%E5%99%A8/" data-id="cmd881wdo000fddk7elf2hdw5" data-title="Swift中的初始化器（构造方法）" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/dynamic与静态库区别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/dynamic%E4%B8%8E%E9%9D%99%E6%80%81%E5%BA%93%E5%8C%BA%E5%88%AB/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/07/17/iOS/dynamic%E4%B8%8E%E9%9D%99%E6%80%81%E5%BA%93%E5%8C%BA%E5%88%AB/">dynamic与静态库的区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-概念与本质"><a href="#1-1-概念与本质" class="headerlink" title="1.1 概念与本质"></a>1.1 概念与本质</h2><ul>
+<li><strong>静态库（Static Library）</strong>：编译时直接打包进可执行文件，扩展名.a。</li>
+<li><strong>动态库（Dynamic Library）</strong>：运行时动态加载，扩展名.dylib&#x2F;.framework。</li>
+</ul>
+<h2 id="1-2-主要区别"><a href="#1-2-主要区别" class="headerlink" title="1.2 主要区别"></a>1.2 主要区别</h2><ul>
+<li>链接时机：静态库在编译时，动态库在运行时。</li>
+<li>体积：静态库会增加主程序体积，动态库可复用、节省空间。</li>
+<li>更新：动态库可独立升级，静态库需重新编译主程序。</li>
+<li>资源占用：动态库可被多个进程共享，静态库各自占用。</li>
+</ul>
+<h2 id="1-3-代码-配置示例"><a href="#1-3-代码-配置示例" class="headerlink" title="1.3 代码&#x2F;配置示例"></a>1.3 代码&#x2F;配置示例</h2><ul>
+<li>Xcode 添加静态库：Target → Build Phases → Link Binary With Libraries</li>
+<li>动态库：需设置“Embedded Binaries”</li>
+</ul>
+<h2 id="1-4-业务场景"><a href="#1-4-业务场景" class="headerlink" title="1.4 业务场景"></a>1.4 业务场景</h2><ul>
+<li>SDK&#x2F;第三方库分发、热修复、插件化等。</li>
+</ul>
+<h2 id="1-5-易混淆点"><a href="#1-5-易混淆点" class="headerlink" title="1.5 易混淆点"></a>1.5 易混淆点</h2><ul>
+<li>iOS 8 以前不支持动态 framework。</li>
+<li>动态库需注意 App Store 审核政策。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept-Essence"><a href="#2-1-Concept-Essence" class="headerlink" title="2.1 Concept &amp; Essence"></a>2.1 Concept &amp; Essence</h2><ul>
+<li><strong>Static Library</strong>: Linked at compile time, extension .a</li>
+<li><strong>Dynamic Library</strong>: Loaded at runtime, extension .dylib&#x2F;.framework</li>
+</ul>
+<h2 id="2-2-Key-Differences"><a href="#2-2-Key-Differences" class="headerlink" title="2.2 Key Differences"></a>2.2 Key Differences</h2><ul>
+<li>Link time: static (compile), dynamic (runtime)</li>
+<li>Size: static increases app size, dynamic saves space</li>
+<li>Update: dynamic can be updated independently</li>
+<li>Resource: dynamic can be shared, static is duplicated</li>
+</ul>
+<h2 id="2-3-Code-Config-Example"><a href="#2-3-Code-Config-Example" class="headerlink" title="2.3 Code&#x2F;Config Example"></a>2.3 Code&#x2F;Config Example</h2><ul>
+<li>Xcode add static: Target → Build Phases → Link Binary With Libraries</li>
+<li>Dynamic: set “Embedded Binaries”</li>
+</ul>
+<h2 id="2-4-Business-Scenarios"><a href="#2-4-Business-Scenarios" class="headerlink" title="2.4 Business Scenarios"></a>2.4 Business Scenarios</h2><ul>
+<li>SDK&#x2F;3rd-party distribution, hotfix, plugin, etc.</li>
+</ul>
+<h2 id="2-5-Common-Confusions"><a href="#2-5-Common-Confusions" class="headerlink" title="2.5 Common Confusions"></a>2.5 Common Confusions</h2><ul>
+<li>iOS &lt;8 no dynamic framework</li>
+<li>Dynamic library and App Store policy</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/dynamic%E4%B8%8E%E9%9D%99%E6%80%81%E5%BA%93%E5%8C%BA%E5%88%AB/" data-id="cmd881wdp000jddk7dmzsbma1" data-title="dynamic与静态库的区别" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -769,6 +801,11 @@
 
   
 
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+  </nav>
 
 </section>
         
@@ -806,23 +843,23 @@
       <ul>
         
           <li>
-            <a href="/2025/07/08/iOS/Open-Public-Internal%E5%85%B3%E9%94%AE%E5%AD%97/">Open-Public...权限修饰符详解</a>
+            <a href="/2025/07/18/iOS/%E6%9C%AA%E6%9D%A5%E8%B6%8B%E5%8A%BF%E4%B8%8E%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF%E5%BB%BA%E8%AE%AE/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2025/07/08/iOS/closure%E9%97%AD%E5%8C%85block%E7%9A%84%E5%8C%BA%E5%88%AB/">closure闭包与OC中block的区别</a>
+            <a href="/2025/07/17/iOS/CopyOnWrite/">Copy-on-write（COW）</a>
           </li>
         
           <li>
-            <a href="/2025/07/08/iOS/classVStruct/">struct 与 class</a>
+            <a href="/2025/07/17/iOS/Error%E5%85%BC%E5%AE%B9NSError/">Error兼容NSError</a>
           </li>
         
           <li>
-            <a href="/2025/07/08/iOS/mutating%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%BD%9C%E7%94%A8/">mutating关键字的作用</a>
+            <a href="/2025/07/17/iOS/KVC_KVO/">KVC与KVO</a>
           </li>
         
           <li>
-            <a href="/2025/07/08/iOS/%E5%AD%98%E5%82%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8C%BA%E5%88%AB/">存储属性和计算属性的区别</a>
+            <a href="/2025/07/17/iOS/OpenPublic%E5%8C%BA%E5%88%AB/">Open与Public的区别</a>
           </li>
         
       </ul>

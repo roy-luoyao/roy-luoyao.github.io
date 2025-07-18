@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>获取一个String的长度 | Roy Luo Yao‘s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1. 中文答案1.1 获取方式 使用 count 属性获取字符数。 注意 Swift 的 String 支持 Unicode，count 统计的是字符（而非字节）。  1.2 为什么要这样设计？ 保证多语言&#x2F;表情符号等复杂字符的正确统计。 提升国际化和用户体验。  1.3 实际代码示例12345let str &#x3D; &quot;你好abc😊&quot;print(str.count) &#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="获取一个String的长度">
+<meta property="og:url" content="https://roy-luoyao.github.io/2025/07/17/iOS/String%E9%95%BF%E5%BA%A6%E8%8E%B7%E5%8F%96/index.html">
+<meta property="og:site_name" content="Roy Luo Yao‘s Blog">
+<meta property="og:description" content="1. 中文答案1.1 获取方式 使用 count 属性获取字符数。 注意 Swift 的 String 支持 Unicode，count 统计的是字符（而非字节）。  1.2 为什么要这样设计？ 保证多语言&#x2F;表情符号等复杂字符的正确统计。 提升国际化和用户体验。  1.3 实际代码示例12345let str &#x3D; &quot;你好abc😊&quot;print(str.count) &#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-07-16T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-07-17T08:12:29.918Z">
+<meta property="article:author" content="Roy Luo Yao">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Roy Luo Yao‘s Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Roy Luo Yao‘s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">A place to share my thoughts and ideas</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      <button style="margin-left:20px;padding:6px 16px;border-radius:4px;background:#0072c6;color:#fff;border:none;cursor:pointer;font-size:15px;" onclick="window.location.href='ms-outlook://compose?to=yao.luo@hsbc.com&subject=Hello%20from%20Hexo&body=Hi%2C%20this%20is%20a%20test%20email.'">联系我（Outlook）</button>
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://roy-luoyao.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-iOS/String长度获取" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/String%E9%95%BF%E5%BA%A6%E8%8E%B7%E5%8F%96/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      获取一个String的长度
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-获取方式"><a href="#1-1-获取方式" class="headerlink" title="1.1 获取方式"></a>1.1 获取方式</h2><ol>
+<li>使用 <code>count</code> 属性获取字符数。</li>
+<li>注意 Swift 的 String 支持 Unicode，count 统计的是字符（而非字节）。</li>
+</ol>
+<h2 id="1-2-为什么要这样设计？"><a href="#1-2-为什么要这样设计？" class="headerlink" title="1.2 为什么要这样设计？"></a>1.2 为什么要这样设计？</h2><ul>
+<li>保证多语言&#x2F;表情符号等复杂字符的正确统计。</li>
+<li>提升国际化和用户体验。</li>
+</ul>
+<h2 id="1-3-实际代码示例"><a href="#1-3-实际代码示例" class="headerlink" title="1.3 实际代码示例"></a>1.3 实际代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str <span class="operator">=</span> <span class="string">&quot;你好abc😊&quot;</span></span><br><span class="line"><span class="built_in">print</span>(str.count) <span class="comment">// 6</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> nsStr: <span class="type">NSString</span> <span class="operator">=</span> str <span class="keyword">as</span> <span class="type">NSString</span></span><br><span class="line"><span class="built_in">print</span>(nsStr.length) <span class="comment">// 8（UTF-16 单元数）</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-4-业务-用户价值"><a href="#1-4-业务-用户价值" class="headerlink" title="1.4 业务&#x2F;用户价值"></a>1.4 业务&#x2F;用户价值</h2><ul>
+<li>保证字符统计准确，避免 UI 错位或截断。</li>
+<li>支持多语言和表情，提升产品国际化能力。</li>
+</ul>
+<h2 id="1-5-易混淆点"><a href="#1-5-易混淆点" class="headerlink" title="1.5 易混淆点"></a>1.5 易混淆点</h2><ul>
+<li>String.count 是字符数，NSString.length 是 UTF-16 单元数。</li>
+<li>部分 emoji&#x2F;特殊字符在 NSString.length 下会统计为2。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-How-to-get-String-length"><a href="#2-1-How-to-get-String-length" class="headerlink" title="2.1 How to get String length"></a>2.1 How to get String length</h2><ol>
+<li>Use <code>count</code> property for character count.</li>
+<li>Swift String supports Unicode, count is for characters, not bytes.</li>
+</ol>
+<h2 id="2-2-Why-this-design"><a href="#2-2-Why-this-design" class="headerlink" title="2.2 Why this design?"></a>2.2 Why this design?</h2><ul>
+<li>Ensures correct count for multi-language&#x2F;emoji.</li>
+<li>Better i18n and UX.</li>
+</ul>
+<h2 id="2-3-Code-Example"><a href="#2-3-Code-Example" class="headerlink" title="2.3 Code Example"></a>2.3 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str <span class="operator">=</span> <span class="string">&quot;你好abc😊&quot;</span></span><br><span class="line"><span class="built_in">print</span>(str.count) <span class="comment">// 6</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> nsStr: <span class="type">NSString</span> <span class="operator">=</span> str <span class="keyword">as</span> <span class="type">NSString</span></span><br><span class="line"><span class="built_in">print</span>(nsStr.length) <span class="comment">// 8 (UTF-16 units)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-Business-User-Value"><a href="#2-4-Business-User-Value" class="headerlink" title="2.4 Business&#x2F;User Value"></a>2.4 Business&#x2F;User Value</h2><ul>
+<li>Accurate character count, avoids UI bugs.</li>
+<li>Supports i18n and emoji, better product reach.</li>
+</ul>
+<h2 id="2-5-Common-Confusion"><a href="#2-5-Common-Confusion" class="headerlink" title="2.5 Common Confusion"></a>2.5 Common Confusion</h2><ul>
+<li>String.count &#x3D; character count, NSString.length &#x3D; UTF-16 units.</li>
+<li>Some emoji&#x2F;special chars count as 2 in NSString.length.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/String%E9%95%BF%E5%BA%A6%E8%8E%B7%E5%8F%96/" data-id="cmd881wdq000xddk765hkhoso" data-title="获取一个String的长度" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/07/17/iOS/SwiftUI%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6%E4%B8%8E%E4%B8%9A%E5%8A%A1%E4%BB%B7%E5%80%BC/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          SwiftUI 核心机制与业务价值
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/07/17/iOS/%E4%B8%8A%E6%9E%B6%E5%AE%A1%E6%A0%B8%E4%B8%8E%E5%90%88%E8%A7%84%E8%A6%81%E7%82%B9/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">iOS App 上架审核与合规要点</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">七月 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/07/18/iOS/%E6%9C%AA%E6%9D%A5%E8%B6%8B%E5%8A%BF%E4%B8%8E%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF%E5%BB%BA%E8%AE%AE/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/17/iOS/CopyOnWrite/">Copy-on-write（COW）</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/17/iOS/Error%E5%85%BC%E5%AE%B9NSError/">Error兼容NSError</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/17/iOS/KVC_KVO/">KVC与KVO</a>
+          </li>
+        
+          <li>
+            <a href="/2025/07/17/iOS/OpenPublic%E5%8C%BA%E5%88%AB/">Open与Public的区别</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap"></div>
+  <h3 class="widget-title">Luo Yao的简历</h3>
+  <div class="widget">
+    <a href="/resume.pdf" target="_blank">点击查看Luo Yao的简历</a>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Roy Luo Yao<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
