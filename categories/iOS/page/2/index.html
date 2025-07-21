@@ -75,154 +75,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-iOS/guard_defer用法区别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/07/17/iOS/guard_defer%E7%94%A8%E6%B3%95%E5%8C%BA%E5%88%AB/" class="article-date">
-  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/07/17/iOS/guard_defer%E7%94%A8%E6%B3%95%E5%8C%BA%E5%88%AB/">guard 与 defer 用法与区别</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-概念与用法"><a href="#1-1-概念与用法" class="headerlink" title="1.1 概念与用法"></a>1.1 概念与用法</h2><ul>
-<li>guard：提前校验条件，不满足则提前退出，提升可读性。</li>
-<li>defer：延迟执行，函数结束前必执行，常用于资源释放。</li>
-</ul>
-<h2 id="1-2-代码示例"><a href="#1-2-代码示例" class="headerlink" title="1.2 代码示例"></a>1.2 代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">foo</span>(<span class="keyword">_</span> <span class="params">name</span>: <span class="type">String</span>?) &#123;</span><br><span class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> n <span class="operator">=</span> name <span class="keyword">else</span> &#123; <span class="keyword">return</span> &#125;</span><br><span class="line">    <span class="keyword">defer</span> &#123; <span class="built_in">print</span>(<span class="string">&quot;end&quot;</span>) &#125;</span><br><span class="line">    <span class="built_in">print</span>(n)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
-<li>guard：参数校验、早返回。</li>
-<li>defer：文件&#x2F;锁&#x2F;资源释放。</li>
-</ul>
-<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
-<li>guard 只能提前退出，不能继续。</li>
-<li>defer 多个时，后写先执行（栈）。</li>
-</ul>
-<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
-<li>defer 的实现原理？编译器插入，保证执行。</li>
-</ul>
-<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept-Usage"><a href="#2-1-Concept-Usage" class="headerlink" title="2.1 Concept &amp; Usage"></a>2.1 Concept &amp; Usage</h2><ul>
-<li>guard: early check, exit if not met, improves readability.</li>
-<li>defer: delayed execution, always runs before function ends, for resource release.</li>
-</ul>
-<h2 id="2-2-Code-Example"><a href="#2-2-Code-Example" class="headerlink" title="2.2 Code Example"></a>2.2 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">foo</span>(<span class="keyword">_</span> <span class="params">name</span>: <span class="type">String</span>?) &#123;</span><br><span class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> n <span class="operator">=</span> name <span class="keyword">else</span> &#123; <span class="keyword">return</span> &#125;</span><br><span class="line">    <span class="keyword">defer</span> &#123; <span class="built_in">print</span>(<span class="string">&quot;end&quot;</span>) &#125;</span><br><span class="line">    <span class="built_in">print</span>(n)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
-<li>guard: param check, early return.</li>
-<li>defer: file&#x2F;lock&#x2F;resource release.</li>
-</ul>
-<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
-<li>guard: must exit, can’t continue.</li>
-<li>defer: LIFO if multiple.</li>
-</ul>
-<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
-<li>defer principle? Compiler inserts, ensures execution.</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/guard_defer%E7%94%A8%E6%B3%95%E5%8C%BA%E5%88%AB/" data-id="cmdcsgd4e000pf3k7e9hj1g3h" data-title="guard 与 defer 用法与区别" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-iOS/lazy懒加载" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/07/17/iOS/lazy%E6%87%92%E5%8A%A0%E8%BD%BD/" class="article-date">
-  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/07/17/iOS/lazy%E6%87%92%E5%8A%A0%E8%BD%BD/">lazy懒加载</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-概念与原理"><a href="#1-1-概念与原理" class="headerlink" title="1.1 概念与原理"></a>1.1 概念与原理</h2><p><code>lazy</code> 关键字用于延迟属性的初始化，只有在第一次访问时才会计算和分配内存，适合开销大或依赖外部条件的属性。</p>
-<h2 id="1-2-代码示例"><a href="#1-2-代码示例" class="headerlink" title="1.2 代码示例"></a>1.2 代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">DataManager</span> &#123;</span><br><span class="line">    <span class="keyword">lazy</span> <span class="keyword">var</span> data: [<span class="type">String</span>] <span class="operator">=</span> loadData()</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">loadData</span>() -&gt; [<span class="type">String</span>] &#123; [<span class="string">&quot;A&quot;</span>, <span class="string">&quot;B&quot;</span>, <span class="string">&quot;C&quot;</span>] &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
-<li>大型数据、图片、网络请求等按需加载。</li>
-</ul>
-<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
-<li>lazy 属性必须是 var，不能是 let。</li>
-<li>lazy 属性不能用于常量或计算属性。</li>
-<li>多线程下需注意线程安全。</li>
-</ul>
-<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
-<li>lazy 属性何时释放？随对象生命周期。</li>
-<li>lazy 属性和延迟存储属性的区别？本质一致，强调使用场景。</li>
-</ul>
-<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept-Principle"><a href="#2-1-Concept-Principle" class="headerlink" title="2.1 Concept &amp; Principle"></a>2.1 Concept &amp; Principle</h2><p>The <code>lazy</code> keyword delays property initialization until first access, ideal for expensive or externally dependent properties.</p>
-<h2 id="2-2-Code-Example"><a href="#2-2-Code-Example" class="headerlink" title="2.2 Code Example"></a>2.2 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">DataManager</span> &#123;</span><br><span class="line">    <span class="keyword">lazy</span> <span class="keyword">var</span> data: [<span class="type">String</span>] <span class="operator">=</span> loadData()</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">loadData</span>() -&gt; [<span class="type">String</span>] &#123; [<span class="string">&quot;A&quot;</span>, <span class="string">&quot;B&quot;</span>, <span class="string">&quot;C&quot;</span>] &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
-<li>Large data, images, network requests, etc. on demand.</li>
-</ul>
-<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
-<li>lazy must be var, not let.</li>
-<li>Not for constants or computed properties.</li>
-<li>Thread safety concerns in multithreading.</li>
-</ul>
-<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
-<li>When is lazy property released? With object lifecycle.</li>
-<li>Difference with lazy stored property? Essentially the same, focus on usage scenario.</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/lazy%E6%87%92%E5%8A%A0%E8%BD%BD/" data-id="cmdcsgd4f000tf3k763rgc8qw" data-title="lazy懒加载" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
     <article id="post-iOS/dynamic与静态库区别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/07/17/iOS/dynamic%E4%B8%8E%E9%9D%99%E6%80%81%E5%BA%93%E5%8C%BA%E5%88%AB/" class="article-date">
@@ -295,7 +147,155 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/dynamic%E4%B8%8E%E9%9D%99%E6%80%81%E5%BA%93%E5%8C%BA%E5%88%AB/" data-id="cmdcsgd4f000vf3k797q38lxt" data-title="dynamic与静态库的区别" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/dynamic%E4%B8%8E%E9%9D%99%E6%80%81%E5%BA%93%E5%8C%BA%E5%88%AB/" data-id="cmdct75k9000ptqk708tne0x7" data-title="dynamic与静态库的区别" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/guard_defer用法区别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/guard_defer%E7%94%A8%E6%B3%95%E5%8C%BA%E5%88%AB/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/07/17/iOS/guard_defer%E7%94%A8%E6%B3%95%E5%8C%BA%E5%88%AB/">guard 与 defer 用法与区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-概念与用法"><a href="#1-1-概念与用法" class="headerlink" title="1.1 概念与用法"></a>1.1 概念与用法</h2><ul>
+<li>guard：提前校验条件，不满足则提前退出，提升可读性。</li>
+<li>defer：延迟执行，函数结束前必执行，常用于资源释放。</li>
+</ul>
+<h2 id="1-2-代码示例"><a href="#1-2-代码示例" class="headerlink" title="1.2 代码示例"></a>1.2 代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">foo</span>(<span class="keyword">_</span> <span class="params">name</span>: <span class="type">String</span>?) &#123;</span><br><span class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> n <span class="operator">=</span> name <span class="keyword">else</span> &#123; <span class="keyword">return</span> &#125;</span><br><span class="line">    <span class="keyword">defer</span> &#123; <span class="built_in">print</span>(<span class="string">&quot;end&quot;</span>) &#125;</span><br><span class="line">    <span class="built_in">print</span>(n)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
+<li>guard：参数校验、早返回。</li>
+<li>defer：文件&#x2F;锁&#x2F;资源释放。</li>
+</ul>
+<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
+<li>guard 只能提前退出，不能继续。</li>
+<li>defer 多个时，后写先执行（栈）。</li>
+</ul>
+<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
+<li>defer 的实现原理？编译器插入，保证执行。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept-Usage"><a href="#2-1-Concept-Usage" class="headerlink" title="2.1 Concept &amp; Usage"></a>2.1 Concept &amp; Usage</h2><ul>
+<li>guard: early check, exit if not met, improves readability.</li>
+<li>defer: delayed execution, always runs before function ends, for resource release.</li>
+</ul>
+<h2 id="2-2-Code-Example"><a href="#2-2-Code-Example" class="headerlink" title="2.2 Code Example"></a>2.2 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">foo</span>(<span class="keyword">_</span> <span class="params">name</span>: <span class="type">String</span>?) &#123;</span><br><span class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> n <span class="operator">=</span> name <span class="keyword">else</span> &#123; <span class="keyword">return</span> &#125;</span><br><span class="line">    <span class="keyword">defer</span> &#123; <span class="built_in">print</span>(<span class="string">&quot;end&quot;</span>) &#125;</span><br><span class="line">    <span class="built_in">print</span>(n)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
+<li>guard: param check, early return.</li>
+<li>defer: file&#x2F;lock&#x2F;resource release.</li>
+</ul>
+<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
+<li>guard: must exit, can’t continue.</li>
+<li>defer: LIFO if multiple.</li>
+</ul>
+<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
+<li>defer principle? Compiler inserts, ensures execution.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/guard_defer%E7%94%A8%E6%B3%95%E5%8C%BA%E5%88%AB/" data-id="cmdct75k9000rtqk7d2tmdgx3" data-title="guard 与 defer 用法与区别" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/lazy懒加载" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/lazy%E6%87%92%E5%8A%A0%E8%BD%BD/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/07/17/iOS/lazy%E6%87%92%E5%8A%A0%E8%BD%BD/">lazy懒加载</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-概念与原理"><a href="#1-1-概念与原理" class="headerlink" title="1.1 概念与原理"></a>1.1 概念与原理</h2><p><code>lazy</code> 关键字用于延迟属性的初始化，只有在第一次访问时才会计算和分配内存，适合开销大或依赖外部条件的属性。</p>
+<h2 id="1-2-代码示例"><a href="#1-2-代码示例" class="headerlink" title="1.2 代码示例"></a>1.2 代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">DataManager</span> &#123;</span><br><span class="line">    <span class="keyword">lazy</span> <span class="keyword">var</span> data: [<span class="type">String</span>] <span class="operator">=</span> loadData()</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">loadData</span>() -&gt; [<span class="type">String</span>] &#123; [<span class="string">&quot;A&quot;</span>, <span class="string">&quot;B&quot;</span>, <span class="string">&quot;C&quot;</span>] &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
+<li>大型数据、图片、网络请求等按需加载。</li>
+</ul>
+<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
+<li>lazy 属性必须是 var，不能是 let。</li>
+<li>lazy 属性不能用于常量或计算属性。</li>
+<li>多线程下需注意线程安全。</li>
+</ul>
+<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
+<li>lazy 属性何时释放？随对象生命周期。</li>
+<li>lazy 属性和延迟存储属性的区别？本质一致，强调使用场景。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept-Principle"><a href="#2-1-Concept-Principle" class="headerlink" title="2.1 Concept &amp; Principle"></a>2.1 Concept &amp; Principle</h2><p>The <code>lazy</code> keyword delays property initialization until first access, ideal for expensive or externally dependent properties.</p>
+<h2 id="2-2-Code-Example"><a href="#2-2-Code-Example" class="headerlink" title="2.2 Code Example"></a>2.2 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">DataManager</span> &#123;</span><br><span class="line">    <span class="keyword">lazy</span> <span class="keyword">var</span> data: [<span class="type">String</span>] <span class="operator">=</span> loadData()</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">loadData</span>() -&gt; [<span class="type">String</span>] &#123; [<span class="string">&quot;A&quot;</span>, <span class="string">&quot;B&quot;</span>, <span class="string">&quot;C&quot;</span>] &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
+<li>Large data, images, network requests, etc. on demand.</li>
+</ul>
+<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
+<li>lazy must be var, not let.</li>
+<li>Not for constants or computed properties.</li>
+<li>Thread safety concerns in multithreading.</li>
+</ul>
+<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
+<li>When is lazy property released? With object lifecycle.</li>
+<li>Difference with lazy stored property? Essentially the same, focus on usage scenario.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/lazy%E6%87%92%E5%8A%A0%E8%BD%BD/" data-id="cmdct75k9000ttqk77oyshvje" data-title="lazy懒加载" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -371,7 +371,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/static_class%E5%8C%BA%E5%88%AB/" data-id="cmdcsgd4f000xf3k745jygaq7" data-title="static 与 class 的区别" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/static_class%E5%8C%BA%E5%88%AB/" data-id="cmdct75ka000xtqk72qpfha34" data-title="static 与 class 的区别" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -451,83 +451,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/strong_weak_unowned%E5%8C%BA%E5%88%AB/" data-id="cmdcsgd4g000zf3k7dlga0n56" data-title="strong、weak、unowned的区别" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-iOS/上架审核与合规要点" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/07/17/iOS/%E4%B8%8A%E6%9E%B6%E5%AE%A1%E6%A0%B8%E4%B8%8E%E5%90%88%E8%A7%84%E8%A6%81%E7%82%B9/" class="article-date">
-  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/07/17/iOS/%E4%B8%8A%E6%9E%B6%E5%AE%A1%E6%A0%B8%E4%B8%8E%E5%90%88%E8%A7%84%E8%A6%81%E7%82%B9/">iOS App 上架审核与合规要点</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-审核流程"><a href="#1-1-审核流程" class="headerlink" title="1.1 审核流程"></a>1.1 审核流程</h2><ul>
-<li>提交 App Store Connect、填写元数据、上传包、等待审核、反馈修正。</li>
-</ul>
-<h2 id="1-2-合规要点"><a href="#1-2-合规要点" class="headerlink" title="1.2 合规要点"></a>1.2 合规要点</h2><ul>
-<li>隐私政策、数据收集、支付合规、内容合规、第三方 SDK 合规。</li>
-</ul>
-<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
-<li>新产品发布、功能大改、合规整改。</li>
-</ul>
-<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
-<li>审核被拒常见原因：隐私、支付、内容、崩溃。</li>
-<li>合规需持续跟进政策。</li>
-</ul>
-<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
-<li>如何提升通过率？自查、模拟审核、文档齐全。</li>
-<li>合规与业务冲突如何平衡？灰度、A&#x2F;B、沟通。</li>
-</ul>
-<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Review-Flow"><a href="#2-1-Review-Flow" class="headerlink" title="2.1 Review Flow"></a>2.1 Review Flow</h2><ul>
-<li>Submit to App Store Connect, metadata, upload, wait, feedback.</li>
-</ul>
-<h2 id="2-2-Compliance"><a href="#2-2-Compliance" class="headerlink" title="2.2 Compliance"></a>2.2 Compliance</h2><ul>
-<li>Privacy, data, payment, content, SDK.</li>
-</ul>
-<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
-<li>New release, major update, compliance fix.</li>
-</ul>
-<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
-<li>Rejection: privacy, payment, content, crash.</li>
-<li>Compliance: follow policy.</li>
-</ul>
-<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
-<li>Pass rate? Self-check, mock review, doc.</li>
-<li>Balance? Gray, A&#x2F;B, comms.</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E4%B8%8A%E6%9E%B6%E5%AE%A1%E6%A0%B8%E4%B8%8E%E5%90%88%E8%A7%84%E8%A6%81%E7%82%B9/" data-id="cmdcsgd4g0011f3k71ieu1m3g" data-title="iOS App 上架审核与合规要点" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/strong_weak_unowned%E5%8C%BA%E5%88%AB/" data-id="cmdct75ka000ztqk7cls7gh6d" data-title="strong、weak、unowned的区别" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -605,7 +529,83 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/throws%E5%92%8Crethrows%E7%94%A8%E6%B3%95/" data-id="cmdcsgd4g0013f3k76icrd5i3" data-title="throws和rethrows的用法" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/throws%E5%92%8Crethrows%E7%94%A8%E6%B3%95/" data-id="cmdct75ka0011tqk7acmgb2p4" data-title="throws和rethrows的用法" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/上架审核与合规要点" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/%E4%B8%8A%E6%9E%B6%E5%AE%A1%E6%A0%B8%E4%B8%8E%E5%90%88%E8%A7%84%E8%A6%81%E7%82%B9/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/07/17/iOS/%E4%B8%8A%E6%9E%B6%E5%AE%A1%E6%A0%B8%E4%B8%8E%E5%90%88%E8%A7%84%E8%A6%81%E7%82%B9/">iOS App 上架审核与合规要点</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-审核流程"><a href="#1-1-审核流程" class="headerlink" title="1.1 审核流程"></a>1.1 审核流程</h2><ul>
+<li>提交 App Store Connect、填写元数据、上传包、等待审核、反馈修正。</li>
+</ul>
+<h2 id="1-2-合规要点"><a href="#1-2-合规要点" class="headerlink" title="1.2 合规要点"></a>1.2 合规要点</h2><ul>
+<li>隐私政策、数据收集、支付合规、内容合规、第三方 SDK 合规。</li>
+</ul>
+<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
+<li>新产品发布、功能大改、合规整改。</li>
+</ul>
+<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
+<li>审核被拒常见原因：隐私、支付、内容、崩溃。</li>
+<li>合规需持续跟进政策。</li>
+</ul>
+<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
+<li>如何提升通过率？自查、模拟审核、文档齐全。</li>
+<li>合规与业务冲突如何平衡？灰度、A&#x2F;B、沟通。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Review-Flow"><a href="#2-1-Review-Flow" class="headerlink" title="2.1 Review Flow"></a>2.1 Review Flow</h2><ul>
+<li>Submit to App Store Connect, metadata, upload, wait, feedback.</li>
+</ul>
+<h2 id="2-2-Compliance"><a href="#2-2-Compliance" class="headerlink" title="2.2 Compliance"></a>2.2 Compliance</h2><ul>
+<li>Privacy, data, payment, content, SDK.</li>
+</ul>
+<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
+<li>New release, major update, compliance fix.</li>
+</ul>
+<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
+<li>Rejection: privacy, payment, content, crash.</li>
+<li>Compliance: follow policy.</li>
+</ul>
+<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
+<li>Pass rate? Self-check, mock review, doc.</li>
+<li>Balance? Gray, A&#x2F;B, comms.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E4%B8%8A%E6%9E%B6%E5%AE%A1%E6%A0%B8%E4%B8%8E%E5%90%88%E8%A7%84%E8%A6%81%E7%82%B9/" data-id="cmdct75kb0013tqk74eevaz7c" data-title="iOS App 上架审核与合规要点" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -683,7 +683,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E4%B8%9A%E5%8A%A1%E6%9E%B6%E6%9E%84%E4%B8%8E%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/" data-id="cmdcsgd4h0015f3k72j0j6sop" data-title="iOS 业务架构与团队协作" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E4%B8%9A%E5%8A%A1%E6%9E%B6%E6%9E%84%E4%B8%8E%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/" data-id="cmdct75kb0015tqk7g5bmfh0u" data-title="iOS 业务架构与团队协作" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -759,7 +759,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E4%B8%8E%E9%87%8D%E6%9E%84%E5%AE%9E%E8%B7%B5/" data-id="cmdcsgd4h0017f3k7e8t61rgj" data-title="iOS 代码规范与重构实践" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E4%B8%8E%E9%87%8D%E6%9E%84%E5%AE%9E%E8%B7%B5/" data-id="cmdct75kb0017tqk7hlaage6q" data-title="iOS 代码规范与重构实践" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -771,9 +771,9 @@
 
 
   
-    <article id="post-iOS/内存管理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-iOS/典型业务场景技术方案" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2025/07/17/iOS/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" class="article-date">
+    <a href="/2025/07/17/iOS/%E5%85%B8%E5%9E%8B%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%E6%8A%80%E6%9C%AF%E6%96%B9%E6%A1%88/" class="article-date">
   <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
 </a>
     
@@ -789,7 +789,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/07/17/iOS/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">iOS 内存管理（ARC/循环引用）</a>
+      <a class="p-name article-title" href="/2025/07/17/iOS/%E5%85%B8%E5%9E%8B%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%E6%8A%80%E6%9C%AF%E6%96%B9%E6%A1%88/">iOS 典型业务场景技术方案</a>
     </h1>
   
 
@@ -797,45 +797,59 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-概念与机制"><a href="#1-1-概念与机制" class="headerlink" title="1.1 概念与机制"></a>1.1 概念与机制</h2><ul>
-<li>ARC（自动引用计数）：编译器自动插入 retain&#x2F;release，管理对象生命周期。</li>
-<li>循环引用：对象间强引用导致内存无法释放。</li>
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-典型场景"><a href="#1-1-典型场景" class="headerlink" title="1.1 典型场景"></a>1.1 典型场景</h2><ul>
+<li>登录注册、支付、IM、音视频、地图、推送、埋点、A&#x2F;B 测试。</li>
 </ul>
-<h2 id="1-2-代码示例"><a href="#1-2-代码示例" class="headerlink" title="1.2 代码示例"></a>1.2 代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span> &#123; <span class="keyword">var</span> b: <span class="type">B</span>? &#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span> &#123; <span class="keyword">weak</span> <span class="keyword">var</span> a: <span class="type">A</span>? &#125;</span><br></pre></td></tr></table></figure>
-
+<h2 id="1-2-技术方案"><a href="#1-2-技术方案" class="headerlink" title="1.2 技术方案"></a>1.2 技术方案</h2><ul>
+<li>登录：OAuth、验证码、Keychain。</li>
+<li>支付：Apple Pay、三方 SDK。</li>
+<li>IM：WebSocket、消息队列。</li>
+<li>音视频：AVFoundation、RTC。</li>
+<li>地图：MapKit、高德。</li>
+<li>推送：APNs、极光。</li>
+<li>埋点：埋点 SDK、无埋点。</li>
+<li>A&#x2F;B：分流、灰度。</li>
+</ul>
 <h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
-<li>视图控制器、闭包、数据模型等。</li>
+<li>大型 App、复杂功能、用户增长。</li>
 </ul>
 <h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
-<li>weak&#x2F;unowned 区别：weak 可为 nil，unowned 不可。</li>
-<li>闭包默认强引用 self，需 [weak self]。</li>
+<li>方案选型需结合业务、合规、成本。</li>
+<li>各场景有专用最佳实践。</li>
 </ul>
 <h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
-<li>ARC 底层？插入 retain&#x2F;release&#x2F;autorelease。</li>
-<li>如何检测循环引用？工具&#x2F;内存分析。</li>
+<li>如何统一技术栈？中台、服务化、SDK。</li>
+<li>业务快速变更如何支撑？插件化、低代码。</li>
 </ul>
-<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept-Mechanism"><a href="#2-1-Concept-Mechanism" class="headerlink" title="2.1 Concept &amp; Mechanism"></a>2.1 Concept &amp; Mechanism</h2><ul>
-<li>ARC: compiler inserts retain&#x2F;release, manages lifecycle.</li>
-<li>Retain cycle: strong refs prevent release.</li>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Typical-Scenarios"><a href="#2-1-Typical-Scenarios" class="headerlink" title="2.1 Typical Scenarios"></a>2.1 Typical Scenarios</h2><ul>
+<li>Login, pay, IM, AV, map, push, analytics, A&#x2F;B.</li>
 </ul>
-<h2 id="2-2-Code-Example"><a href="#2-2-Code-Example" class="headerlink" title="2.2 Code Example"></a>2.2 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span> &#123; <span class="keyword">var</span> b: <span class="type">B</span>? &#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span> &#123; <span class="keyword">weak</span> <span class="keyword">var</span> a: <span class="type">A</span>? &#125;</span><br></pre></td></tr></table></figure>
-
+<h2 id="2-2-Tech-Solution"><a href="#2-2-Tech-Solution" class="headerlink" title="2.2 Tech Solution"></a>2.2 Tech Solution</h2><ul>
+<li>Login: OAuth, code, Keychain.</li>
+<li>Pay: Apple Pay, 3rd SDK.</li>
+<li>IM: WebSocket, MQ.</li>
+<li>AV: AVFoundation, RTC.</li>
+<li>Map: MapKit, Amap.</li>
+<li>Push: APNs, JPush.</li>
+<li>Analytics: SDK, no code.</li>
+<li>A&#x2F;B: split, gray.</li>
+</ul>
 <h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
-<li>View controller, closure, data model, etc.</li>
+<li>Large app, complex, growth.</li>
 </ul>
 <h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
-<li>weak: can be nil; unowned: can’t.</li>
-<li>Closure: strong self by default, use [weak self].</li>
+<li>Choose by business, compliance, cost.</li>
+<li>Each has best practice.</li>
 </ul>
 <h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
-<li>ARC internals? Insert retain&#x2F;release&#x2F;autorelease.</li>
-<li>Detect cycle? Tool&#x2F;memory analysis.</li>
+<li>Unified stack? Middle, service, SDK.</li>
+<li>Fast change? Plugin, low code.</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" data-id="cmdcsgd4i0019f3k7am674ukc" data-title="iOS 内存管理（ARC/循环引用）" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E5%85%B8%E5%9E%8B%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%E6%8A%80%E6%9C%AF%E6%96%B9%E6%A1%88/" data-id="cmdct75kb0019tqk73pebfiqk" data-title="iOS 典型业务场景技术方案" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       

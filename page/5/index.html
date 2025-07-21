@@ -139,7 +139,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/" data-id="cmdcsgd4r002jf3k7ane56vcb" data-title="iOS 线程与并发（GCD/Operation）" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/" data-id="cmdct75kh002jtqk713dp0vtr" data-title="iOS 线程与并发（GCD/Operation）" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -217,7 +217,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E7%BB%84%E4%BB%B6%E5%8C%96%E6%A8%A1%E5%9D%97%E5%8C%96%E5%AE%9E%E8%B7%B5/" data-id="cmdcsgd4r002lf3k777af1sww" data-title="iOS 组件化与模块化实践" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E7%BB%84%E4%BB%B6%E5%8C%96%E6%A8%A1%E5%9D%97%E5%8C%96%E5%AE%9E%E8%B7%B5/" data-id="cmdct75kh002ltqk7c9vr9wfv" data-title="iOS 组件化与模块化实践" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -297,7 +297,75 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86/" data-id="cmdcsgd4r002nf3k79xa9ef1k" data-title="iOS 网络安全与数据加密" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86/" data-id="cmdct75kh002ntqk712zx6e6n" data-title="iOS 网络安全与数据加密" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/自定义下标" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%8B%E6%A0%87/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/07/17/iOS/%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%8B%E6%A0%87/">自定义下标</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-概念与实现"><a href="#1-1-概念与实现" class="headerlink" title="1.1 概念与实现"></a>1.1 概念与实现</h2><p>Swift 支持自定义下标（subscript），让对象像数组一样用 [] 访问和赋值，常用于集合、缓存等。</p>
+<h2 id="1-2-代码示例"><a href="#1-2-代码示例" class="headerlink" title="1.2 代码示例"></a>1.2 代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Matrix</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> grid: [[<span class="type">Int</span>]]</span><br><span class="line">    <span class="keyword">subscript</span>(<span class="params">row</span>: <span class="type">Int</span>, <span class="params">col</span>: <span class="type">Int</span>) -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">        <span class="keyword">get</span> &#123; grid[row][col] &#125;</span><br><span class="line">        <span class="keyword">set</span> &#123; grid[row][col] <span class="operator">=</span> newValue &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
+<li>二维数组、缓存、DSL 等。</li>
+</ul>
+<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
+<li>可定义多参数&#x2F;多类型下标。</li>
+<li>可只读或可读写。</li>
+</ul>
+<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
+<li>下标和方法的区别？语法糖，提升可读性。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept-Implementation"><a href="#2-1-Concept-Implementation" class="headerlink" title="2.1 Concept &amp; Implementation"></a>2.1 Concept &amp; Implementation</h2><p>Swift supports custom subscript, allowing objects to be accessed like arrays, useful for collections, cache, etc.</p>
+<h2 id="2-2-Code-Example"><a href="#2-2-Code-Example" class="headerlink" title="2.2 Code Example"></a>2.2 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Matrix</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> grid: [[<span class="type">Int</span>]]</span><br><span class="line">    <span class="keyword">subscript</span>(<span class="params">row</span>: <span class="type">Int</span>, <span class="params">col</span>: <span class="type">Int</span>) -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">        <span class="keyword">get</span> &#123; grid[row][col] &#125;</span><br><span class="line">        <span class="keyword">set</span> &#123; grid[row][col] <span class="operator">=</span> newValue &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
+<li>2D array, cache, DSL, etc.</li>
+</ul>
+<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
+<li>Multi-parameter&#x2F;type subscript.</li>
+<li>Read-only or read-write.</li>
+</ul>
+<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
+<li>Difference with method? Syntactic sugar for readability.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%8B%E6%A0%87/" data-id="cmdct75ki002ptqk78s0e5yyz" data-title="自定义下标" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -375,75 +443,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/" data-id="cmdcsgd4s002pf3k7626e6b91" data-title="iOS 自动化测试与持续集成" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-iOS/自定义下标" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/07/17/iOS/%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%8B%E6%A0%87/" class="article-date">
-  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/07/17/iOS/%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%8B%E6%A0%87/">自定义下标</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-概念与实现"><a href="#1-1-概念与实现" class="headerlink" title="1.1 概念与实现"></a>1.1 概念与实现</h2><p>Swift 支持自定义下标（subscript），让对象像数组一样用 [] 访问和赋值，常用于集合、缓存等。</p>
-<h2 id="1-2-代码示例"><a href="#1-2-代码示例" class="headerlink" title="1.2 代码示例"></a>1.2 代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Matrix</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> grid: [[<span class="type">Int</span>]]</span><br><span class="line">    <span class="keyword">subscript</span>(<span class="params">row</span>: <span class="type">Int</span>, <span class="params">col</span>: <span class="type">Int</span>) -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">        <span class="keyword">get</span> &#123; grid[row][col] &#125;</span><br><span class="line">        <span class="keyword">set</span> &#123; grid[row][col] <span class="operator">=</span> newValue &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
-<li>二维数组、缓存、DSL 等。</li>
-</ul>
-<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
-<li>可定义多参数&#x2F;多类型下标。</li>
-<li>可只读或可读写。</li>
-</ul>
-<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
-<li>下标和方法的区别？语法糖，提升可读性。</li>
-</ul>
-<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept-Implementation"><a href="#2-1-Concept-Implementation" class="headerlink" title="2.1 Concept &amp; Implementation"></a>2.1 Concept &amp; Implementation</h2><p>Swift supports custom subscript, allowing objects to be accessed like arrays, useful for collections, cache, etc.</p>
-<h2 id="2-2-Code-Example"><a href="#2-2-Code-Example" class="headerlink" title="2.2 Code Example"></a>2.2 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Matrix</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> grid: [[<span class="type">Int</span>]]</span><br><span class="line">    <span class="keyword">subscript</span>(<span class="params">row</span>: <span class="type">Int</span>, <span class="params">col</span>: <span class="type">Int</span>) -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">        <span class="keyword">get</span> &#123; grid[row][col] &#125;</span><br><span class="line">        <span class="keyword">set</span> &#123; grid[row][col] <span class="operator">=</span> newValue &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
-<li>2D array, cache, DSL, etc.</li>
-</ul>
-<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
-<li>Multi-parameter&#x2F;type subscript.</li>
-<li>Read-only or read-write.</li>
-</ul>
-<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
-<li>Difference with method? Syntactic sugar for readability.</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%8B%E6%A0%87/" data-id="cmdcsgd4s002rf3k7filral22" data-title="自定义下标" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/" data-id="cmdct75ki002rtqk77y6c4dz9" data-title="iOS 自动化测试与持续集成" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -521,7 +521,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95/" data-id="cmdcsgd4s002tf3k73yl9aj6p" data-title="Swift自定义构造方法" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95/" data-id="cmdct75ki002ttqk762216fub" data-title="Swift自定义构造方法" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -591,7 +591,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E5%87%BD%E6%95%B0%E5%90%8D%E5%92%8C%E8%A1%8C%E5%8F%B7/" data-id="cmdcsgd4s002vf3k70axggbv6" data-title="获取当前代码的函数名和行号" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E5%87%BD%E6%95%B0%E5%90%8D%E5%92%8C%E8%A1%8C%E5%8F%B7/" data-id="cmdct75kj002vtqk7g1zahw3z" data-title="获取当前代码的函数名和行号" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -665,77 +665,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" data-id="cmdcsgd4s002xf3k74u4v5n8e" data-title="iOS 设计模式与最佳实践" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-iOS/选项类型" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/07/17/iOS/%E9%80%89%E9%A1%B9%E7%B1%BB%E5%9E%8B/" class="article-date">
-  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/07/17/iOS/%E9%80%89%E9%A1%B9%E7%B1%BB%E5%9E%8B/">选项类型（Optional）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-概念与作用"><a href="#1-1-概念与作用" class="headerlink" title="1.1 概念与作用"></a>1.1 概念与作用</h2><p>Optional 用于表示变量可能有值或为 nil，Swift 通过 ? 和 ! 明确区分可选和非可选，提升类型安全。</p>
-<h2 id="1-2-代码示例"><a href="#1-2-代码示例" class="headerlink" title="1.2 代码示例"></a>1.2 代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name: <span class="type">String</span>? <span class="operator">=</span> <span class="literal">nil</span></span><br><span class="line">name <span class="operator">=</span> <span class="string">&quot;Tom&quot;</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> n <span class="operator">=</span> name &#123; <span class="built_in">print</span>(n) &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
-<li>网络数据解析、表单输入、接口兼容等。</li>
-</ul>
-<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
-<li>Optional 不是 null，是枚举（.some&#x2F;.none）。</li>
-<li>强制解包（!）有风险，推荐可选绑定&#x2F;??。</li>
-</ul>
-<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
-<li>Optional 的本质？enum Optional<Wrapped>。</li>
-<li>为什么 Swift 强推 Optional？防止野指针、崩溃。</li>
-</ul>
-<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept-Usage"><a href="#2-1-Concept-Usage" class="headerlink" title="2.1 Concept &amp; Usage"></a>2.1 Concept &amp; Usage</h2><p>Optional means a variable may be nil or have value. Swift uses ? and ! for type safety.</p>
-<h2 id="2-2-Code-Example"><a href="#2-2-Code-Example" class="headerlink" title="2.2 Code Example"></a>2.2 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name: <span class="type">String</span>? <span class="operator">=</span> <span class="literal">nil</span></span><br><span class="line">name <span class="operator">=</span> <span class="string">&quot;Tom&quot;</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> n <span class="operator">=</span> name &#123; <span class="built_in">print</span>(n) &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
-<li>Network parsing, form input, API compatibility, etc.</li>
-</ul>
-<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
-<li>Optional is enum (.some&#x2F;.none), not null.</li>
-<li>Force unwrap (!) is risky, prefer binding&#x2F;??.</li>
-</ul>
-<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
-<li>Optional is enum Optional<Wrapped>.</li>
-<li>Why Swift enforces Optional? Prevents crash&#x2F;pointer bugs.</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E9%80%89%E9%A1%B9%E7%B1%BB%E5%9E%8B/" data-id="cmdcsgd4t002zf3k7aq75cgbh" data-title="选项类型（Optional）" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" data-id="cmdct75kj002xtqk7grwp6geg" data-title="iOS 设计模式与最佳实践" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -813,7 +743,93 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" data-id="cmdcsgd4t0031f3k7bzy7fm8k" data-title="运算符重载（Operator Overload）" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" data-id="cmdct75kj002ztqk76fm37zu5" data-title="运算符重载（Operator Overload）" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/访问控制区别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%8C%BA%E5%88%AB/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/07/17/iOS/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%8C%BA%E5%88%AB/">Open、Public、Internal、File-private、Private的区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-五种访问控制的定义与区别"><a href="#1-1-五种访问控制的定义与区别" class="headerlink" title="1.1 五种访问控制的定义与区别"></a>1.1 五种访问控制的定义与区别</h2><ol>
+<li><strong>open</strong>：最高级别，允许模块外继承和重写。常用于框架&#x2F;库的API暴露。</li>
+<li><strong>public</strong>：允许模块外访问，但不允许继承和重写。适合只读API暴露。</li>
+<li><strong>internal</strong>（默认）：仅限当前模块内访问。适合大多数业务代码。</li>
+<li><strong>fileprivate</strong>：仅限当前文件内访问。用于同文件内的细粒度封装。</li>
+<li><strong>private</strong>：仅限当前作用域（如类&#x2F;结构体&#x2F;扩展）内访问。最严格的封装。</li>
+</ol>
+<h2 id="1-2-为什么要这样设计？"><a href="#1-2-为什么要这样设计？" class="headerlink" title="1.2 为什么要这样设计？"></a>1.2 为什么要这样设计？</h2><ul>
+<li>保证封装性，防止外部误用或破坏内部实现。</li>
+<li>便于团队协作，明确API边界。</li>
+<li>提高代码安全性和可维护性。</li>
+</ul>
+<h2 id="1-3-实际代码示例"><a href="#1-3-实际代码示例" class="headerlink" title="1.3 实际代码示例"></a>1.3 实际代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">func</span> <span class="title function_">speak</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">var</span> name: <span class="type">String</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">init</span>(<span class="params">name</span>: <span class="type">String</span>) &#123; <span class="keyword">self</span>.name <span class="operator">=</span> name &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">internal</span> <span class="keyword">struct</span> <span class="title class_">Order</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> id: <span class="type">Int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fileprivate</span> <span class="keyword">class</span> <span class="title class_">FileHelper</span> &#123;</span><br><span class="line">    <span class="keyword">fileprivate</span> <span class="keyword">func</span> <span class="title function_">doSomething</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">struct</span> <span class="title class_">Secret</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> key: <span class="type">String</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-4-用户体验-业务价值"><a href="#1-4-用户体验-业务价值" class="headerlink" title="1.4 用户体验&#x2F;业务价值"></a>1.4 用户体验&#x2F;业务价值</h2><ul>
+<li>只暴露必要API，减少误用风险。</li>
+<li>便于SDK&#x2F;组件化开发，提升产品稳定性。</li>
+</ul>
+<h2 id="1-5-易混淆点"><a href="#1-5-易混淆点" class="headerlink" title="1.5 易混淆点"></a>1.5 易混淆点</h2><ul>
+<li>open 和 public 的区别：open 允许继承和重写，public 不允许。</li>
+<li>fileprivate 和 private 的区别：fileprivate 跨类型&#x2F;扩展可见，private 仅限本作用域。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Definitions-and-Differences"><a href="#2-1-Definitions-and-Differences" class="headerlink" title="2.1 Definitions and Differences"></a>2.1 Definitions and Differences</h2><ol>
+<li><strong>open</strong>: Highest level, allows subclassing&#x2F;overriding outside the module.</li>
+<li><strong>public</strong>: Accessible outside the module, but no subclassing&#x2F;overriding.</li>
+<li><strong>internal</strong>: Default, accessible only within the module.</li>
+<li><strong>fileprivate</strong>: Accessible only within the same file.</li>
+<li><strong>private</strong>: Accessible only within the same scope.</li>
+</ol>
+<h2 id="2-2-Why-this-design"><a href="#2-2-Why-this-design" class="headerlink" title="2.2 Why this design?"></a>2.2 Why this design?</h2><ul>
+<li>Ensures encapsulation and prevents misuse.</li>
+<li>Clarifies API boundaries for teamwork.</li>
+<li>Improves code safety and maintainability.</li>
+</ul>
+<h2 id="2-3-Code-Example"><a href="#2-3-Code-Example" class="headerlink" title="2.3 Code Example"></a>2.3 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">func</span> <span class="title function_">speak</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">var</span> name: <span class="type">String</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">init</span>(<span class="params">name</span>: <span class="type">String</span>) &#123; <span class="keyword">self</span>.name <span class="operator">=</span> name &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">internal</span> <span class="keyword">struct</span> <span class="title class_">Order</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> id: <span class="type">Int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fileprivate</span> <span class="keyword">class</span> <span class="title class_">FileHelper</span> &#123;</span><br><span class="line">    <span class="keyword">fileprivate</span> <span class="keyword">func</span> <span class="title function_">doSomething</span>() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">struct</span> <span class="title class_">Secret</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> key: <span class="type">String</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-User-Business-Value"><a href="#2-4-User-Business-Value" class="headerlink" title="2.4 User&#x2F;Business Value"></a>2.4 User&#x2F;Business Value</h2><ul>
+<li>Expose only necessary APIs, reduce misuse risk.</li>
+<li>Useful for SDK&#x2F;component development, improves product stability.</li>
+</ul>
+<h2 id="2-5-Common-Confusions"><a href="#2-5-Common-Confusions" class="headerlink" title="2.5 Common Confusions"></a>2.5 Common Confusions</h2><ul>
+<li>open vs public: open allows subclassing&#x2F;overriding, public does not.</li>
+<li>fileprivate vs private: fileprivate is visible across types&#x2F;extensions in the same file, private is not.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%8C%BA%E5%88%AB/" data-id="cmdct75kk0031tqk7dqsid6a1" data-title="Open、Public、Internal、File-private、Private的区别" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
