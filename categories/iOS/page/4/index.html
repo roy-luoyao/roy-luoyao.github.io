@@ -57,7 +57,6 @@
         
           <a class="main-nav-link" href="/archives">Archives</a>
         
-      <button style="margin-left:20px;padding:6px 16px;border-radius:4px;background:#0072c6;color:#fff;border:none;cursor:pointer;font-size:15px;" onclick="window.location.href='ms-outlook://compose?to=yao.luo@hsbc.com&subject=Hello%20from%20Hexo&body=Hi%2C%20this%20is%20a%20test%20email.'">联系我（Outlook）</button>
       </nav>
       <nav id="sub-nav">
         
@@ -76,214 +75,771 @@
       <div class="outer">
         <section id="main">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2025" class="archive-year">2025</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/17/iOS/%E6%8E%A8%E9%80%81%E4%B8%8E%E6%9C%AC%E5%9C%B0%E9%80%9A%E7%9F%A5%E6%9C%BA%E5%88%B6/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">7月 17</time>
+    <article id="post-iOS/性能监控与优化工具" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E4%B8%8E%E4%BC%98%E5%8C%96%E5%B7%A5%E5%85%B7/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/17/iOS/%E6%8E%A8%E9%80%81%E4%B8%8E%E6%9C%AC%E5%9C%B0%E9%80%9A%E7%9F%A5%E6%9C%BA%E5%88%B6/">iOS 推送与本地通知机制</a>
+      <a class="p-name article-title" href="/2025/07/17/iOS/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E4%B8%8E%E4%BC%98%E5%8C%96%E5%B7%A5%E5%85%B7/">iOS 性能监控与优化工具</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/17/iOS/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E4%B8%8E%E4%BC%98%E5%8C%96%E5%B7%A5%E5%85%B7/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">7月 17</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-常用工具"><a href="#1-1-常用工具" class="headerlink" title="1.1 常用工具"></a>1.1 常用工具</h2><ul>
+<li>Instruments（Time Profiler、Leaks、Allocations、Core Animation）。</li>
+<li>Xcode Organizer、Console、第三方 SDK（Bugly、Crashlytics）。</li>
+</ul>
+<h2 id="1-2-代码-操作示例"><a href="#1-2-代码-操作示例" class="headerlink" title="1.2 代码&#x2F;操作示例"></a>1.2 代码&#x2F;操作示例</h2><ul>
+<li>Instruments 采集性能数据、分析内存泄漏。</li>
+</ul>
+<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
+<li>启动慢、卡顿、内存泄漏、崩溃定位。</li>
+</ul>
+<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
+<li>工具需结合埋点、日志、A&#x2F;B 测试。</li>
+<li>线上&#x2F;线下监控手段不同。</li>
+</ul>
+<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
+<li>如何自动化监控？SDK、埋点、报警。</li>
+<li>性能数据如何转化为优化方案？定期分析、量化目标。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Common-Tools"><a href="#2-1-Common-Tools" class="headerlink" title="2.1 Common Tools"></a>2.1 Common Tools</h2><ul>
+<li>Instruments (Time Profiler, Leaks, Allocations, Core Animation).</li>
+<li>Xcode Organizer, Console, 3rd SDK (Bugly, Crashlytics).</li>
+</ul>
+<h2 id="2-2-Code-Operation-Example"><a href="#2-2-Code-Operation-Example" class="headerlink" title="2.2 Code&#x2F;Operation Example"></a>2.2 Code&#x2F;Operation Example</h2><ul>
+<li>Instruments for perf data, memory leak.</li>
+</ul>
+<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
+<li>Slow launch, lag, leak, crash.</li>
+</ul>
+<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
+<li>Combine with log, analytics, A&#x2F;B.</li>
+<li>Online&#x2F;offline diff.</li>
+</ul>
+<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
+<li>Auto monitor? SDK, log, alert.</li>
+<li>Perf data to plan? Analyze, quantify.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E4%B8%8E%E4%BC%98%E5%8C%96%E5%B7%A5%E5%85%B7/" data-id="cmdcsgd4o001xf3k7dszmfp5w" data-title="iOS 性能监控与优化工具" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/数组字典下标区别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/%E6%95%B0%E7%BB%84%E5%AD%97%E5%85%B8%E4%B8%8B%E6%A0%87%E5%8C%BA%E5%88%AB/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/17/iOS/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E4%B8%8E%E4%BC%98%E5%8C%96%E5%B7%A5%E5%85%B7/">iOS 性能监控与优化工具</a>
+      <a class="p-name article-title" href="/2025/07/17/iOS/%E6%95%B0%E7%BB%84%E5%AD%97%E5%85%B8%E4%B8%8B%E6%A0%87%E5%8C%BA%E5%88%AB/">数组与字典下标区别</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/17/iOS/%E6%95%B0%E7%BB%84%E5%AD%97%E5%85%B8%E4%B8%8B%E6%A0%87%E5%8C%BA%E5%88%AB/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">7月 17</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-概念与本质"><a href="#1-1-概念与本质" class="headerlink" title="1.1 概念与本质"></a>1.1 概念与本质</h2><ul>
+<li>数组下标：基于 Int 索引，越界会崩溃。</li>
+<li>字典下标：基于 Key，查不到返回 nil，不会崩溃。</li>
+</ul>
+<h2 id="1-2-代码示例"><a href="#1-2-代码示例" class="headerlink" title="1.2 代码示例"></a>1.2 代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr <span class="operator">=</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">let</span> v1 <span class="operator">=</span> arr[<span class="number">1</span>] <span class="comment">// 2</span></span><br><span class="line"><span class="comment">// let v2 = arr[10] // ❌ 崩溃</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> dict <span class="operator">=</span> [<span class="string">&quot;a&quot;</span>:<span class="number">1</span>]</span><br><span class="line"><span class="keyword">let</span> v3 <span class="operator">=</span> dict[<span class="string">&quot;a&quot;</span>] <span class="comment">// Optional(1)</span></span><br><span class="line"><span class="keyword">let</span> v4 <span class="operator">=</span> dict[<span class="string">&quot;b&quot;</span>] <span class="comment">// nil</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
+<li>数组适合有序集合，字典适合键值映射。</li>
+</ul>
+<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
+<li>字典下标返回可选类型，需安全解包。</li>
+<li>数组下标越界直接崩溃，需判断 count。</li>
+</ul>
+<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
+<li>为什么设计成这样？数组追求性能，字典追求安全。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept-Essence"><a href="#2-1-Concept-Essence" class="headerlink" title="2.1 Concept &amp; Essence"></a>2.1 Concept &amp; Essence</h2><ul>
+<li>Array subscript: Int index, out-of-bounds crash.</li>
+<li>Dictionary subscript: Key, returns nil if not found.</li>
+</ul>
+<h2 id="2-2-Code-Example"><a href="#2-2-Code-Example" class="headerlink" title="2.2 Code Example"></a>2.2 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr <span class="operator">=</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">let</span> v1 <span class="operator">=</span> arr[<span class="number">1</span>] <span class="comment">// 2</span></span><br><span class="line"><span class="comment">// let v2 = arr[10] // ❌ crash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> dict <span class="operator">=</span> [<span class="string">&quot;a&quot;</span>:<span class="number">1</span>]</span><br><span class="line"><span class="keyword">let</span> v3 <span class="operator">=</span> dict[<span class="string">&quot;a&quot;</span>] <span class="comment">// Optional(1)</span></span><br><span class="line"><span class="keyword">let</span> v4 <span class="operator">=</span> dict[<span class="string">&quot;b&quot;</span>] <span class="comment">// nil</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
+<li>Array: ordered collection; Dictionary: key-value mapping.</li>
+</ul>
+<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
+<li>Dictionary subscript returns optional, need unwrapping.</li>
+<li>Array out-of-bounds crashes, check count.</li>
+</ul>
+<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
+<li>Why design this way? Array for performance, dictionary for safety.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E6%95%B0%E7%BB%84%E5%AD%97%E5%85%B8%E4%B8%8B%E6%A0%87%E5%8C%BA%E5%88%AB/" data-id="cmdcsgd4p001zf3k78fnvd37q" data-title="数组与字典下标区别" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/延迟存储属性" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/%E5%BB%B6%E8%BF%9F%E5%AD%98%E5%82%A8%E5%B1%9E%E6%80%A7/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/17/iOS/%E6%95%B0%E7%BB%84%E5%AD%97%E5%85%B8%E4%B8%8B%E6%A0%87%E5%8C%BA%E5%88%AB/">数组与字典下标区别</a>
+      <a class="p-name article-title" href="/2025/07/17/iOS/%E5%BB%B6%E8%BF%9F%E5%AD%98%E5%82%A8%E5%B1%9E%E6%80%A7/">延迟存储属性（Lazy Stored Property）</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/17/iOS/%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">7月 17</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-概念"><a href="#1-1-概念" class="headerlink" title="1.1 概念"></a>1.1 概念</h2><ol>
+<li>延迟存储属性（lazy var）在第一次访问时才初始化。</li>
+<li>只能用于 var，不能用于 let。</li>
+<li>常用于依赖外部资源、初始化开销大、或需要 self 的场景。</li>
+</ol>
+<h2 id="1-2-为什么要用？"><a href="#1-2-为什么要用？" class="headerlink" title="1.2 为什么要用？"></a>1.2 为什么要用？</h2><ul>
+<li>提升性能，节省内存。</li>
+<li>避免不必要的初始化，提升启动速度。</li>
+</ul>
+<h2 id="1-3-实际代码示例"><a href="#1-3-实际代码示例" class="headerlink" title="1.3 实际代码示例"></a>1.3 实际代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">DataManager</span> &#123;</span><br><span class="line">    <span class="keyword">lazy</span> <span class="keyword">var</span> data: [<span class="type">String</span>] <span class="operator">=</span> <span class="keyword">self</span>.loadData()</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">loadData</span>() -&gt; [<span class="type">String</span>] &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;加载数据&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> [<span class="string">&quot;A&quot;</span>, <span class="string">&quot;B&quot;</span>, <span class="string">&quot;C&quot;</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> manager <span class="operator">=</span> <span class="type">DataManager</span>()</span><br><span class="line"><span class="comment">// 此时 data 未初始化</span></span><br><span class="line"><span class="keyword">let</span> d <span class="operator">=</span> manager.data <span class="comment">// 第一次访问，才初始化</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-4-业务-用户价值"><a href="#1-4-业务-用户价值" class="headerlink" title="1.4 业务&#x2F;用户价值"></a>1.4 业务&#x2F;用户价值</h2><ul>
+<li>优化资源分配，提升用户体验。</li>
+<li>适合大数据、图片、网络等场景。</li>
+</ul>
+<h2 id="1-5-易混淆点"><a href="#1-5-易混淆点" class="headerlink" title="1.5 易混淆点"></a>1.5 易混淆点</h2><ul>
+<li>lazy 不能用于 let。</li>
+<li>lazy 属性不能在构造器中直接访问。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept"><a href="#2-1-Concept" class="headerlink" title="2.1 Concept"></a>2.1 Concept</h2><ol>
+<li>Lazy stored property (lazy var) is initialized on first access.</li>
+<li>Only for var, not let.</li>
+<li>Used for expensive, external, or self-dependent resources.</li>
+</ol>
+<h2 id="2-2-Why-use-it"><a href="#2-2-Why-use-it" class="headerlink" title="2.2 Why use it?"></a>2.2 Why use it?</h2><ul>
+<li>Improves performance, saves memory.</li>
+<li>Avoids unnecessary initialization, faster startup.</li>
+</ul>
+<h2 id="2-3-Code-Example"><a href="#2-3-Code-Example" class="headerlink" title="2.3 Code Example"></a>2.3 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">DataManager</span> &#123;</span><br><span class="line">    <span class="keyword">lazy</span> <span class="keyword">var</span> data: [<span class="type">String</span>] <span class="operator">=</span> <span class="keyword">self</span>.loadData()</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">loadData</span>() -&gt; [<span class="type">String</span>] &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Loading data&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> [<span class="string">&quot;A&quot;</span>, <span class="string">&quot;B&quot;</span>, <span class="string">&quot;C&quot;</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> manager <span class="operator">=</span> <span class="type">DataManager</span>()</span><br><span class="line"><span class="comment">// data not initialized yet</span></span><br><span class="line"><span class="keyword">let</span> d <span class="operator">=</span> manager.data <span class="comment">// initialized on first access</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-Business-User-Value"><a href="#2-4-Business-User-Value" class="headerlink" title="2.4 Business&#x2F;User Value"></a>2.4 Business&#x2F;User Value</h2><ul>
+<li>Optimizes resource allocation, better UX.</li>
+<li>Good for big data, images, network, etc.</li>
+</ul>
+<h2 id="2-5-Common-Confusion"><a href="#2-5-Common-Confusion" class="headerlink" title="2.5 Common Confusion"></a>2.5 Common Confusion</h2><ul>
+<li>lazy can’t be used with let.</li>
+<li>lazy property can’t be accessed in initializer.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E5%BB%B6%E8%BF%9F%E5%AD%98%E5%82%A8%E5%B1%9E%E6%80%A7/" data-id="cmdcsgd4p0021f3k7e3ya36hk" data-title="延迟存储属性（Lazy Stored Property）" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/易混淆点辨析" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9%E8%BE%A8%E6%9E%90/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/17/iOS/%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95/">构造方法</a>
+      <a class="p-name article-title" href="/2025/07/17/iOS/%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9%E8%BE%A8%E6%9E%90/">iOS 常见易混淆点辨析</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/17/iOS/%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9%E8%BE%A8%E6%9E%90/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">7月 17</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-常见易混淆点"><a href="#1-1-常见易混淆点" class="headerlink" title="1.1 常见易混淆点"></a>1.1 常见易混淆点</h2><ul>
+<li>weak&#x2F;unowned 区别</li>
+<li>open&#x2F;public&#x2F;internal</li>
+<li>class&#x2F;static</li>
+<li>Optional&#x2F;隐式解包</li>
+<li>KVO&#x2F;属性观察器</li>
+<li>struct&#x2F;class</li>
+<li>lazy&#x2F;延迟存储</li>
+<li>Swift&#x2F;OC</li>
+</ul>
+<h2 id="1-2-业务视角"><a href="#1-2-业务视角" class="headerlink" title="1.2 业务视角"></a>1.2 业务视角</h2><ul>
+<li>选型需结合业务需求、性能、安全、可维护性。</li>
+</ul>
+<h2 id="1-3-深挖追问"><a href="#1-3-深挖追问" class="headerlink" title="1.3 深挖追问"></a>1.3 深挖追问</h2><ul>
+<li>如何系统梳理易混淆点？建议画表格、举例、结合源码。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Common-Confusions"><a href="#2-1-Common-Confusions" class="headerlink" title="2.1 Common Confusions"></a>2.1 Common Confusions</h2><ul>
+<li>weak&#x2F;unowned</li>
+<li>open&#x2F;public&#x2F;internal</li>
+<li>class&#x2F;static</li>
+<li>Optional&#x2F;Implicitly Unwrapped</li>
+<li>KVO&#x2F;Property Observer</li>
+<li>struct&#x2F;class</li>
+<li>lazy&#x2F;lazy stored</li>
+<li>Swift&#x2F;OC</li>
+</ul>
+<h2 id="2-2-Business-View"><a href="#2-2-Business-View" class="headerlink" title="2.2 Business View"></a>2.2 Business View</h2><ul>
+<li>Choose by business, performance, safety, maintainability.</li>
+</ul>
+<h2 id="2-3-Deep-Dive"><a href="#2-3-Deep-Dive" class="headerlink" title="2.3 Deep Dive"></a>2.3 Deep Dive</h2><ul>
+<li>How to analyze? Table, example, source code.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9%E8%BE%A8%E6%9E%90/" data-id="cmdcsgd4p0023f3k7bixth0l5" data-title="iOS 常见易混淆点辨析" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/构造方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/17/iOS/%E6%98%93%E6%B7%B7%E6%B7%86%E7%82%B9%E8%BE%A8%E6%9E%90/">iOS 常见易混淆点辨析</a>
+      <a class="p-name article-title" href="/2025/07/17/iOS/%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95/">构造方法</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/17/iOS/%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B%E4%B8%8E%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">7月 17</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-Swift-构造方法的分类"><a href="#1-1-Swift-构造方法的分类" class="headerlink" title="1.1 Swift 构造方法的分类"></a>1.1 Swift 构造方法的分类</h2><ol>
+<li>指定构造方法（Designated）：初始化所有属性，调用父类构造方法。</li>
+<li>便利构造方法（Convenience）：简化初始化流程，必须调用本类其他构造方法。</li>
+<li>可失败构造方法（Failable）：<code>init?</code>，初始化失败返回 nil。</li>
+</ol>
+<h2 id="1-2-为什么要这样设计？"><a href="#1-2-为什么要这样设计？" class="headerlink" title="1.2 为什么要这样设计？"></a>1.2 为什么要这样设计？</h2><ul>
+<li>保证对象完整初始化，提升类型安全。</li>
+<li>支持多种初始化方式，便于扩展和维护。</li>
+</ul>
+<h2 id="1-3-实际代码示例"><a href="#1-3-实际代码示例" class="headerlink" title="1.3 实际代码示例"></a>1.3 实际代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> brand: <span class="type">String</span></span><br><span class="line">    <span class="keyword">var</span> price: <span class="type">Double</span></span><br><span class="line">    <span class="comment">// 指定构造方法</span></span><br><span class="line">    <span class="keyword">init</span>(<span class="params">brand</span>: <span class="type">String</span>, <span class="params">price</span>: <span class="type">Double</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.brand <span class="operator">=</span> brand</span><br><span class="line">        <span class="keyword">self</span>.price <span class="operator">=</span> price</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 便利构造方法</span></span><br><span class="line">    <span class="keyword">convenience</span> <span class="keyword">init</span>(<span class="params">brand</span>: <span class="type">String</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.<span class="keyword">init</span>(brand: brand, price: <span class="number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 可失败构造方法</span></span><br><span class="line">    <span class="keyword">init?</span>(<span class="params">dict</span>: [<span class="params">String</span>: <span class="keyword">Any</span>]) &#123;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> brand <span class="operator">=</span> dict[<span class="string">&quot;brand&quot;</span>] <span class="keyword">as?</span> <span class="type">String</span>,</span><br><span class="line">              <span class="keyword">let</span> price <span class="operator">=</span> dict[<span class="string">&quot;price&quot;</span>] <span class="keyword">as?</span> <span class="type">Double</span> <span class="keyword">else</span> &#123; <span class="keyword">return</span> <span class="literal">nil</span> &#125;</span><br><span class="line">        <span class="keyword">self</span>.brand <span class="operator">=</span> brand</span><br><span class="line">        <span class="keyword">self</span>.price <span class="operator">=</span> price</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-4-业务-用户价值"><a href="#1-4-业务-用户价值" class="headerlink" title="1.4 业务&#x2F;用户价值"></a>1.4 业务&#x2F;用户价值</h2><ul>
+<li>保证数据一致性，提升产品健壮性。</li>
+<li>支持多样化初始化，提升开发效率。</li>
+</ul>
+<h2 id="1-5-易混淆点"><a href="#1-5-易混淆点" class="headerlink" title="1.5 易混淆点"></a>1.5 易混淆点</h2><ul>
+<li>便利构造方法不能直接初始化属性，必须调用本类其他构造方法。</li>
+<li>可失败构造方法需注意解包。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Types-of-Initializers-in-Swift"><a href="#2-1-Types-of-Initializers-in-Swift" class="headerlink" title="2.1 Types of Initializers in Swift"></a>2.1 Types of Initializers in Swift</h2><ol>
+<li>Designated: Initializes all properties, calls superclass initializer.</li>
+<li>Convenience: Simplifies init, must call another initializer in the same class.</li>
+<li>Failable: <code>init?</code>, returns nil if fails.</li>
+</ol>
+<h2 id="2-2-Why-this-design"><a href="#2-2-Why-this-design" class="headerlink" title="2.2 Why this design?"></a>2.2 Why this design?</h2><ul>
+<li>Ensures complete initialization, improves type safety.</li>
+<li>Supports multiple init patterns, easier to extend&#x2F;maintain.</li>
+</ul>
+<h2 id="2-3-Code-Example"><a href="#2-3-Code-Example" class="headerlink" title="2.3 Code Example"></a>2.3 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> brand: <span class="type">String</span></span><br><span class="line">    <span class="keyword">var</span> price: <span class="type">Double</span></span><br><span class="line">    <span class="keyword">init</span>(<span class="params">brand</span>: <span class="type">String</span>, <span class="params">price</span>: <span class="type">Double</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.brand <span class="operator">=</span> brand</span><br><span class="line">        <span class="keyword">self</span>.price <span class="operator">=</span> price</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">convenience</span> <span class="keyword">init</span>(<span class="params">brand</span>: <span class="type">String</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.<span class="keyword">init</span>(brand: brand, price: <span class="number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">init?</span>(<span class="params">dict</span>: [<span class="params">String</span>: <span class="keyword">Any</span>]) &#123;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> brand <span class="operator">=</span> dict[<span class="string">&quot;brand&quot;</span>] <span class="keyword">as?</span> <span class="type">String</span>,</span><br><span class="line">              <span class="keyword">let</span> price <span class="operator">=</span> dict[<span class="string">&quot;price&quot;</span>] <span class="keyword">as?</span> <span class="type">Double</span> <span class="keyword">else</span> &#123; <span class="keyword">return</span> <span class="literal">nil</span> &#125;</span><br><span class="line">        <span class="keyword">self</span>.brand <span class="operator">=</span> brand</span><br><span class="line">        <span class="keyword">self</span>.price <span class="operator">=</span> price</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-Business-User-Value"><a href="#2-4-Business-User-Value" class="headerlink" title="2.4 Business&#x2F;User Value"></a>2.4 Business&#x2F;User Value</h2><ul>
+<li>Ensures data consistency, improves robustness.</li>
+<li>Supports diverse init patterns, better dev efficiency.</li>
+</ul>
+<h2 id="2-5-Common-Confusion"><a href="#2-5-Common-Confusion" class="headerlink" title="2.5 Common Confusion"></a>2.5 Common Confusion</h2><ul>
+<li>Convenience initializers can’t directly init properties, must call another initializer.</li>
+<li>Failable initializers need unwrapping.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95/" data-id="cmdcsgd4q0027f3k730cc11wh" data-title="构造方法" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/架构演进与技术选型" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B%E4%B8%8E%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/17/iOS/%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B%E4%B8%8E%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/">iOS App 架构演进与技术选型</a>
+      <a class="p-name article-title" href="/2025/07/17/iOS/%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B%E4%B8%8E%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/">iOS App 架构演进与技术选型</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/17/iOS/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E6%A0%B8%E5%BF%83%E8%A6%81%E7%82%B9/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">7月 17</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-架构演进"><a href="#1-1-架构演进" class="headerlink" title="1.1 架构演进"></a>1.1 架构演进</h2><ul>
+<li>单体 → 组件化 → 服务化 → 云原生。</li>
+<li>技术选型：Swift&#x2F;OC、SPM&#x2F;CocoaPods、MVVM&#x2F;VIPER、SwiftUI&#x2F;Flutter。</li>
+</ul>
+<h2 id="1-2-方案-案例"><a href="#1-2-方案-案例" class="headerlink" title="1.2 方案&#x2F;案例"></a>1.2 方案&#x2F;案例</h2><ul>
+<li>组件化拆分、协议解耦、跨端方案。</li>
+</ul>
+<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
+<li>快速迭代、团队扩张、跨平台需求。</li>
+</ul>
+<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
+<li>架构升级需兼顾历史包袱。</li>
+<li>技术选型需结合团队能力、业务目标。</li>
+</ul>
+<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
+<li>如何平滑迁移？分阶段、双轨制、自动化测试。</li>
+<li>技术选型失误如何补救？灰度、回滚、培训。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Architecture-Evolution"><a href="#2-1-Architecture-Evolution" class="headerlink" title="2.1 Architecture Evolution"></a>2.1 Architecture Evolution</h2><ul>
+<li>Monolith → component → service → cloud native.</li>
+<li>Tech: Swift&#x2F;OC, SPM&#x2F;Pods, MVVM&#x2F;VIPER, SwiftUI&#x2F;Flutter.</li>
+</ul>
+<h2 id="2-2-Solution-Case"><a href="#2-2-Solution-Case" class="headerlink" title="2.2 Solution&#x2F;Case"></a>2.2 Solution&#x2F;Case</h2><ul>
+<li>Component split, protocol, cross-platform.</li>
+</ul>
+<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
+<li>Fast iteration, team, cross-platform.</li>
+</ul>
+<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
+<li>Upgrade: legacy burden.</li>
+<li>Tech: team, business.</li>
+</ul>
+<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
+<li>Migrate? Stage, dual, auto test.</li>
+<li>Wrong tech? Gray, rollback, train.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B%E4%B8%8E%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/" data-id="cmdcsgd4q0029f3k7duj6ersf" data-title="iOS App 架构演进与技术选型" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/架构设计核心要点" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E6%A0%B8%E5%BF%83%E8%A6%81%E7%82%B9/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/17/iOS/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E6%A0%B8%E5%BF%83%E8%A6%81%E7%82%B9/">iOS 架构设计核心要点</a>
+      <a class="p-name article-title" href="/2025/07/17/iOS/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E6%A0%B8%E5%BF%83%E8%A6%81%E7%82%B9/">iOS 架构设计核心要点</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/17/iOS/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">7月 17</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-常见架构"><a href="#1-1-常见架构" class="headerlink" title="1.1 常见架构"></a>1.1 常见架构</h2><ul>
+<li>MVC、MVP、MVVM、VIPER、Clean Swift 等。</li>
+</ul>
+<h2 id="1-2-代码-结构示例"><a href="#1-2-代码-结构示例" class="headerlink" title="1.2 代码&#x2F;结构示例"></a>1.2 代码&#x2F;结构示例</h2><ul>
+<li>MVC：View-Controller-Model 分层。</li>
+<li>MVVM：View-ViewModel-Model，数据绑定。</li>
+</ul>
+<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
+<li>大型项目、多人协作、可维护性、可测试性。</li>
+</ul>
+<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
+<li>MVC 控制器易臃肿，MVVM 需数据绑定。</li>
+<li>架构选型需结合团队、业务、技术栈。</li>
+</ul>
+<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
+<li>如何落地架构？结合模块化、解耦、自动化测试。</li>
+<li>架构升级的业务驱动力？复杂度、效率、扩展性。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Common-Architectures"><a href="#2-1-Common-Architectures" class="headerlink" title="2.1 Common Architectures"></a>2.1 Common Architectures</h2><ul>
+<li>MVC, MVP, MVVM, VIPER, Clean Swift, etc.</li>
+</ul>
+<h2 id="2-2-Code-Structure-Example"><a href="#2-2-Code-Structure-Example" class="headerlink" title="2.2 Code&#x2F;Structure Example"></a>2.2 Code&#x2F;Structure Example</h2><ul>
+<li>MVC: View-Controller-Model.</li>
+<li>MVVM: View-ViewModel-Model, data binding.</li>
+</ul>
+<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
+<li>Large project, team, maintainability, testability.</li>
+</ul>
+<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
+<li>MVC: fat controller; MVVM: data binding.</li>
+<li>Choose by team, business, tech stack.</li>
+</ul>
+<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
+<li>How to implement? Modular, decouple, test.</li>
+<li>Why upgrade? Complexity, efficiency, scalability.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E6%A0%B8%E5%BF%83%E8%A6%81%E7%82%B9/" data-id="cmdcsgd4q002bf3k7fnu5cmku" data-title="iOS 架构设计核心要点" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/模式匹配" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/17/iOS/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/">模式匹配（Pattern Matching）</a>
+      <a class="p-name article-title" href="/2025/07/17/iOS/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/">模式匹配（Pattern Matching）</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/17/iOS/%E7%83%AD%E4%BF%AE%E5%A4%8D%E4%B8%8E%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">7月 17</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-概念与应用"><a href="#1-1-概念与应用" class="headerlink" title="1.1 概念与应用"></a>1.1 概念与应用</h2><p>模式匹配是 Swift 强大的语法特性，常用于 switch、if case、guard case、for case 等，支持对枚举、元组、Optionals、区间等结构的解构和条件判断。</p>
+<h2 id="1-2-代码示例"><a href="#1-2-代码示例" class="headerlink" title="1.2 代码示例"></a>1.2 代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> point <span class="operator">=</span> (<span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line"><span class="keyword">switch</span> point &#123;</span><br><span class="line"><span class="keyword">case</span> (<span class="number">0</span>, <span class="number">0</span>): <span class="built_in">print</span>(<span class="string">&quot;原点&quot;</span>)</span><br><span class="line"><span class="keyword">case</span> (<span class="keyword">_</span>, <span class="number">0</span>): <span class="built_in">print</span>(<span class="string">&quot;X轴上&quot;</span>)</span><br><span class="line"><span class="keyword">case</span> (<span class="number">0</span>, <span class="keyword">_</span>): <span class="built_in">print</span>(<span class="string">&quot;Y轴上&quot;</span>)</span><br><span class="line"><span class="keyword">case</span> (<span class="keyword">let</span> x, <span class="keyword">let</span> y): <span class="built_in">print</span>(<span class="string">&quot;其他: <span class="subst">\(x)</span>,<span class="subst">\(y)</span>&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
+<li>复杂数据结构解包、网络响应解析、状态机等。</li>
+</ul>
+<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
+<li>if case&#x2F;guard case 适合单一条件判断。</li>
+<li>可与 where 结合做更复杂判断。</li>
+</ul>
+<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
+<li>模式匹配与类型检查、解包的关系？本质是语法糖，提升代码可读性。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept-Usage"><a href="#2-1-Concept-Usage" class="headerlink" title="2.1 Concept &amp; Usage"></a>2.1 Concept &amp; Usage</h2><p>Pattern matching is a powerful Swift feature, used in switch, if case, guard case, for case, supporting destructuring and conditionals for enums, tuples, optionals, ranges, etc.</p>
+<h2 id="2-2-Code-Example"><a href="#2-2-Code-Example" class="headerlink" title="2.2 Code Example"></a>2.2 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> point <span class="operator">=</span> (<span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line"><span class="keyword">switch</span> point &#123;</span><br><span class="line"><span class="keyword">case</span> (<span class="number">0</span>, <span class="number">0</span>): <span class="built_in">print</span>(<span class="string">&quot;Origin&quot;</span>)</span><br><span class="line"><span class="keyword">case</span> (<span class="keyword">_</span>, <span class="number">0</span>): <span class="built_in">print</span>(<span class="string">&quot;On X axis&quot;</span>)</span><br><span class="line"><span class="keyword">case</span> (<span class="number">0</span>, <span class="keyword">_</span>): <span class="built_in">print</span>(<span class="string">&quot;On Y axis&quot;</span>)</span><br><span class="line"><span class="keyword">case</span> (<span class="keyword">let</span> x, <span class="keyword">let</span> y): <span class="built_in">print</span>(<span class="string">&quot;Other: <span class="subst">\(x)</span>,<span class="subst">\(y)</span>&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
+<li>Unpacking complex data, parsing responses, state machines, etc.</li>
+</ul>
+<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
+<li>if case&#x2F;guard case for single condition.</li>
+<li>Combine with where for complex logic.</li>
+</ul>
+<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
+<li>Relation to type check&#x2F;unwrapping? Syntactic sugar for readability.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/" data-id="cmdcsgd4r002df3k74co2d6xi" data-title="模式匹配（Pattern Matching）" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/热修复与灰度发布" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/%E7%83%AD%E4%BF%AE%E5%A4%8D%E4%B8%8E%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/17/iOS/%E7%83%AD%E4%BF%AE%E5%A4%8D%E4%B8%8E%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/">iOS 热修复与灰度发布</a>
+      <a class="p-name article-title" href="/2025/07/17/iOS/%E7%83%AD%E4%BF%AE%E5%A4%8D%E4%B8%8E%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/">iOS 热修复与灰度发布</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/17/iOS/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">7月 17</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-概念与方案"><a href="#1-1-概念与方案" class="headerlink" title="1.1 概念与方案"></a>1.1 概念与方案</h2><ul>
+<li>热修复：无需发版，动态修复 bug（JSPatch、Weex、热更新 SDK）。</li>
+<li>灰度发布：分批上线，降低风险。</li>
+</ul>
+<h2 id="1-2-代码-方案示例"><a href="#1-2-代码-方案示例" class="headerlink" title="1.2 代码&#x2F;方案示例"></a>1.2 代码&#x2F;方案示例</h2><ul>
+<li>JSPatch 脚本、A&#x2F;B 测试、分组发布。</li>
+</ul>
+<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
+<li>紧急 bug 修复、功能试点、A&#x2F;B 测试。</li>
+</ul>
+<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
+<li>热修复受苹果审核限制。</li>
+<li>灰度需完善监控、回滚机制。</li>
+</ul>
+<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
+<li>热修复安全风险？代码注入、越权。</li>
+<li>灰度发布如何自动化？结合 CI&#x2F;CD、埋点。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept-Solution"><a href="#2-1-Concept-Solution" class="headerlink" title="2.1 Concept &amp; Solution"></a>2.1 Concept &amp; Solution</h2><ul>
+<li>Hotfix: fix bug without release (JSPatch, Weex, hotfix SDK).</li>
+<li>Gray release: batch rollout, lower risk.</li>
+</ul>
+<h2 id="2-2-Code-Solution-Example"><a href="#2-2-Code-Solution-Example" class="headerlink" title="2.2 Code&#x2F;Solution Example"></a>2.2 Code&#x2F;Solution Example</h2><ul>
+<li>JSPatch script, A&#x2F;B test, group release.</li>
+</ul>
+<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
+<li>Urgent bug, pilot, A&#x2F;B test.</li>
+</ul>
+<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
+<li>Hotfix: App Store policy.</li>
+<li>Gray: need monitor, rollback.</li>
+</ul>
+<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
+<li>Hotfix risk? Code injection, privilege.</li>
+<li>Gray automation? CI&#x2F;CD, analytics.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E7%83%AD%E4%BF%AE%E5%A4%8D%E4%B8%8E%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/" data-id="cmdcsgd4r002ff3k731jf90a2" data-title="iOS 热修复与灰度发布" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/线程与并发" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/17/iOS/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/">iOS 线程与并发（GCD/Operation）</a>
+      <a class="p-name article-title" href="/2025/07/17/iOS/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/">iOS 线程与并发（GCD/Operation）</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
+      </header>
     
-    <a class="extend prev" rel="prev" href="/categories/iOS/page/3/">&laquo; 上一页</a><a class="page-number" href="/categories/iOS/">1</a><a class="page-number" href="/categories/iOS/page/2/">2</a><a class="page-number" href="/categories/iOS/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/categories/iOS/page/5/">5</a><a class="page-number" href="/categories/iOS/page/6/">6</a><a class="extend next" rel="next" href="/categories/iOS/page/5/">下一页 &raquo;</a>
-  </nav>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-概念与机制"><a href="#1-1-概念与机制" class="headerlink" title="1.1 概念与机制"></a>1.1 概念与机制</h2><ul>
+<li>GCD（Grand Central Dispatch）：基于队列的并发方案，dispatch_async&#x2F;dispatch_sync。</li>
+<li>Operation：面向对象的并发抽象，支持依赖、取消、优先级。</li>
+</ul>
+<h2 id="1-2-代码示例"><a href="#1-2-代码示例" class="headerlink" title="1.2 代码示例"></a>1.2 代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">DispatchQueue</span>.global().async &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;子线程&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> op <span class="operator">=</span> <span class="type">BlockOperation</span> &#123; <span class="built_in">print</span>(<span class="string">&quot;op&quot;</span>) &#125;</span><br><span class="line"><span class="type">OperationQueue</span>().addOperation(op)</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
+<li>网络请求、图片处理、批量任务、UI 切换等。</li>
+</ul>
+<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
+<li>GCD 轻量，Operation 更灵活。</li>
+<li>UI 更新需回主线程。</li>
+</ul>
+<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
+<li>GCD&#x2F;Operation 底层？GCD 基于 libdispatch，Operation 封装 GCD。</li>
+<li>线程安全如何保障？加锁、串行队列、原子操作。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept-Mechanism"><a href="#2-1-Concept-Mechanism" class="headerlink" title="2.1 Concept &amp; Mechanism"></a>2.1 Concept &amp; Mechanism</h2><ul>
+<li>GCD: queue-based concurrency, dispatch_async&#x2F;dispatch_sync.</li>
+<li>Operation: OOP abstraction, supports dependency, cancel, priority.</li>
+</ul>
+<h2 id="2-2-Code-Example"><a href="#2-2-Code-Example" class="headerlink" title="2.2 Code Example"></a>2.2 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">DispatchQueue</span>.global().async &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;background&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> op <span class="operator">=</span> <span class="type">BlockOperation</span> &#123; <span class="built_in">print</span>(<span class="string">&quot;op&quot;</span>) &#125;</span><br><span class="line"><span class="type">OperationQueue</span>().addOperation(op)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
+<li>Network, image, batch, UI switch, etc.</li>
+</ul>
+<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
+<li>GCD: lightweight; Operation: flexible.</li>
+<li>UI update on main thread.</li>
+</ul>
+<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
+<li>GCD&#x2F;Operation internals? GCD: libdispatch; Operation wraps GCD.</li>
+<li>Thread safety? Lock, serial queue, atomic op.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/" data-id="cmdcsgd4r002jf3k7ane56vcb" data-title="iOS 线程与并发（GCD/Operation）" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
 
 </section>
         

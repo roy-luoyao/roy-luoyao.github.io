@@ -57,7 +57,6 @@
         
           <a class="main-nav-link" href="/archives">Archives</a>
         
-      <button style="margin-left:20px;padding:6px 16px;border-radius:4px;background:#0072c6;color:#fff;border:none;cursor:pointer;font-size:15px;" onclick="window.location.href='ms-outlook://compose?to=yao.luo@hsbc.com&subject=Hello%20from%20Hexo&body=Hi%2C%20this%20is%20a%20test%20email.'">联系我（Outlook）</button>
       </nav>
       <nav id="sub-nav">
         
@@ -76,214 +75,767 @@
       <div class="outer">
         <section id="main">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2025" class="archive-year">2025</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/17/iOS/CopyOnWrite/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">7月 17</time>
+    <article id="post-iOS/CopyOnWrite" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/CopyOnWrite/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/17/iOS/CopyOnWrite/">Copy-on-write（COW）</a>
+      <a class="p-name article-title" href="/2025/07/17/iOS/CopyOnWrite/">Copy-on-write（COW）</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/17/iOS/Error%E5%85%BC%E5%AE%B9NSError/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">7月 17</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-概念与原理"><a href="#1-1-概念与原理" class="headerlink" title="1.1 概念与原理"></a>1.1 概念与原理</h2><p>Copy-on-write（写时复制，COW）是一种优化技术，多个变量共享同一内存，只有在写操作时才真正复制，Swift 的 Array、Dictionary、String 等都采用 COW。</p>
+<h2 id="1-2-代码示例"><a href="#1-2-代码示例" class="headerlink" title="1.2 代码示例"></a>1.2 代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a <span class="operator">=</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">var</span> b <span class="operator">=</span> a <span class="comment">// 未复制，a/b 共用内存</span></span><br><span class="line">b[<span class="number">0</span>] <span class="operator">=</span> <span class="number">9</span> <span class="comment">// 此时 b 才复制，a 不变</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
+<li>大数据结构传递、缓存、性能优化。</li>
+</ul>
+<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
+<li>COW 只在值类型（struct）生效。</li>
+<li>只读不会复制，写时才复制。</li>
+</ul>
+<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
+<li>COW 如何实现？引用计数+写时检测。</li>
+<li>如何自定义 struct 支持 COW？用 isKnownUniquelyReferenced。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept-Principle"><a href="#2-1-Concept-Principle" class="headerlink" title="2.1 Concept &amp; Principle"></a>2.1 Concept &amp; Principle</h2><p>Copy-on-write (COW) is an optimization: multiple variables share memory, only copy on write. Swift’s Array, Dictionary, String use COW.</p>
+<h2 id="2-2-Code-Example"><a href="#2-2-Code-Example" class="headerlink" title="2.2 Code Example"></a>2.2 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a <span class="operator">=</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">var</span> b <span class="operator">=</span> a <span class="comment">// not copied yet</span></span><br><span class="line">b[<span class="number">0</span>] <span class="operator">=</span> <span class="number">9</span> <span class="comment">// b is copied now, a unchanged</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
+<li>Large data passing, cache, performance.</li>
+</ul>
+<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
+<li>COW for value types only.</li>
+<li>No copy on read, only on write.</li>
+</ul>
+<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
+<li>How COW works? Ref count + write check.</li>
+<li>Custom struct COW? Use isKnownUniquelyReferenced.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/CopyOnWrite/" data-id="cmdcsgd430001f3k7gdfw35r9" data-title="Copy-on-write（COW）" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/Error兼容NSError" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/Error%E5%85%BC%E5%AE%B9NSError/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/17/iOS/Error%E5%85%BC%E5%AE%B9NSError/">Error兼容NSError</a>
+      <a class="p-name article-title" href="/2025/07/17/iOS/Error%E5%85%BC%E5%AE%B9NSError/">Error兼容NSError</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/17/iOS/KVC_KVO/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">7月 17</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-Swift-Error-与-NSError-的关系"><a href="#1-1-Swift-Error-与-NSError-的关系" class="headerlink" title="1.1 Swift Error 与 NSError 的关系"></a>1.1 Swift Error 与 NSError 的关系</h2><ol>
+<li>Swift 的 Error 协议用于错误类型，NSError 是 Objective-C 的错误类型。</li>
+<li>Swift 的 Error 可以自动桥接为 NSError，便于与 OC&#x2F;系统 API 兼容。</li>
+</ol>
+<h2 id="1-2-为什么要兼容？"><a href="#1-2-为什么要兼容？" class="headerlink" title="1.2 为什么要兼容？"></a>1.2 为什么要兼容？</h2><ul>
+<li>兼容 Apple 各种 API（如 Foundation、网络、文件等），便于混编和第三方库集成。</li>
+<li>保证错误信息的完整性和可追踪性。</li>
+</ul>
+<h2 id="1-3-实际代码示例"><a href="#1-3-实际代码示例" class="headerlink" title="1.3 实际代码示例"></a>1.3 实际代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Swift 自定义 Error</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">MyError</span>: <span class="title class_ inherited__">Error</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> notFound</span><br><span class="line">    <span class="keyword">case</span> invalid</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 转为 NSError</span></span><br><span class="line"><span class="keyword">let</span> error: <span class="type">Error</span> <span class="operator">=</span> <span class="type">MyError</span>.notFound</span><br><span class="line"><span class="keyword">let</span> nsError <span class="operator">=</span> error <span class="keyword">as</span> <span class="type">NSError</span></span><br><span class="line"><span class="built_in">print</span>(nsError.domain) <span class="comment">// 输出 MyError</span></span><br><span class="line"><span class="built_in">print</span>(nsError.code)   <span class="comment">// 输出 0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// OC API 兼容</span></span><br><span class="line"><span class="keyword">func</span> <span class="title function_">legacyAPICall</span>() <span class="keyword">throws</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="type">MyError</span>.invalid</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> legacyAPICall()</span><br><span class="line">&#125; <span class="keyword">catch</span> <span class="keyword">let</span> error <span class="keyword">as</span> <span class="type">NSError</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(error.domain, error.code)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-4-业务-用户价值"><a href="#1-4-业务-用户价值" class="headerlink" title="1.4 业务&#x2F;用户价值"></a>1.4 业务&#x2F;用户价值</h2><ul>
+<li>统一错误处理，提升用户体验。</li>
+<li>便于日志、监控和问题定位。</li>
+</ul>
+<h2 id="1-5-易混淆点"><a href="#1-5-易混淆点" class="headerlink" title="1.5 易混淆点"></a>1.5 易混淆点</h2><ul>
+<li>Swift Error 只需遵循 Error 协议即可自动桥接。</li>
+<li>NSError 需要 domain、code、userInfo，Swift Error 会自动生成。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Relationship"><a href="#2-1-Relationship" class="headerlink" title="2.1 Relationship"></a>2.1 Relationship</h2><ol>
+<li>Swift Error protocol is for error types; NSError is Objective-C’s error type.</li>
+<li>Swift Error can be automatically bridged to NSError for compatibility.</li>
+</ol>
+<h2 id="2-2-Why-compatible"><a href="#2-2-Why-compatible" class="headerlink" title="2.2 Why compatible?"></a>2.2 Why compatible?</h2><ul>
+<li>For Apple APIs (Foundation, networking, etc.), mixed code, and third-party integration.</li>
+<li>Ensures error info completeness and traceability.</li>
+</ul>
+<h2 id="2-3-Code-Example"><a href="#2-3-Code-Example" class="headerlink" title="2.3 Code Example"></a>2.3 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">MyError</span>: <span class="title class_ inherited__">Error</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> notFound</span><br><span class="line">    <span class="keyword">case</span> invalid</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> error: <span class="type">Error</span> <span class="operator">=</span> <span class="type">MyError</span>.notFound</span><br><span class="line"><span class="keyword">let</span> nsError <span class="operator">=</span> error <span class="keyword">as</span> <span class="type">NSError</span></span><br><span class="line"><span class="built_in">print</span>(nsError.domain)</span><br><span class="line"><span class="built_in">print</span>(nsError.code)</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="type">MyError</span>.invalid</span><br><span class="line">&#125; <span class="keyword">catch</span> <span class="keyword">let</span> error <span class="keyword">as</span> <span class="type">NSError</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(error.domain, error.code)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-Business-User-Value"><a href="#2-4-Business-User-Value" class="headerlink" title="2.4 Business&#x2F;User Value"></a>2.4 Business&#x2F;User Value</h2><ul>
+<li>Unified error handling, better UX.</li>
+<li>Easier logging, monitoring, and debugging.</li>
+</ul>
+<h2 id="2-5-Common-Confusion"><a href="#2-5-Common-Confusion" class="headerlink" title="2.5 Common Confusion"></a>2.5 Common Confusion</h2><ul>
+<li>Swift Error auto-bridges to NSError.</li>
+<li>NSError needs domain&#x2F;code&#x2F;userInfo; Swift Error generates them automatically.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/Error%E5%85%BC%E5%AE%B9NSError/" data-id="cmdcsgd460003f3k7ek6r6q7h" data-title="Error兼容NSError" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/KVC_KVO" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/KVC_KVO/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/17/iOS/KVC_KVO/">KVC与KVO</a>
+      <a class="p-name article-title" href="/2025/07/17/iOS/KVC_KVO/">KVC与KVO</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/17/iOS/OpenPublic%E5%8C%BA%E5%88%AB/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">7月 17</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-概念与原理"><a href="#1-1-概念与原理" class="headerlink" title="1.1 概念与原理"></a>1.1 概念与原理</h2><ul>
+<li><strong>KVC（Key-Value Coding）</strong>：通过字符串 key 间接访问对象属性。</li>
+<li><strong>KVO（Key-Value Observing）</strong>：基于 KVC 的观察机制，监听属性变化。</li>
+</ul>
+<h2 id="1-2-代码示例"><a href="#1-2-代码示例" class="headerlink" title="1.2 代码示例"></a>1.2 代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>: <span class="title class_ inherited__">NSObject</span> &#123;</span><br><span class="line">    <span class="keyword">@objc</span> <span class="keyword">dynamic</span> <span class="keyword">var</span> name <span class="operator">=</span> <span class="string">&quot;&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> p <span class="operator">=</span> <span class="type">Person</span>()</span><br><span class="line">p.setValue(<span class="string">&quot;Tom&quot;</span>, forKey: <span class="string">&quot;name&quot;</span>) <span class="comment">// KVC</span></span><br><span class="line">p.addObserver(<span class="keyword">self</span>, forKeyPath: <span class="string">&quot;name&quot;</span>, options: .new, context: <span class="literal">nil</span>) <span class="comment">// KVO</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
+<li>数据绑定、UI自动刷新、MVVM 等。</li>
+</ul>
+<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
+<li>KVO 需继承 NSObject 且属性 dynamic。</li>
+<li>SwiftUI&#x2F;Combine 推荐用新机制。</li>
+</ul>
+<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
+<li>KVO 的原理？运行时动态生成子类，重写 setter。</li>
+<li>KVO 的局限？类型安全差、易遗漏移除。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept-Principle"><a href="#2-1-Concept-Principle" class="headerlink" title="2.1 Concept &amp; Principle"></a>2.1 Concept &amp; Principle</h2><ul>
+<li><strong>KVC</strong>: Access properties via string key.</li>
+<li><strong>KVO</strong>: Observe property changes, based on KVC.</li>
+</ul>
+<h2 id="2-2-Code-Example"><a href="#2-2-Code-Example" class="headerlink" title="2.2 Code Example"></a>2.2 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>: <span class="title class_ inherited__">NSObject</span> &#123;</span><br><span class="line">    <span class="keyword">@objc</span> <span class="keyword">dynamic</span> <span class="keyword">var</span> name <span class="operator">=</span> <span class="string">&quot;&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> p <span class="operator">=</span> <span class="type">Person</span>()</span><br><span class="line">p.setValue(<span class="string">&quot;Tom&quot;</span>, forKey: <span class="string">&quot;name&quot;</span>) <span class="comment">// KVC</span></span><br><span class="line">p.addObserver(<span class="keyword">self</span>, forKeyPath: <span class="string">&quot;name&quot;</span>, options: .new, context: <span class="literal">nil</span>) <span class="comment">// KVO</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
+<li>Data binding, UI auto-refresh, MVVM, etc.</li>
+</ul>
+<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
+<li>KVO: NSObject + dynamic.</li>
+<li>SwiftUI&#x2F;Combine: prefer new mechanisms.</li>
+</ul>
+<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
+<li>KVO principle: runtime subclass, override setter.</li>
+<li>KVO limitations: type safety, removal risk.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/KVC_KVO/" data-id="cmdcsgd480005f3k7dqcdcdqn" data-title="KVC与KVO" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/OpenPublic区别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/OpenPublic%E5%8C%BA%E5%88%AB/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/17/iOS/OpenPublic%E5%8C%BA%E5%88%AB/">Open与Public的区别</a>
+      <a class="p-name article-title" href="/2025/07/17/iOS/OpenPublic%E5%8C%BA%E5%88%AB/">Open与Public的区别</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/17/iOS/RxSwift%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">7月 17</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-概念与本质区别"><a href="#1-1-概念与本质区别" class="headerlink" title="1.1 概念与本质区别"></a>1.1 概念与本质区别</h2><ol>
+<li><strong>open</strong>：允许模块外继承和重写（子类化&#x2F;override）。</li>
+<li><strong>public</strong>：允许模块外访问，但不允许继承和重写。</li>
+</ol>
+<h2 id="1-2-为什么要区分？"><a href="#1-2-为什么要区分？" class="headerlink" title="1.2 为什么要区分？"></a>1.2 为什么要区分？</h2><ul>
+<li><strong>安全性</strong>：public 只暴露接口，防止外部随意扩展，保护内部实现。</li>
+<li><strong>灵活性</strong>：open 适合做框架&#x2F;库，允许外部自定义扩展。</li>
+</ul>
+<h2 id="1-3-实际代码示例"><a href="#1-3-实际代码示例" class="headerlink" title="1.3 实际代码示例"></a>1.3 实际代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">func</span> <span class="title function_">speak</span>() &#123; <span class="built_in">print</span>(<span class="string">&quot;Animal&quot;</span>) &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">func</span> <span class="title function_">sayHi</span>() &#123; <span class="built_in">print</span>(<span class="string">&quot;Hi&quot;</span>) &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 其他模块</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span>: <span class="title class_ inherited__">Animal</span> &#123; <span class="comment">// ✅ 允许继承</span></span><br><span class="line">    <span class="keyword">override</span> <span class="keyword">func</span> <span class="title function_">speak</span>() &#123; <span class="built_in">print</span>(<span class="string">&quot;Dog&quot;</span>) &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// class Student: Person &#123;&#125; // ❌ 不允许继承</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-4-业务-用户价值"><a href="#1-4-业务-用户价值" class="headerlink" title="1.4 业务&#x2F;用户价值"></a>1.4 业务&#x2F;用户价值</h2><ul>
+<li>open 适合 SDK&#x2F;框架，便于二次开发。</li>
+<li>public 适合只读 API，保证产品稳定。</li>
+</ul>
+<h2 id="1-5-易混淆点"><a href="#1-5-易混淆点" class="headerlink" title="1.5 易混淆点"></a>1.5 易混淆点</h2><ul>
+<li>open &#x3D; public + 允许继承&#x2F;重写。</li>
+<li>public 只能访问，不能扩展。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept-and-Key-Difference"><a href="#2-1-Concept-and-Key-Difference" class="headerlink" title="2.1 Concept and Key Difference"></a>2.1 Concept and Key Difference</h2><ol>
+<li><strong>open</strong>: Allows subclassing&#x2F;overriding outside the module.</li>
+<li><strong>public</strong>: Allows access but not subclassing&#x2F;overriding outside the module.</li>
+</ol>
+<h2 id="2-2-Why-distinguish"><a href="#2-2-Why-distinguish" class="headerlink" title="2.2 Why distinguish?"></a>2.2 Why distinguish?</h2><ul>
+<li><strong>Security</strong>: public exposes API but prevents external extension.</li>
+<li><strong>Flexibility</strong>: open is for frameworks, allows external customization.</li>
+</ul>
+<h2 id="2-3-Code-Example"><a href="#2-3-Code-Example" class="headerlink" title="2.3 Code Example"></a>2.3 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">func</span> <span class="title function_">speak</span>() &#123; <span class="built_in">print</span>(<span class="string">&quot;Animal&quot;</span>) &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">func</span> <span class="title function_">sayHi</span>() &#123; <span class="built_in">print</span>(<span class="string">&quot;Hi&quot;</span>) &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Other module</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span>: <span class="title class_ inherited__">Animal</span> &#123; <span class="comment">// ✅ Allowed</span></span><br><span class="line">    <span class="keyword">override</span> <span class="keyword">func</span> <span class="title function_">speak</span>() &#123; <span class="built_in">print</span>(<span class="string">&quot;Dog&quot;</span>) &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// class Student: Person &#123;&#125; // ❌ Not allowed</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-Business-User-Value"><a href="#2-4-Business-User-Value" class="headerlink" title="2.4 Business&#x2F;User Value"></a>2.4 Business&#x2F;User Value</h2><ul>
+<li>open: for SDK&#x2F;framework, supports extension.</li>
+<li>public: for read-only API, ensures stability.</li>
+</ul>
+<h2 id="2-5-Common-Confusion"><a href="#2-5-Common-Confusion" class="headerlink" title="2.5 Common Confusion"></a>2.5 Common Confusion</h2><ul>
+<li>open &#x3D; public + subclass&#x2F;override allowed.</li>
+<li>public: only access, no extension.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/OpenPublic%E5%8C%BA%E5%88%AB/" data-id="cmdcsgd490006f3k72i1v1i65" data-title="Open与Public的区别" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/RxSwift核心原理与应用" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/RxSwift%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/17/iOS/RxSwift%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/">RxSwift 核心原理与业务应用</a>
+      <a class="p-name article-title" href="/2025/07/17/iOS/RxSwift%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/">RxSwift 核心原理与业务应用</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/17/iOS/String%E4%B8%8ENSString%E5%8C%BA%E5%88%AB/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">7月 17</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-概念与核心思想"><a href="#1-1-概念与核心思想" class="headerlink" title="1.1 概念与核心思想"></a>1.1 概念与核心思想</h2><p>RxSwift 是响应式编程框架，核心是 Observable（可观察序列）、Observer（观察者）、操作符链式组合，支持异步事件流处理。</p>
+<h2 id="1-2-代码示例"><a href="#1-2-代码示例" class="headerlink" title="1.2 代码示例"></a>1.2 代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> disposeBag <span class="operator">=</span> <span class="type">DisposeBag</span>()</span><br><span class="line"><span class="type">Observable</span>.of(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">    .map &#123; <span class="variable">$0</span> <span class="operator">*</span> <span class="number">2</span> &#125;</span><br><span class="line">    .subscribe(onNext: &#123; <span class="built_in">print</span>(<span class="variable">$0</span>) &#125;)</span><br><span class="line">    .disposed(by: disposeBag)</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
+<li>UI 绑定、网络请求、表单校验、事件流转等。</li>
+</ul>
+<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
+<li>RxSwift 不是多线程库，但可结合调度器实现线程切换。</li>
+<li>资源释放靠 DisposeBag。</li>
+</ul>
+<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
+<li>RxSwift 如何避免回调地狱？链式组合、统一错误处理。</li>
+<li>与 Combine 区别？Combine 是苹果官方，API 更 Swifty。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept-Core-Idea"><a href="#2-1-Concept-Core-Idea" class="headerlink" title="2.1 Concept &amp; Core Idea"></a>2.1 Concept &amp; Core Idea</h2><p>RxSwift is a reactive framework: Observable, Observer, operator chaining, async event stream.</p>
+<h2 id="2-2-Code-Example"><a href="#2-2-Code-Example" class="headerlink" title="2.2 Code Example"></a>2.2 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> disposeBag <span class="operator">=</span> <span class="type">DisposeBag</span>()</span><br><span class="line"><span class="type">Observable</span>.of(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">    .map &#123; <span class="variable">$0</span> <span class="operator">*</span> <span class="number">2</span> &#125;</span><br><span class="line">    .subscribe(onNext: &#123; <span class="built_in">print</span>(<span class="variable">$0</span>) &#125;)</span><br><span class="line">    .disposed(by: disposeBag)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
+<li>UI binding, network, form validation, event flow, etc.</li>
+</ul>
+<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
+<li>RxSwift is not a threading lib, but supports schedulers.</li>
+<li>DisposeBag for resource release.</li>
+</ul>
+<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
+<li>How avoids callback hell? Chaining, unified error handling.</li>
+<li>Difference with Combine? Combine is official, more Swifty.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/RxSwift%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/" data-id="cmdcsgd4a0009f3k70ndbboem" data-title="RxSwift 核心原理与业务应用" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/String与NSString区别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/String%E4%B8%8ENSString%E5%8C%BA%E5%88%AB/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/17/iOS/String%E4%B8%8ENSString%E5%8C%BA%E5%88%AB/">String与NSString的关系与区别</a>
+      <a class="p-name article-title" href="/2025/07/17/iOS/String%E4%B8%8ENSString%E5%8C%BA%E5%88%AB/">String与NSString的关系与区别</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/17/iOS/Swift_OC%E5%AF%B9%E6%AF%94/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">7月 17</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-关系与区别"><a href="#1-1-关系与区别" class="headerlink" title="1.1 关系与区别"></a>1.1 关系与区别</h2><ol>
+<li>String 是 Swift 的原生字符串类型，NSString 是 OC 的字符串类。</li>
+<li>String 与 NSString 可以自动桥接，互相转换。</li>
+<li>String 是值类型（struct），NSString 是引用类型（class）。</li>
+</ol>
+<h2 id="1-2-为什么要这样设计？"><a href="#1-2-为什么要这样设计？" class="headerlink" title="1.2 为什么要这样设计？"></a>1.2 为什么要这样设计？</h2><ul>
+<li>String 采用值类型，提升性能和安全性，支持 copy-on-write。</li>
+<li>兼容 OC 生态，便于混编。</li>
+</ul>
+<h2 id="1-3-实际代码示例"><a href="#1-3-实际代码示例" class="headerlink" title="1.3 实际代码示例"></a>1.3 实际代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> swiftStr: <span class="type">String</span> <span class="operator">=</span> <span class="string">&quot;Hello&quot;</span></span><br><span class="line"><span class="keyword">let</span> ocStr: <span class="type">NSString</span> <span class="operator">=</span> swiftStr <span class="keyword">as</span> <span class="type">NSString</span></span><br><span class="line"><span class="keyword">let</span> swiftStr2: <span class="type">String</span> <span class="operator">=</span> ocStr <span class="keyword">as</span> <span class="type">String</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 值类型特性</span></span><br><span class="line"><span class="keyword">var</span> a <span class="operator">=</span> <span class="string">&quot;abc&quot;</span></span><br><span class="line"><span class="keyword">var</span> b <span class="operator">=</span> a</span><br><span class="line">b <span class="operator">+=</span> <span class="string">&quot;d&quot;</span></span><br><span class="line"><span class="built_in">print</span>(a) <span class="comment">// &quot;abc&quot;</span></span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment">// &quot;abcd&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-4-业务-用户价值"><a href="#1-4-业务-用户价值" class="headerlink" title="1.4 业务&#x2F;用户价值"></a>1.4 业务&#x2F;用户价值</h2><ul>
+<li>性能更优，线程安全。</li>
+<li>兼容 OC，便于迁移和集成。</li>
+</ul>
+<h2 id="1-5-易混淆点"><a href="#1-5-易混淆点" class="headerlink" title="1.5 易混淆点"></a>1.5 易混淆点</h2><ul>
+<li>String 是 struct，NSString 是 class。</li>
+<li>String 支持更多 Swift 特性（如泛型、协议扩展等）。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Relationship-and-Difference"><a href="#2-1-Relationship-and-Difference" class="headerlink" title="2.1 Relationship and Difference"></a>2.1 Relationship and Difference</h2><ol>
+<li>String: native Swift string type; NSString: Objective-C class.</li>
+<li>String and NSString are automatically bridged.</li>
+<li>String is a value type (struct), NSString is a reference type (class).</li>
+</ol>
+<h2 id="2-2-Why-this-design"><a href="#2-2-Why-this-design" class="headerlink" title="2.2 Why this design?"></a>2.2 Why this design?</h2><ul>
+<li>String as value type: better performance, safety, COW.</li>
+<li>OC compatibility for mixed code.</li>
+</ul>
+<h2 id="2-3-Code-Example"><a href="#2-3-Code-Example" class="headerlink" title="2.3 Code Example"></a>2.3 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> swiftStr: <span class="type">String</span> <span class="operator">=</span> <span class="string">&quot;Hello&quot;</span></span><br><span class="line"><span class="keyword">let</span> ocStr: <span class="type">NSString</span> <span class="operator">=</span> swiftStr <span class="keyword">as</span> <span class="type">NSString</span></span><br><span class="line"><span class="keyword">let</span> swiftStr2: <span class="type">String</span> <span class="operator">=</span> ocStr <span class="keyword">as</span> <span class="type">String</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a <span class="operator">=</span> <span class="string">&quot;abc&quot;</span></span><br><span class="line"><span class="keyword">var</span> b <span class="operator">=</span> a</span><br><span class="line">b <span class="operator">+=</span> <span class="string">&quot;d&quot;</span></span><br><span class="line"><span class="built_in">print</span>(a) <span class="comment">// &quot;abc&quot;</span></span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment">// &quot;abcd&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-Business-User-Value"><a href="#2-4-Business-User-Value" class="headerlink" title="2.4 Business&#x2F;User Value"></a>2.4 Business&#x2F;User Value</h2><ul>
+<li>Better performance, thread safety.</li>
+<li>OC compatibility, easier migration&#x2F;integration.</li>
+</ul>
+<h2 id="2-5-Common-Confusion"><a href="#2-5-Common-Confusion" class="headerlink" title="2.5 Common Confusion"></a>2.5 Common Confusion</h2><ul>
+<li>String is struct, NSString is class.</li>
+<li>String supports more Swift features (generics, protocol extensions, etc).</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/String%E4%B8%8ENSString%E5%8C%BA%E5%88%AB/" data-id="cmdcsgd4b000af3k7d3p0hwko" data-title="String与NSString的关系与区别" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/String长度获取" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/String%E9%95%BF%E5%BA%A6%E8%8E%B7%E5%8F%96/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/17/iOS/Swift_OC%E5%AF%B9%E6%AF%94/">Swift与OC对比</a>
+      <a class="p-name article-title" href="/2025/07/17/iOS/String%E9%95%BF%E5%BA%A6%E8%8E%B7%E5%8F%96/">获取一个String的长度</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/17/iOS/Swift%E5%88%9D%E5%A7%8B%E5%8C%96%E5%99%A8/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">7月 17</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-获取方式"><a href="#1-1-获取方式" class="headerlink" title="1.1 获取方式"></a>1.1 获取方式</h2><ol>
+<li>使用 <code>count</code> 属性获取字符数。</li>
+<li>注意 Swift 的 String 支持 Unicode，count 统计的是字符（而非字节）。</li>
+</ol>
+<h2 id="1-2-为什么要这样设计？"><a href="#1-2-为什么要这样设计？" class="headerlink" title="1.2 为什么要这样设计？"></a>1.2 为什么要这样设计？</h2><ul>
+<li>保证多语言&#x2F;表情符号等复杂字符的正确统计。</li>
+<li>提升国际化和用户体验。</li>
+</ul>
+<h2 id="1-3-实际代码示例"><a href="#1-3-实际代码示例" class="headerlink" title="1.3 实际代码示例"></a>1.3 实际代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str <span class="operator">=</span> <span class="string">&quot;你好abc😊&quot;</span></span><br><span class="line"><span class="built_in">print</span>(str.count) <span class="comment">// 6</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> nsStr: <span class="type">NSString</span> <span class="operator">=</span> str <span class="keyword">as</span> <span class="type">NSString</span></span><br><span class="line"><span class="built_in">print</span>(nsStr.length) <span class="comment">// 8（UTF-16 单元数）</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-4-业务-用户价值"><a href="#1-4-业务-用户价值" class="headerlink" title="1.4 业务&#x2F;用户价值"></a>1.4 业务&#x2F;用户价值</h2><ul>
+<li>保证字符统计准确，避免 UI 错位或截断。</li>
+<li>支持多语言和表情，提升产品国际化能力。</li>
+</ul>
+<h2 id="1-5-易混淆点"><a href="#1-5-易混淆点" class="headerlink" title="1.5 易混淆点"></a>1.5 易混淆点</h2><ul>
+<li>String.count 是字符数，NSString.length 是 UTF-16 单元数。</li>
+<li>部分 emoji&#x2F;特殊字符在 NSString.length 下会统计为2。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-How-to-get-String-length"><a href="#2-1-How-to-get-String-length" class="headerlink" title="2.1 How to get String length"></a>2.1 How to get String length</h2><ol>
+<li>Use <code>count</code> property for character count.</li>
+<li>Swift String supports Unicode, count is for characters, not bytes.</li>
+</ol>
+<h2 id="2-2-Why-this-design"><a href="#2-2-Why-this-design" class="headerlink" title="2.2 Why this design?"></a>2.2 Why this design?</h2><ul>
+<li>Ensures correct count for multi-language&#x2F;emoji.</li>
+<li>Better i18n and UX.</li>
+</ul>
+<h2 id="2-3-Code-Example"><a href="#2-3-Code-Example" class="headerlink" title="2.3 Code Example"></a>2.3 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str <span class="operator">=</span> <span class="string">&quot;你好abc😊&quot;</span></span><br><span class="line"><span class="built_in">print</span>(str.count) <span class="comment">// 6</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> nsStr: <span class="type">NSString</span> <span class="operator">=</span> str <span class="keyword">as</span> <span class="type">NSString</span></span><br><span class="line"><span class="built_in">print</span>(nsStr.length) <span class="comment">// 8 (UTF-16 units)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-Business-User-Value"><a href="#2-4-Business-User-Value" class="headerlink" title="2.4 Business&#x2F;User Value"></a>2.4 Business&#x2F;User Value</h2><ul>
+<li>Accurate character count, avoids UI bugs.</li>
+<li>Supports i18n and emoji, better product reach.</li>
+</ul>
+<h2 id="2-5-Common-Confusion"><a href="#2-5-Common-Confusion" class="headerlink" title="2.5 Common Confusion"></a>2.5 Common Confusion</h2><ul>
+<li>String.count &#x3D; character count, NSString.length &#x3D; UTF-16 units.</li>
+<li>Some emoji&#x2F;special chars count as 2 in NSString.length.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/String%E9%95%BF%E5%BA%A6%E8%8E%B7%E5%8F%96/" data-id="cmdcsgd4b000df3k7eoql8vqe" data-title="获取一个String的长度" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/Swift_OC对比" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/Swift_OC%E5%AF%B9%E6%AF%94/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/17/iOS/Swift%E5%88%9D%E5%A7%8B%E5%8C%96%E5%99%A8/">Swift中的初始化器（构造方法）</a>
+      <a class="p-name article-title" href="/2025/07/17/iOS/Swift_OC%E5%AF%B9%E6%AF%94/">Swift与OC对比</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/17/iOS/dynamic%E4%B8%8E%E9%9D%99%E6%80%81%E5%BA%93%E5%8C%BA%E5%88%AB/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">7月 17</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-语法与特性"><a href="#1-1-语法与特性" class="headerlink" title="1.1 语法与特性"></a>1.1 语法与特性</h2><ul>
+<li>Swift：强类型、类型推断、Optionals、值类型、函数式编程。</li>
+<li>OC：动态类型、消息机制、指针、手动内存管理。</li>
+</ul>
+<h2 id="1-2-代码示例"><a href="#1-2-代码示例" class="headerlink" title="1.2 代码示例"></a>1.2 代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr <span class="operator">=</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">// Swift</span></span><br><span class="line"><span class="type">NSArray</span> <span class="operator">*</span>arr <span class="operator">=</span> @[@<span class="number">1</span>,@<span class="number">2</span>,@<span class="number">3</span>]; <span class="comment">// OC</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
+<li>Swift 适合新项目、类型安全要求高。</li>
+<li>OC 适合维护老项目、动态特性需求。</li>
+</ul>
+<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
+<li>Swift 更安全但更严格，OC 灵活但易出错。</li>
+<li>Swift 与 OC 可混编。</li>
+</ul>
+<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
+<li>Swift 性能优化点？ARC、COW、泛型。</li>
+<li>OC 动态特性优势？运行时注入、KVC&#x2F;KVO。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Syntax-Features"><a href="#2-1-Syntax-Features" class="headerlink" title="2.1 Syntax &amp; Features"></a>2.1 Syntax &amp; Features</h2><ul>
+<li>Swift: strong type, inference, optionals, value type, functional.</li>
+<li>OC: dynamic type, messaging, pointer, manual memory.</li>
+</ul>
+<h2 id="2-2-Code-Example"><a href="#2-2-Code-Example" class="headerlink" title="2.2 Code Example"></a>2.2 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr <span class="operator">=</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment">// Swift</span></span><br><span class="line"><span class="type">NSArray</span> <span class="operator">*</span>arr <span class="operator">=</span> @[@<span class="number">1</span>,@<span class="number">2</span>,@<span class="number">3</span>]; <span class="comment">// OC</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
+<li>Swift: new project, type safety.</li>
+<li>OC: legacy, dynamic needs.</li>
+</ul>
+<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
+<li>Swift safer but stricter, OC flexible but risky.</li>
+<li>Swift&#x2F;OC can mix.</li>
+</ul>
+<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
+<li>Swift perf: ARC, COW, generics.</li>
+<li>OC dynamic: runtime, KVC&#x2F;KVO.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/Swift_OC%E5%AF%B9%E6%AF%94/" data-id="cmdcsgd4c000ff3k7gsyp4eqh" data-title="Swift与OC对比" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/SwiftUI核心机制与业务价值" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/SwiftUI%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6%E4%B8%8E%E4%B8%9A%E5%8A%A1%E4%BB%B7%E5%80%BC/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/17/iOS/dynamic%E4%B8%8E%E9%9D%99%E6%80%81%E5%BA%93%E5%8C%BA%E5%88%AB/">dynamic与静态库的区别</a>
+      <a class="p-name article-title" href="/2025/07/17/iOS/SwiftUI%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6%E4%B8%8E%E4%B8%9A%E5%8A%A1%E4%BB%B7%E5%80%BC/">SwiftUI 核心机制与业务价值</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/07/17/iOS/guard_defer%E7%94%A8%E6%B3%95%E5%8C%BA%E5%88%AB/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">7月 17</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-概念与机制"><a href="#1-1-概念与机制" class="headerlink" title="1.1 概念与机制"></a>1.1 概念与机制</h2><p>SwiftUI 是苹果推出的声明式 UI 框架，核心是 View 协议、状态驱动、数据绑定（@State&#x2F;@Binding&#x2F;@ObservedObject）。</p>
+<h2 id="1-2-代码示例"><a href="#1-2-代码示例" class="headerlink" title="1.2 代码示例"></a>1.2 代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">ContentView</span>: <span class="title class_ inherited__">View</span> &#123;</span><br><span class="line">    <span class="meta">@State</span> <span class="keyword">private</span> <span class="keyword">var</span> count <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">var</span> body: <span class="keyword">some</span> <span class="type">View</span> &#123;</span><br><span class="line">        <span class="type">Button</span>(<span class="string">&quot;点击<span class="subst">\(count)</span>&quot;</span>) &#123; count <span class="operator">+=</span> <span class="number">1</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-业务场景"><a href="#1-3-业务场景" class="headerlink" title="1.3 业务场景"></a>1.3 业务场景</h2><ul>
+<li>跨平台 UI、动态主题、响应式交互。</li>
+</ul>
+<h2 id="1-4-易混淆点"><a href="#1-4-易混淆点" class="headerlink" title="1.4 易混淆点"></a>1.4 易混淆点</h2><ul>
+<li>SwiftUI 不是 UIKit 封装，完全声明式。</li>
+<li>状态驱动，UI 自动刷新。</li>
+</ul>
+<h2 id="1-5-深挖追问"><a href="#1-5-深挖追问" class="headerlink" title="1.5 深挖追问"></a>1.5 深挖追问</h2><ul>
+<li>SwiftUI 性能优化？View 结构扁平化、@StateObject。</li>
+<li>业务价值？极大提升开发效率、可维护性。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Concept-Mechanism"><a href="#2-1-Concept-Mechanism" class="headerlink" title="2.1 Concept &amp; Mechanism"></a>2.1 Concept &amp; Mechanism</h2><p>SwiftUI is Apple’s declarative UI framework: View protocol, state-driven, data binding (@State&#x2F;@Binding&#x2F;@ObservedObject).</p>
+<h2 id="2-2-Code-Example"><a href="#2-2-Code-Example" class="headerlink" title="2.2 Code Example"></a>2.2 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">ContentView</span>: <span class="title class_ inherited__">View</span> &#123;</span><br><span class="line">    <span class="meta">@State</span> <span class="keyword">private</span> <span class="keyword">var</span> count <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">var</span> body: <span class="keyword">some</span> <span class="type">View</span> &#123;</span><br><span class="line">        <span class="type">Button</span>(<span class="string">&quot;Click <span class="subst">\(count)</span>&quot;</span>) &#123; count <span class="operator">+=</span> <span class="number">1</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-Business-Scenarios"><a href="#2-3-Business-Scenarios" class="headerlink" title="2.3 Business Scenarios"></a>2.3 Business Scenarios</h2><ul>
+<li>Cross-platform UI, dynamic theme, reactive interaction.</li>
+</ul>
+<h2 id="2-4-Common-Confusions"><a href="#2-4-Common-Confusions" class="headerlink" title="2.4 Common Confusions"></a>2.4 Common Confusions</h2><ul>
+<li>SwiftUI is not UIKit wrapper, fully declarative.</li>
+<li>State-driven, UI auto-refresh.</li>
+</ul>
+<h2 id="2-5-Deep-Dive"><a href="#2-5-Deep-Dive" class="headerlink" title="2.5 Deep Dive"></a>2.5 Deep Dive</h2><ul>
+<li>SwiftUI perf optimization? Flat view, @StateObject.</li>
+<li>Business value? Boosts dev efficiency, maintainability.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/SwiftUI%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6%E4%B8%8E%E4%B8%9A%E5%8A%A1%E4%BB%B7%E5%80%BC/" data-id="cmdcsgd4d000hf3k7aq950y2m" data-title="SwiftUI 核心机制与业务价值" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iOS/Swift初始化器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/17/iOS/Swift%E5%88%9D%E5%A7%8B%E5%8C%96%E5%99%A8/" class="article-date">
+  <time class="dt-published" datetime="2025-07-16T16:00:00.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/07/17/iOS/guard_defer%E7%94%A8%E6%B3%95%E5%8C%BA%E5%88%AB/">guard 与 defer 用法与区别</a>
+      <a class="p-name article-title" href="/2025/07/17/iOS/Swift%E5%88%9D%E5%A7%8B%E5%8C%96%E5%99%A8/">Swift中的初始化器（构造方法）</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
+      </header>
     
-    <span class="page-number current">1</span><a class="page-number" href="/categories/iOS/page/2/">2</a><a class="page-number" href="/categories/iOS/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/categories/iOS/page/6/">6</a><a class="extend next" rel="next" href="/categories/iOS/page/2/">下一页 &raquo;</a>
-  </nav>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-中文答案"><a href="#1-中文答案" class="headerlink" title="1. 中文答案"></a>1. 中文答案</h1><h2 id="1-1-Swift-初始化器的类型"><a href="#1-1-Swift-初始化器的类型" class="headerlink" title="1.1 Swift 初始化器的类型"></a>1.1 Swift 初始化器的类型</h2><ol>
+<li><strong>指定初始化器（Designated Initializer）</strong>：负责初始化所有属性，调用父类的指定初始化器。</li>
+<li><strong>便利初始化器（Convenience Initializer）</strong>：必须调用同一个类中的其他初始化器，常用于简化初始化流程。</li>
+<li><strong>可失败初始化器（Failable Initializer）</strong>：<code>init?</code>，初始化可能失败时返回 nil。</li>
+</ol>
+<h2 id="1-2-为什么要这样设计？"><a href="#1-2-为什么要这样设计？" class="headerlink" title="1.2 为什么要这样设计？"></a>1.2 为什么要这样设计？</h2><ul>
+<li>保证对象所有属性都被初始化，提升类型安全。</li>
+<li>便于多构造方式，提升 API 易用性。</li>
+<li>可失败初始化器提升健壮性。</li>
+</ul>
+<h2 id="1-3-实际代码示例"><a href="#1-3-实际代码示例" class="headerlink" title="1.3 实际代码示例"></a>1.3 实际代码示例</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> name: <span class="type">String</span></span><br><span class="line">    <span class="keyword">var</span> age: <span class="type">Int</span></span><br><span class="line">    <span class="comment">// 指定初始化器</span></span><br><span class="line">    <span class="keyword">init</span>(<span class="params">name</span>: <span class="type">String</span>, <span class="params">age</span>: <span class="type">Int</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.name <span class="operator">=</span> name</span><br><span class="line">        <span class="keyword">self</span>.age <span class="operator">=</span> age</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 便利初始化器</span></span><br><span class="line">    <span class="keyword">convenience</span> <span class="keyword">init</span>(<span class="params">name</span>: <span class="type">String</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.<span class="keyword">init</span>(name: name, age: <span class="number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 可失败初始化器</span></span><br><span class="line">    <span class="keyword">init?</span>(<span class="params">dict</span>: [<span class="params">String</span>: <span class="keyword">Any</span>]) &#123;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> name <span class="operator">=</span> dict[<span class="string">&quot;name&quot;</span>] <span class="keyword">as?</span> <span class="type">String</span>,</span><br><span class="line">              <span class="keyword">let</span> age <span class="operator">=</span> dict[<span class="string">&quot;age&quot;</span>] <span class="keyword">as?</span> <span class="type">Int</span> <span class="keyword">else</span> &#123; <span class="keyword">return</span> <span class="literal">nil</span> &#125;</span><br><span class="line">        <span class="keyword">self</span>.name <span class="operator">=</span> name</span><br><span class="line">        <span class="keyword">self</span>.age <span class="operator">=</span> age</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-4-业务-用户价值"><a href="#1-4-业务-用户价值" class="headerlink" title="1.4 业务&#x2F;用户价值"></a>1.4 业务&#x2F;用户价值</h2><ul>
+<li>保证数据完整性，提升产品稳定性。</li>
+<li>支持多种初始化方式，提升开发效率。</li>
+</ul>
+<h2 id="1-5-易混淆点"><a href="#1-5-易混淆点" class="headerlink" title="1.5 易混淆点"></a>1.5 易混淆点</h2><ul>
+<li>便利初始化器必须调用本类其他初始化器。</li>
+<li>可失败初始化器返回 nil，需注意解包。</li>
+</ul>
+<h1 id="2-English-Answer"><a href="#2-English-Answer" class="headerlink" title="2. English Answer"></a>2. English Answer</h1><h2 id="2-1-Types-of-Swift-Initializers"><a href="#2-1-Types-of-Swift-Initializers" class="headerlink" title="2.1 Types of Swift Initializers"></a>2.1 Types of Swift Initializers</h2><ol>
+<li><strong>Designated Initializer</strong>: Initializes all properties, calls superclass’s designated initializer.</li>
+<li><strong>Convenience Initializer</strong>: Must call another initializer in the same class, simplifies initialization.</li>
+<li><strong>Failable Initializer</strong>: <code>init?</code>, returns nil if initialization fails.</li>
+</ol>
+<h2 id="2-2-Why-this-design"><a href="#2-2-Why-this-design" class="headerlink" title="2.2 Why this design?"></a>2.2 Why this design?</h2><ul>
+<li>Ensures all properties are initialized, improves type safety.</li>
+<li>Supports multiple construction patterns, better API usability.</li>
+<li>Failable initializers improve robustness.</li>
+</ul>
+<h2 id="2-3-Code-Example"><a href="#2-3-Code-Example" class="headerlink" title="2.3 Code Example"></a>2.3 Code Example</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> name: <span class="type">String</span></span><br><span class="line">    <span class="keyword">var</span> age: <span class="type">Int</span></span><br><span class="line">    <span class="keyword">init</span>(<span class="params">name</span>: <span class="type">String</span>, <span class="params">age</span>: <span class="type">Int</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.name <span class="operator">=</span> name</span><br><span class="line">        <span class="keyword">self</span>.age <span class="operator">=</span> age</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">convenience</span> <span class="keyword">init</span>(<span class="params">name</span>: <span class="type">String</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.<span class="keyword">init</span>(name: name, age: <span class="number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">init?</span>(<span class="params">dict</span>: [<span class="params">String</span>: <span class="keyword">Any</span>]) &#123;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> name <span class="operator">=</span> dict[<span class="string">&quot;name&quot;</span>] <span class="keyword">as?</span> <span class="type">String</span>,</span><br><span class="line">              <span class="keyword">let</span> age <span class="operator">=</span> dict[<span class="string">&quot;age&quot;</span>] <span class="keyword">as?</span> <span class="type">Int</span> <span class="keyword">else</span> &#123; <span class="keyword">return</span> <span class="literal">nil</span> &#125;</span><br><span class="line">        <span class="keyword">self</span>.name <span class="operator">=</span> name</span><br><span class="line">        <span class="keyword">self</span>.age <span class="operator">=</span> age</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-Business-User-Value"><a href="#2-4-Business-User-Value" class="headerlink" title="2.4 Business&#x2F;User Value"></a>2.4 Business&#x2F;User Value</h2><ul>
+<li>Ensures data integrity, improves stability.</li>
+<li>Supports multiple init patterns, better dev efficiency.</li>
+</ul>
+<h2 id="2-5-Common-Confusion"><a href="#2-5-Common-Confusion" class="headerlink" title="2.5 Common Confusion"></a>2.5 Common Confusion</h2><ul>
+<li>Convenience initializers must call another initializer in the same class.</li>
+<li>Failable initializers return nil, need to unwrap.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roy-luoyao.github.io/2025/07/17/iOS/Swift%E5%88%9D%E5%A7%8B%E5%8C%96%E5%99%A8/" data-id="cmdcsgd4d000jf3k7g5cyhk92" data-title="Swift中的初始化器（构造方法）" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
 
 </section>
         
